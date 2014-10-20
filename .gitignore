@@ -1,0 +1,12 @@
+# bin
+*.exe
+blog
+
+# swap
+*~
+
+# tmp
+/tmp/
+
+# bin
+*.exe
