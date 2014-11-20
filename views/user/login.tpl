@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>登录</title>
-</head>
+{{template "inc/header.tpl" .}}
 <body>
 	<form action="/login">
 		<input type="text" name="username" id="">
 		<input type="password" name="password" id="">
-		<input type="button" value="登录">
+		<input type="button" value="{{i18n "login"}}">
 	</form>
 </body>
-</html>
+{{template "inc/footer.tpl" .}}

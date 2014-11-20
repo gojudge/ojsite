@@ -5,6 +5,6 @@ import (
 	"github.com/duguying/ojsite/controllers"
 )
 
-func init() {
+func Init() {
 	beego.Router("/", &controllers.MainController{})
 }
