@@ -40,7 +40,10 @@ CREATE TABLE IF NOT EXISTS `user` (
   `level` enum('user','student','admin') NOT NULL DEFAULT 'user' COMMENT '用户级别',
   `registor_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '注册时间',
   `nickname` varchar(50) NOT NULL COMMENT '昵称',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`),
+  UNIQUE KEY `email` (`email`),
+  UNIQUE KEY `nickname` (`nickname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 -- 数据导出被取消选择。
