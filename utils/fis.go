@@ -9,7 +9,8 @@ import (
 // fis map
 func Fis(key string) string {
 	content := loadMap()
-	json := com.JsonDecode(content).(map[string]interface{})["res"]
+	json, _ := com.JsonDecode(content)
+	json = json.(map[string]interface{})["res"]
 	if fileMap, ok := json.(map[string]interface{}); !ok {
 		fmt.Println("map.json id illeage!")
 	} else {

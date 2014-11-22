@@ -11,8 +11,5 @@ ojsite
 # bin
 *.exe
 
-# fis in testting
-/fis/
-
 # static
 /static/
