@@ -12,12 +12,10 @@ type OAuthController struct {
 func (this *OAuthController) Get() {
 	code := this.GetString("code")
 	clientId := beego.AppConfig.String("github_client_id")
-	clientSecret := beego.AppConfig.String("github_client_id")
+	clientSecret := beego.AppConfig.String("github_client_secret")
 
 	oauthGithub := &oauth.GithubOAuth{}
-
-	oauthGithub.NewGithubOAuth(clientId, clientSecret, code)
-	json, err := oauthGithub.GetData()
+	json, err := oauthGithub.GetData(clientId, clientSecret, code)
 	if err != nil {
 		this.Ctx.WriteString("Response Error!")
 	}
@@ -26,4 +24,6 @@ func (this *OAuthController) Get() {
 	this.Data["login"] = data["login"].(string)
 	this.Data["avatar_url"] = data["avatar_url"].(string)
 	this.Data["name"] = data["name"].(string)
+
+	this.TplNames = "user/oauth.tpl"
 }
