@@ -10,6 +10,7 @@ type OAuthController struct {
 
 func (this *OAuthController) Post() {
 	oauthGithub := &oauth.GithubOAuth{}
+	oauthGithub.NewGithubOAuth(this.GetString("access_token"))
 	json, err := oauthGithub.GetData()
 	if err != nil {
 		this.Ctx.WriteString("Response Error!")
@@ -19,4 +20,8 @@ func (this *OAuthController) Post() {
 	this.Data["login"] = data["login"].(string)
 	this.Data["avatar_url"] = data["avatar_url"].(string)
 	this.Data["name"] = data["name"].(string)
+}
+
+func (this *OAuthController) Get() {
+	this.Ctx.WriteString("content")
 }
