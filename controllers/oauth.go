@@ -8,7 +8,7 @@ type OAuthController struct {
 	BaseController
 }
 
-func (this *OAuthController) Get() {
+func (this *OAuthController) Post() {
 	oauthGithub := &oauth.GithubOAuth{}
 	json, err := oauthGithub.GetData()
 	if err != nil {
