@@ -7,4 +7,7 @@ import (
 
 func Init() {
 	beego.Router("/", &controllers.MainController{})
+	beego.Router("/oauth/github", &controllers.OAuthController{})
+
+	User()
 }
