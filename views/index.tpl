@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Online Judge System</title>
-    {{"sass/style.scss"|asset|str2html}}
+    {{asset "sass/style.scss"}}
   </head>
   <body>
 

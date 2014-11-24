@@ -16,8 +16,10 @@ func (this *OAuthController) Get() {
 
 	oauthGithub := &oauth.GithubOAuth{}
 	json, err := oauthGithub.GetData(clientId, clientSecret, code)
+
 	if err != nil {
-		this.Ctx.WriteString("Response Error!")
+		this.Ctx.WriteString("Response Error! ")
+		return
 	}
 	data := json.(map[string]interface{})
 

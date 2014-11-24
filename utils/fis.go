@@ -4,10 +4,12 @@ import (
 	"fmt"
 	"github.com/astaxie/beego"
 	"github.com/gogather/com"
+	"html/template"
 )
 
 // fis map
-func Fis(key string) string {
+func Fis(key string) template.HTML {
+	var text string
 	content := loadMap()
 	json, _ := com.JsonDecode(content)
 	json = json.(map[string]interface{})["res"]
@@ -27,15 +29,15 @@ func Fis(key string) string {
 
 			if tmpKey == key {
 				if fileType == "css" {
-					return `<link rel="stylesheet" href="/static` + uri + `">`
+					text = `<link rel="stylesheet" href="/static` + uri + `">`
 				} else if fileType == "js" {
-					return `<script src="/static` + uri + `"></script>`
+					text = `<script src="/static` + uri + `"></script>`
 				}
 			}
 		}
 	}
 
-	return ""
+	return template.HTML(text)
 }
 
 // load map.json
