@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <title>Online Judge System</title>
     {{asset "sass/style.scss"}}
-    {{asset "octicons/octicons.less"}}
+    {{asset "octicons/octicons.scss"}}
   </head>
   <body>
     <div class="wrapper">

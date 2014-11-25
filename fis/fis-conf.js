@@ -34,7 +34,7 @@ fis.config.set('pack', {
     	'main.coffee'
     ],
 	'octicons.css':[
-    	'octicons.less'
+    	'octicons.scss'
     ]
 });
 
