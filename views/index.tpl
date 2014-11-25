@@ -9,22 +9,36 @@
     <meta name="author" content="">
     <title>Online Judge System</title>
     {{asset "sass/style.scss"}}
+    {{asset "octicons/octicons.less"}}
   </head>
   <body>
+    <div class="wrapper">
 
-    <div class="header">
-    	<ul>
-    		<li></li>
-    		<li></li>
-    		<li></li>
-    	</ul>
-    	<div>
-    		<input type="text" name="" id="">
-    		<button>Search</button>
-    	</div>
+      <noscript>Please enable JavaScript in your browser!</noscript>
+
+      <div class="header">
+      	<ul>
+      		<li><span class="logo octicon octicon-mark-github"></span></li>
+      		<li><a href="">题库</a></li>
+          <li><a href="">教学</a></li>
+          <li><a href="">讨论</a></li>
+          <li><input type="text" name="" id="" placeholder="Search"></li>
+
+          <li class="right"><a href=""><span title="sign out" class="octicon octicon-sign-out"></span></a></li>
+          <li class="right"><a href=""><span title="administration" class="octicon octicon-circuit-board"></span></a></li>
+          <li class="right">
+            <a href=""><img src="http://gravatar.duoshuo.com/avatar/5fedd018b3227bc4043934309da8c290" alt="">独孤影</a>
+          </li>
+      	</ul>
+      </div>
+
+      <div class="main">
+        
+      </div>
+
     </div>
 
-    
+    <div class="footer"></div>
   </body>
   <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 </html>

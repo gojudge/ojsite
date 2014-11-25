@@ -13,3 +13,6 @@ ojsite
 
 # static
 /static/
+
+# static map
+/map.json

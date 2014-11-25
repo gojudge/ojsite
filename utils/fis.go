@@ -29,9 +29,9 @@ func Fis(key string) template.HTML {
 
 			if tmpKey == key {
 				if fileType == "css" {
-					text = `<link rel="stylesheet" href="/static` + uri + `">`
+					text = `<link rel="stylesheet" href="` + uri + `">`
 				} else if fileType == "js" {
-					text = `<script src="/static` + uri + `"></script>`
+					text = `<script src="` + uri + `"></script>`
 				}
 			}
 		}
