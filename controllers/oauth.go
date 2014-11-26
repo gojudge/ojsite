@@ -10,6 +10,7 @@ type OAuthController struct {
 }
 
 func (this *OAuthController) Get() {
+
 	code := this.GetString("code")
 	clientId := beego.AppConfig.String("github_client_id")
 	clientSecret := beego.AppConfig.String("github_client_secret")

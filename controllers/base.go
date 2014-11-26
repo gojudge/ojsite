@@ -23,3 +23,34 @@ func (this *BaseController) Lang(key string) string {
 
 	return i18n.Tr(lang, key)
 }
+
+// run before get
+func (this *MainController) Prepare() {
+	// get user level
+	var lev string
+
+	user := this.GetSession("username")
+	if user == nil {
+		lev = "guest"
+	} else {
+		level := this.GetSession("level")
+		if level == nil {
+			lev = "user" // normal user
+		} else {
+			if userLevel, ok := user.(string); ok {
+				if "student" == userLevel {
+					lev = "student" // student user
+				} else if "admin" == userLevel {
+					lev = "admin" // admin user
+				} else {
+					lev = "user" // normal user
+				}
+			} else {
+				lev = "user" // normal user
+			}
+		}
+	}
+
+	this.Data["userIs"] = lev
+
+}

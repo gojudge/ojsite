@@ -1,5 +1,4 @@
 {{template "inc/header.tpl" .}}
-<body>
 	<form action="/login">
 		<input type="text" name="username" id="">
 		<input type="password" name="password" id="">
@@ -8,5 +7,4 @@
 	<div>
 		<a href="https://github.com/login/oauth/authorize?client_id={{.github_client_id}}&scope=user,public_repo" target="_blank">Github登录</a>
 	</div>
-</body>
 {{template "inc/footer.tpl" .}}

@@ -9,6 +9,6 @@ type MainController struct {
 }
 
 func (this *MainController) Get() {
-	this.Data["title"] = this.Lang("title_login")
+	this.Data["title"] = this.Lang("title_index")
 	this.TplNames = "index.tpl"
 }

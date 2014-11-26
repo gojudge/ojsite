@@ -117,14 +117,6 @@ a{
 		margin: 0 auto;
 		padding-bottom: $brace-height;
 		
-		$margin-for-info-box: 25px;
-		.index-info-box{
-			width: $main-width - 2 * $margin-for-info-box;
-			height: 500px - 2 * $margin-for-info-box;
-			margin: $margin-for-info-box;
-			border-radius: 6px;
-			background-color: #EEE;
-		}
 	}
 
 }
@@ -158,5 +150,16 @@ a{
 				line-height: 16px;
 			}
 		}
+	}
+}
+
+.main{
+	$margin-for-info-box: 25px;
+	.index-info-box{
+		width: $main-width - 2 * $margin-for-info-box;
+		height: 500px - 2 * $margin-for-info-box;
+		margin: $margin-for-info-box;
+		border-radius: 6px;
+		background-color: #EEE;
 	}
 }
