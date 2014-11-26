@@ -3,6 +3,8 @@ $main-width:1170px;
 $banner-heigh: 45px;
 $theme-color: #0099CC;
 
+$brace-height: 70px;
+
 *{
 	font-family: $main-font-family;
 	margin: 0;
@@ -36,6 +38,14 @@ a{
 ::-webkit-scrollbar-thumb:hover {
 	border:1px solid #636363;
 	background-color:#929292;
+}
+
+.clear::after {
+	clear: both;
+	content: " ";
+	width: 0;
+	height: 0;
+	display: block;
 }
 
 .wrapper{
@@ -105,6 +115,7 @@ a{
 		width: $main-width;
 		display: block;
 		margin: 0 auto;
+		padding-bottom: $brace-height;
 		
 		$margin-for-info-box: 25px;
 		.index-info-box{
@@ -120,29 +131,32 @@ a{
 
 .footer{
 	background-color: white;
-	border-top: 1px dashed #d6d6d6;
-	clear: both;
-	width: $main-width;
-	margin: 0 auto;
+	width: 100%;
 	color: #888888;
 
-	a{
-		color: $theme-color;
-	}
+	.footer-wraper{
+		border-top: 1px dashed #d6d6d6;
+		margin: auto;
+		width: $main-width;
+		padding: 15px;
 
-	.left{
-		float: left;
-	}
+		a{
+			color: $theme-color;
+		}
 
-	.right{
-		float: right;
+		.left{
+			float: left;
+		}
 
-		a,div{
-			border-right: gray 1px solid;
-			display: inline-block;
-			padding-right: 5px;
-			line-height: 16px;
+		.right{
+			float: right;
+
+			a,div{
+				border-right: gray 1px solid;
+				display: inline-block;
+				padding-right: 5px;
+				line-height: 16px;
+			}
 		}
 	}
-	
 }
