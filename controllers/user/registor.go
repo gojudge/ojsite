@@ -1,11 +1,11 @@
-package controllers
+package user
 
 import (
-// "github.com/astaxie/beego"
+	"github.com/duguying/ojsite/controllers"
 )
 
 type RegistorController struct {
-	BaseController
+	controllers.BaseController
 }
 
 func (this *RegistorController) Get() {

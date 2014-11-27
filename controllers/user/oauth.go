@@ -1,12 +1,13 @@
-package controllers
+package user
 
 import (
 	"github.com/astaxie/beego"
+	"github.com/duguying/ojsite/controllers"
 	"github.com/gogather/oauth"
 )
 
 type OAuthController struct {
-	BaseController
+	controllers.BaseController
 }
 
 func (this *OAuthController) Get() {

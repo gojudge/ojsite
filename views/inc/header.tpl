@@ -18,8 +18,8 @@
       <div class="header">
       	<ul>
       		<li><span class="logo octicon octicon-mortar-board" title="Goj"></span></li>
-      		<li><a href="">题库</a></li>
-          <li><a href="">教学</a></li>
+      		<li><a href="/problems">题库</a></li>
+          <li><a href="/student/verify">教学</a></li>
           <li><a href="">讨论</a></li>
           <li>
             <form action="" method="get">
