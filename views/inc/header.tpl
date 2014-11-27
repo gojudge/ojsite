@@ -28,7 +28,8 @@
           </li>
 
 {{if eq .userIs "guest"}}
-          <li class="right"><a href="/login"><span title="sign out" class="octicon octicon-sign-in"></span> 登录</a></li>
+          <li class="right"><a href="/registor">注册</a></li>
+          <li class="right"><a href="/login"><span title="sign in" class="octicon octicon-sign-in"></span> 登录</a></li>
 {{else}}
           <li class="right"><a href=""><span title="sign out" class="octicon octicon-sign-out"></span></a></li>
   {{if eq .userIs "admin"}}

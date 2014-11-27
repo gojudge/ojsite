@@ -1,0 +1,52 @@
+@import 'global';
+
+.main{
+	.info{
+		width: 500px;
+		border-radius: 4px;
+		margin: 5px auto 5px auto;
+		padding: 5px 10px 5px 10px;
+	}
+
+	.registor{
+		width: 500px;
+		margin: 0 auto;
+		text-align: center;
+		background-color: $container-color;
+		border-radius: 6px;
+		padding: 10px;
+
+		form{
+			ul{
+				li{
+					list-style: none;
+
+					label{
+						width: 80px;
+						display: inline-block;
+						text-align: right;
+						margin: 5px 10px 5px 0;
+						color: gray;
+					}
+
+					input{
+						width: 150px;
+					}
+
+					span{
+						color: gray;
+						margin: 0 0 0 10px;
+						display: inline-block;
+						text-align: left;
+						width: 170px;
+					}
+
+					button{
+						margin: 10px 0 0 0;
+						width: 80px;
+					}
+				}
+			}
+		}
+	}
+}

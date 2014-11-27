@@ -24,6 +24,7 @@ fis.config.set('roadmap.path',[
 
 fis.config.set('project.exclude', [
     /^\/(.*)\.md/i,
+    /^\/sass\/_(.*)\.scss/i,
 ]);
 
 fis.config.set('pack', {
