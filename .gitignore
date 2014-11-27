@@ -16,3 +16,6 @@ ojsite
 
 # static map
 /map.json
+
+# custom config
+/custom/

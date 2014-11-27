@@ -25,7 +25,7 @@ func (this *BaseController) Lang(key string) string {
 }
 
 // run before get
-func (this *MainController) Prepare() {
+func (this *BaseController) Prepare() {
 	// get user level
 	var lev string
 
@@ -40,6 +40,8 @@ func (this *MainController) Prepare() {
 			if userLevel, ok := user.(string); ok {
 				if "student" == userLevel {
 					lev = "student" // student user
+				} else if "teacher" == userLevel {
+					lev = "teacher" // teacher user
 				} else if "admin" == userLevel {
 					lev = "admin" // admin user
 				} else {

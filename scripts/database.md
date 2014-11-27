@@ -7,7 +7,7 @@ username			用户名			用户唯一标识，可修改
 password			密码			密码由客户端md5加密串与盐连接，然后再次md5
 salt				盐				随机串
 email				Email			用户标识，找回密码依据，可修改
-level				用户级别		区分普通用户、学生、管理员
+level				用户级别		区分普通用户、学生、教师、管理员
 registor_time		注册时间		注册时间，mysql生成
 nickname			昵称			昵称，可修改
 

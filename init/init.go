@@ -6,6 +6,7 @@ import (
 
 // 初始化
 func init() {
+	InitConfig()
 	InitLang()
 	InitTplFunc()
 

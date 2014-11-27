@@ -28,11 +28,14 @@
           </li>
 
 {{if eq .userIs "guest"}}
-          <li class="right"><a href=""><span title="sign out" class="octicon octicon-sign-in"></span> 登录</a></li>
+          <li class="right"><a href="/login"><span title="sign out" class="octicon octicon-sign-in"></span> 登录</a></li>
 {{else}}
           <li class="right"><a href=""><span title="sign out" class="octicon octicon-sign-out"></span></a></li>
   {{if eq .userIs "admin"}}
           <li class="right"><a href=""><span title="administration" class="octicon octicon-circuit-board"></span></a></li>
+  {{end}}
+  {{if eq .userIs "teacher"}}
+          <li class="right"><span title="teacher" class="octicon octicon-person"></span></li>
   {{end}}
   {{if eq .userIs "student"}}
           <li class="right"><a href=""><span title="class" class="octicon octicon-organization"></span></a></li>
