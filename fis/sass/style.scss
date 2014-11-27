@@ -202,6 +202,13 @@ input[type="text"], input[type="password"], input[type="email"], input[type="num
 	}
 }
 
+.info{
+	width: 500px;
+	border-radius: 4px;
+	margin: 5px auto 5px auto;
+	padding: 5px 10px 5px 10px;
+}
+
 .info-success{
 	background-color: $bg-success;
 }

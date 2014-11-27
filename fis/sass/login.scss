@@ -1,0 +1,50 @@
+@import 'global';
+
+.main{
+	.login{
+		margin: 0 auto;
+		width: 500px;
+		background: $container-color;
+		padding: 10px;
+		border-radius: 6px;
+
+		form{
+			ul{
+				text-align: center;
+
+				li{
+					list-style: none;
+					margin: 10px 0 0 0;
+
+					input{
+						width: 200px;
+					}
+
+					.btn{
+						float: left;
+						margin: 5px;
+					}
+
+					.oauth-login{
+						.octicon{
+							vertical-align: middle;
+						}
+					}
+
+					label{
+						width: 50px;
+						text-align: right;
+						display: inline-block;
+						margin: 0 10px 0 0;
+					}
+				}
+
+				.login-btns{
+					display: inline-block;
+				}
+			}
+		}
+
+		
+	}
+}
