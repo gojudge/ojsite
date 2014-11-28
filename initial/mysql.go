@@ -1,4 +1,4 @@
-package init
+package initial
 
 import (
 	"fmt"
@@ -18,5 +18,4 @@ func InitSql() {
 	}
 
 	orm.RegisterDataBase("default", "mysql", fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8", user, passwd, host, port, dbname))
-
 }

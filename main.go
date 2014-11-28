@@ -2,9 +2,10 @@ package main
 
 import (
 	"github.com/astaxie/beego"
-	_ "github.com/duguying/ojsite/init"
+	"github.com/duguying/ojsite/initial"
 )
 
 func main() {
+	initial.Initialize()
 	beego.Run()
 }

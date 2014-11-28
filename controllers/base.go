@@ -56,3 +56,8 @@ func (this *BaseController) Prepare() {
 	this.Data["userIs"] = lev
 
 }
+
+// run after finished
+func (this *BaseController) Finish() {
+
+}
