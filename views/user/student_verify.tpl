@@ -12,4 +12,5 @@
 			</ul>
 		</form>
 	</div>
+{{asset "js/user.js"}}
 {{template "inc/footer.tpl" .}}

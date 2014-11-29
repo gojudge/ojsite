@@ -18,7 +18,7 @@ type User struct {
 }
 
 // user registor
-func (this *User) Registor(userName string, password string, email string, nickName string) (int64, error) {
+func (this *User) Register(userName string, password string, email string, nickName string) (int64, error) {
 	o := orm.NewOrm()
 	var user User
 	user.Username = userName

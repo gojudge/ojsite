@@ -9,6 +9,7 @@
     <title>{{.title}}</title>
     {{asset "sass/style.scss"}}
     {{asset "octicons/octicons.scss"}}
+    <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
   </head>
   <body>
     <div class="wrapper">
@@ -18,9 +19,9 @@
       <div class="header">
       	<ul>
       		<li><span class="logo octicon octicon-mortar-board" title="Goj"></span></li>
-      		<li><a href="/problems">题库</a></li>
-          <li><a href="/student/verify">教学</a></li>
-          <li><a href="">讨论</a></li>
+      		<li><a href="/problems">{{i18n "problems"}}</a></li>
+          <li><a href="/student/verify">{{i18n "teach"}}</a></li>
+          <li><a href="">{{i18n "discuss"}}</a></li>
           <li>
             <form action="" method="get">
               <input type="text" name="keyword" id="" placeholder="Search">
@@ -28,8 +29,8 @@
           </li>
 
 {{if eq .userIs "guest"}}
-          <li class="right"><a href="/registor">注册</a></li>
-          <li class="right"><a href="/login"><span title="sign in" class="octicon octicon-sign-in"></span> 登录</a></li>
+          <li class="right"><a href="/register">{{i18n "register"}}</a></li>
+          <li class="right"><a href="/login"><span title="sign in" class="octicon octicon-sign-in"></span> {{i18n "login"}}</a></li>
 {{else}}
           <li class="right"><a href=""><span title="sign out" class="octicon octicon-sign-out"></span></a></li>
   {{if eq .userIs "admin"}}

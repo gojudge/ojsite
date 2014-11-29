@@ -13,7 +13,7 @@ fis.config.set('roadmap.path',[
         release: '/static/css/$1'
     },
     {
-        reg: /^\/coffee\/(.*)/i,
+        reg: /^\/js\/(.*)/i,
         release: '/static/js/$1'
     },
     {
@@ -25,19 +25,12 @@ fis.config.set('roadmap.path',[
 fis.config.set('project.exclude', [
     /^\/(.*)\.md/i,
     /^\/sass\/_(.*)\.scss/i,
+    /^\/js\/_(.*)\.js/i,
+    /^\/js\/user\/(.*)/i,
+    /^\/js\/student\/(.*)/i,
+    /^\/js\/taecher\/(.*)/i,
+    /^\/js\/admin\/(.*)/i,
 ]);
-
-fis.config.set('pack', {
-    'style.css': [
-        'style.scss',
-    ],
-    'main.js':[
-    	'main.coffee'
-    ],
-	'octicons.css':[
-    	'octicons.scss'
-    ]
-});
 
 fis.config.merge({
     deploy : {

@@ -6,16 +6,16 @@ import (
 	"github.com/duguying/ojsite/models"
 )
 
-type RegistorController struct {
+type RegisterController struct {
 	controllers.BaseController
 }
 
-func (this *RegistorController) Get() {
-	this.Data["title"] = this.Lang("title_registor")
-	this.TplNames = "user/registor.tpl"
+func (this *RegisterController) Get() {
+	this.Data["title"] = this.Lang("title_register")
+	this.TplNames = "user/register.tpl"
 }
 
-func (this *RegistorController) Post() {
+func (this *RegisterController) Post() {
 	user := models.User{}
 
 	username := this.GetString("username")
@@ -23,7 +23,7 @@ func (this *RegistorController) Post() {
 	email := this.GetString("email")
 	nickname := this.GetString("nickname")
 
-	id, err := user.Registor(username, password, email, nickname)
+	id, err := user.Register(username, password, email, nickname)
 	if err != nil {
 		this.Data["json"] = map[string]interface{}{
 			"result": false,
@@ -33,7 +33,7 @@ func (this *RegistorController) Post() {
 	} else {
 		this.Data["json"] = map[string]interface{}{
 			"result": true,
-			"msg":    fmt.Sprintf("successfully registored, id [%d]", id),
+			"msg":    fmt.Sprintf("successfully registered, id [%d]", id),
 			"refer":  nil,
 		}
 	}

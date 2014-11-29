@@ -174,7 +174,7 @@ input[type="text"], input[type="password"], input[type="email"], input[type="num
 .footer{
 	background-color: white;
 	width: 100%;
-	color: #888888;
+	color: $font-color-gray;
 
 	.footer-wraper{
 		border-top: 1px dashed #d6d6d6;
@@ -193,11 +193,16 @@ input[type="text"], input[type="password"], input[type="email"], input[type="num
 		.right{
 			float: right;
 
-			a,div{
+			.right-tag,div{
 				border-right: gray 1px solid;
 				display: inline-block;
 				padding-right: 5px;
 				line-height: 16px;
+				color: $font-color-gray;
+			}
+
+			a{
+				color: $font-color-gray;
 			}
 		}
 	}
@@ -220,4 +225,29 @@ input[type="text"], input[type="password"], input[type="email"], input[type="num
 
 .info-danger {
 	background-color: #f2dede;
+}
+
+.lang{
+	display: inline-block;
+	cursor: pointer;
+
+	ul{
+		display: none;
+		position: absolute;
+		bottom: 38px;
+		padding: 0px;
+		margin: 0 0px 0 -5px;
+		box-shadow: 0 0 2px 1px gray;
+		background-color: white;
+		
+		li{
+			list-style: none;
+			border-bottom: 1px solid;
+			padding: 0 5px;
+		}
+	}
+}
+
+.strong{
+	font-weight: bolder !important;
 }
