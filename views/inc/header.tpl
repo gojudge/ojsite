@@ -10,6 +10,7 @@
     {{asset "sass/style.scss"}}
     {{asset "octicons/octicons.scss"}}
     <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    {{asset "js/global.js"}}
   </head>
   <body>
     <div class="wrapper">

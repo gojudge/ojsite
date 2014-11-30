@@ -1,3 +1,5 @@
+var goj = {};
+
 $(document).ready(function (e) {
 	// set cookie
 	function set_cookie(name,value){
@@ -16,6 +18,7 @@ $(document).ready(function (e) {
 		}
 	}
 
+	// language choose options
 	$(".lang").mouseover(function (e) {
 		$(".lang>ul").show();
 	}).mouseout(function (e) {
@@ -28,5 +31,19 @@ $(document).ready(function (e) {
 		window.location.reload();
 	});
 
-	$(".lang>ul>li>a[lang='"+get_cookie("lang")+"']").addClass("strong");
+	goj.lang = get_cookie("lang");
+	$(".lang>ul>li>a[lang='" + goj.lang + "']").addClass("strong");
+
+	// info box show & remove
+	goj.info_danger = function (info) {
+		$(".main>.info").html(info).removeClass().addClass("info info-danger");
+	}
+
+	goj.info_success = function (info) {
+		$(".main>.info").html(info).removeClass().addClass("info info-success");
+	}
+
+	goj.info_remove = function () {
+		$(".main>.info").html("&nbsp").removeClass().addClass("info");
+	}
 });

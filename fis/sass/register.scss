@@ -14,31 +14,59 @@
 			ul{
 				li{
 					list-style: none;
+					text-align: left;
+					margin: 15px 5px;
 
 					label{
-						width: 100px;
-						display: inline-block;
-						text-align: right;
-						margin: 5px 10px 5px 0;
-						color: gray;
+						width: 100%;
+						display: block;
+						text-align: left;
+						margin: 5px 10px;
+						color: black;
+						font-weight: bolder;
+
+						.error{
+							color: red;
+							margin-left: 5px;
+						}
 					}
 
 					input{
-						width: 150px;
+						width: 250px;
+						margin: 0 0 0 10px;
 					}
 
-					span{
+					span.tips{
 						color: gray;
 						margin: 0 0 0 10px;
 						display: inline-block;
 						text-align: left;
-						width: 170px;
+						width: 180px;
+						font-style: italic;
+						font-size: $font-size-global - 1px;
+					}
+
+					label.error{
+						// color: gray;
+						margin: 0 0 0 10px;
+						display: inline-block;
+						text-align: left;
+						width: 180px;
+						color: red;
+					}
+
+					input.error{
+						border: red 1px solid;
 					}
 
 					button{
 						margin: 10px 0 0 0;
 						width: 80px;
 					}
+				}
+
+				li.submit{
+					text-align: center;
 				}
 			}
 		}
