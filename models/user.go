@@ -2,6 +2,7 @@ package models
 
 import (
 	"github.com/astaxie/beego/orm"
+	"github.com/duguying/ojsite/utils"
 	"github.com/gogather/com"
 	"time"
 )
@@ -29,4 +30,25 @@ func (this *User) Register(userName string, password string, email string, nickN
 	user.Nickname = nickName
 
 	return o.Insert(&user)
+}
+
+func Login(userName string, password string) bool {
+	o := orm.NewOrm()
+	var user User
+	user.Username = userName
+
+	err := o.Read(&user)
+
+	if err == orm.ErrNoRows {
+		utils.Trace("查询不到")
+	} else if err == orm.ErrMissPK {
+		utils.Warn("找不到主键")
+	} else {
+		if user.Password == com.Md5(password+user.Salt) {
+			return true
+		} else {
+			return false
+		}
+	}
+	return false
 }

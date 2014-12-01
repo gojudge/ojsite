@@ -55,7 +55,10 @@ $(document).ready(function (e) {
 					if (json.result) {
 						goj.info_success("success");
 						window.location = "/";
-					} else{};
+					} else{
+						goj.info_danger("register failed");
+						console.log(json);
+					};
 				}
 			});
 			return false;
