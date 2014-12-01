@@ -31,30 +31,22 @@ func (this *BaseController) Prepare() {
 
 	user := this.GetSession("username")
 	if user == nil {
-		lev = "guest"
+		lev = "guest" // guest, not login
 	} else {
 		level := this.GetSession("level")
+
 		if level == nil {
-			lev = "user" // normal user
+			lev = "user"
 		} else {
-			if userLevel, ok := user.(string); ok {
-				if "student" == userLevel {
-					lev = "student" // student user
-				} else if "teacher" == userLevel {
-					lev = "teacher" // teacher user
-				} else if "admin" == userLevel {
-					lev = "admin" // admin user
-				} else {
-					lev = "user" // normal user
-				}
+			if tmplev, ok := level.(string); !ok {
+				lev = "user"
 			} else {
-				lev = "user" // normal user
+				lev = tmplev
 			}
 		}
 	}
 
 	this.Data["userIs"] = lev
-
 }
 
 // run after finished

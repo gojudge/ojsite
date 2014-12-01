@@ -220,11 +220,11 @@ input[type="text"], input[type="password"], input[type="email"], input[type="num
 }
 
 .info-warning {
-	background-color: #fcf8e3;
+	background-color: $bg-warning;
 }
 
 .info-danger {
-	background-color: #f2dede;
+	background-color: $bg-danger;
 }
 
 .lang{

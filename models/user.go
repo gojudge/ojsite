@@ -32,23 +32,23 @@ func (this *User) Register(userName string, password string, email string, nickN
 	return o.Insert(&user)
 }
 
-func Login(userName string, password string) bool {
+func Login(userName string, password string) (bool, string) {
 	o := orm.NewOrm()
 	var user User
 	user.Username = userName
 
-	err := o.Read(&user)
+	err := o.Read(&user, "Username")
 
-	if err == orm.ErrNoRows {
+	if err != nil {
 		utils.Trace("查询不到")
-	} else if err == orm.ErrMissPK {
-		utils.Warn("找不到主键")
 	} else {
-		if user.Password == com.Md5(password+user.Salt) {
-			return true
+		pwd := com.Md5(password + user.Salt)
+		utils.Trace("[pwd] %s\n[password] %s", pwd, user.Password)
+		if user.Password == pwd {
+			return true, user.Level
 		} else {
-			return false
+			return false, ""
 		}
 	}
-	return false
+	return false, ""
 }

@@ -1,6 +1,6 @@
 {{template "inc/header.tpl" .}}
 {{asset "sass/login.scss"}}
-	<div class="info info-success">here is the message...</div>
+	<div class="info">&nbsp</div>
 	<div class="login">
 		<form action="/login">
 			<ul>

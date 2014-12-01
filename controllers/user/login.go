@@ -20,7 +20,10 @@ func (this *LoginController) Post() {
 	username := this.GetString("username")
 	password := this.GetString("password")
 
-	if models.Login(username, password) {
+	if result, lev := models.Login(username, password); result {
+		this.SetSession("username", username)
+		this.SetSession("level", lev)
+
 		this.Data["json"] = map[string]interface{}{
 			"result": true,
 			"msg":    "login success",
@@ -33,4 +36,6 @@ func (this *LoginController) Post() {
 			"refer":  nil,
 		}
 	}
+
+	this.ServeJson()
 }

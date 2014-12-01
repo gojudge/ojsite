@@ -33,12 +33,12 @@
           <li class="right"><a href="/register">{{i18n "register"}}</a></li>
           <li class="right"><a href="/login"><span title="sign in" class="octicon octicon-sign-in"></span> {{i18n "login"}}</a></li>
 {{else}}
-          <li class="right"><a href=""><span title="sign out" class="octicon octicon-sign-out"></span></a></li>
+          <li class="right"><a href="/logout"><span title="sign out" class="octicon octicon-sign-out"></span></a></li>
   {{if eq .userIs "admin"}}
           <li class="right"><a href=""><span title="administration" class="octicon octicon-circuit-board"></span></a></li>
   {{end}}
   {{if eq .userIs "teacher"}}
-          <li class="right"><span title="teacher" class="octicon octicon-person"></span></li>
+          <li class="right"><a href="/teacher"><span title="teacher" class="octicon octicon-person"></span></a></li>
   {{end}}
   {{if eq .userIs "student"}}
           <li class="right"><a href=""><span title="class" class="octicon octicon-organization"></span></a></li>
