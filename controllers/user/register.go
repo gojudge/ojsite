@@ -11,11 +11,15 @@ type RegisterController struct {
 }
 
 func (this *RegisterController) Get() {
+	this.Forbbiden("login")
+
 	this.Data["title"] = this.Lang("title_register")
 	this.TplNames = "user/register.tpl"
 }
 
 func (this *RegisterController) Post() {
+	this.Forbbiden("login")
+
 	user := models.User{}
 
 	username := this.GetString("username")

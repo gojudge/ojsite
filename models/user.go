@@ -20,9 +20,15 @@ type User struct {
 }
 
 // user registor
+// return: int64 id
+//         error if failed
 func (this *User) Register(userName string, password string, email string, nickName string) (int64, error) {
-	if len(userName) <= 0 || len(password) < 5 {
+	if len(userName) <= 0 || len(password) < 5 || len(email) <= 0 {
 		return 0, errors.New("check you form, please.")
+	}
+
+	if len(nickName) <= 0 {
+		nickName = userName + com.RandString(5) // gen the default nickname
 	}
 
 	o := orm.NewOrm()
@@ -37,7 +43,14 @@ func (this *User) Register(userName string, password string, email string, nickN
 	return o.Insert(&user)
 }
 
+// user login
+// return: bool if login
+//         string user level if exist
 func Login(userName string, password string) (bool, string) {
+	if len(userName) <= 0 || len(password) <= 0 {
+		return false, ""
+	}
+
 	o := orm.NewOrm()
 	var user User
 	user.Username = userName
@@ -59,6 +72,8 @@ func Login(userName string, password string) (bool, string) {
 }
 
 // get user by `id` or `username` or `email` or `nickname`
+// return: User if successfully get
+//         error if getting failed, and User is empty
 func GetUser(id int, username string, email string, nickname string) (User, error) {
 	o := orm.NewOrm()
 	var user User

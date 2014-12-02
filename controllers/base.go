@@ -26,6 +26,30 @@ func (this *BaseController) Lang(key string) string {
 	return i18n.Tr(lang, key)
 }
 
+func (this *BaseController) Forbbiden(condition string) {
+	if "logout" == condition {
+		if this.Data["userIs"] == "guest" { //logout
+			this.Redirect("/", 302)
+		}
+	} else if "login" == condition {
+		if this.Data["userIs"] != "guest" { // login
+			this.Redirect("/", 302)
+		}
+	} else if "student" == condition {
+		if this.Data["userIs"] == "student" { //logout
+			this.Redirect("/", 302)
+		}
+	} else if "teacher" == condition {
+		if this.Data["userIs"] == "teacher" { //logout
+			this.Redirect("/", 302)
+		}
+	} else if "admin" == condition {
+		if this.Data["userIs"] == "admin" { //logout
+			this.Redirect("/", 302)
+		}
+	}
+}
+
 // run before get
 func (this *BaseController) Prepare() {
 	// get user level
