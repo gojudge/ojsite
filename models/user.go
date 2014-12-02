@@ -1,6 +1,7 @@
 package models
 
 import (
+	"errors"
 	"github.com/astaxie/beego/orm"
 	"github.com/duguying/ojsite/utils"
 	"github.com/gogather/com"
@@ -20,6 +21,10 @@ type User struct {
 
 // user registor
 func (this *User) Register(userName string, password string, email string, nickName string) (int64, error) {
+	if len(userName) <= 0 || len(password) < 5 {
+		return 0, errors.New("check you form, please.")
+	}
+
 	o := orm.NewOrm()
 	var user User
 	user.Username = userName
@@ -51,4 +56,29 @@ func Login(userName string, password string) (bool, string) {
 		}
 	}
 	return false, ""
+}
+
+// get user by `id` or `username` or `email` or `nickname`
+func GetUser(id int, username string, email string, nickname string) (User, error) {
+	o := orm.NewOrm()
+	var user User
+	var err error
+
+	if id > 0 {
+		user.Id = id
+		err = o.Read(&user, "Id")
+	} else if len(username) > 0 {
+		user.Username = username
+		err = o.Read(&user, "Username")
+	} else if len(email) > 0 {
+		user.Email = email
+		err = o.Read(&user, "Email")
+	} else if len(nickname) > 0 {
+		user.Nickname = nickname
+		err = o.Read(&user, "Nickname")
+	} else {
+		return user, errors.New("at least one parm")
+	}
+
+	return user, err
 }

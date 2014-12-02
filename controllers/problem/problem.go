@@ -9,6 +9,6 @@ type ProblemsController struct {
 }
 
 func (this *ProblemsController) Get() {
-	this.Data["title"] = this.Lang("title_login")
-	this.TplNames = "user/login.tpl"
+	this.Data["title"] = this.Lang("title_problems")
+	this.TplNames = "problem/problems.tpl"
 }

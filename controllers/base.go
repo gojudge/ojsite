@@ -3,6 +3,8 @@ package controllers
 import (
 	"github.com/astaxie/beego"
 	"github.com/beego/i18n"
+	"github.com/duguying/ojsite/models"
+	"github.com/gogather/com"
 )
 
 // Controller基类继承封装
@@ -44,6 +46,17 @@ func (this *BaseController) Prepare() {
 				lev = tmplev
 			}
 		}
+
+		username := user.(string)
+		u, err := models.GetUser(0, username, "", "")
+		if err != nil {
+			this.Data["nickname"] = ""
+			this.Data["email_md5"] = ""
+		} else {
+			this.Data["nickname"] = u.Nickname
+			this.Data["email_md5"] = com.Md5(u.Email)
+		}
+
 	}
 
 	this.Data["userIs"] = lev

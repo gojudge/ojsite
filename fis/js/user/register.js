@@ -7,7 +7,7 @@
 
 $(document).ready(function (e) {
 	// form check
-	$(".register>form").validate({
+	var register = $(".register>form").validate({
 			errorPlacement: function(error, element) {
 				$(element).closest("form>ul>li")
 					.find("label[for='" + element.attr( "id" ) + "']")
@@ -45,22 +45,28 @@ $(document).ready(function (e) {
 		
 		//submit
 		$(".register>form").submit(function (e) {
-			$.ajax({
-				url: $(".register>form").attr("action"),
-				method: "post",
-				data: $(this).serialize(),
-				dataType: "json",
-				success: function(json){
-					console.log(json);
-					if (json.result) {
-						goj.info_success("success");
-						window.location = "/";
-					} else{
-						goj.info_danger("register failed");
+			if (!register.valid()){
+				console.log("验证失败")
+				return false
+			}else{
+				$.ajax({
+					url: $(".register>form").attr("action"),
+					method: "post",
+					data: $(this).serialize(),
+					dataType: "json",
+					success: function(json){
 						console.log(json);
-					};
-				}
-			});
+						if (json.result) {
+							goj.info_success("success");
+							window.location = "/";
+						} else{
+							goj.info_danger("register failed");
+							console.log(json);
+						};
+					}
+				});
+			}
+
 			return false;
 		})
 });

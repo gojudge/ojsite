@@ -19,9 +19,9 @@
 
       <div class="header">
       	<ul>
-      		<li><span class="logo octicon octicon-mortar-board" title="Goj"></span></li>
+      		<li><a href="/"><span class="logo octicon octicon-mortar-board" title="Goj"></span></a></li>
       		<li><a href="/problems">{{i18n "problems"}}</a></li>
-          <li><a href="/student/verify">{{i18n "teach"}}</a></li>
+          <li><a href="/student">{{i18n "teach"}}</a></li>
           <li><a href="">{{i18n "discuss"}}</a></li>
           <li>
             <form action="" method="get">
@@ -44,7 +44,7 @@
           <li class="right"><a href=""><span title="class" class="octicon octicon-organization"></span></a></li>
   {{end}}
           <li class="right">
-            <a href=""><img src="http://gravatar.duoshuo.com/avatar/5fedd018b3227bc4043934309da8c290" alt="">独孤影</a>
+            <a href=""><img src="http://gravatar.duoshuo.com/avatar/{{.email_md5}}" alt="">{{.nickname}}</a>
           </li>
 {{end}}
       	</ul>
