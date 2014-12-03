@@ -3,7 +3,7 @@
 .main{
 
 	.register{
-		width: 500px;
+		max-width: 500px;
 		margin: 0 auto;
 		text-align: center;
 		background-color: $container-color;
@@ -41,7 +41,7 @@
 						margin: 0 0 0 10px;
 						display: inline-block;
 						text-align: left;
-						width: 180px;
+						max-width: 180px;
 						font-style: italic;
 						font-size: $font-size-global - 1px;
 					}
@@ -51,7 +51,7 @@
 						margin: 0 0 0 10px;
 						display: inline-block;
 						text-align: left;
-						width: 180px;
+						max-width: 180px;
 						color: red;
 					}
 
@@ -61,7 +61,7 @@
 
 					button{
 						margin: 10px 0 0 0;
-						width: 80px;
+						max-width: 80px;
 					}
 				}
 

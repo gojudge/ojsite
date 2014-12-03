@@ -107,10 +107,10 @@ input[type="text"], input[type="password"], input[type="email"], input[type="num
 		height: $banner-heigh;
 		
 		ul{
-			width: $main-width;
+			max-width: $main-width;
 			height: 100%;
-			margin: 0 auto;
-			overflow: hidden;
+			margin: auto;
+			padding: 0 1.5em;
 			color: white;
 			
 			li{
@@ -161,7 +161,7 @@ input[type="text"], input[type="password"], input[type="email"], input[type="num
 	}
 
 	.main{
-		width: $main-width;
+		max-width: $main-width;
 		display: block;
 		margin: 0 auto;
 		padding-bottom: $brace-height;
@@ -178,7 +178,7 @@ input[type="text"], input[type="password"], input[type="email"], input[type="num
 	.footer-wraper{
 		border-top: 1px dashed #d6d6d6;
 		margin: auto;
-		width: $main-width;
+		max-width: $main-width;
 		padding: 15px;
 
 		a{
