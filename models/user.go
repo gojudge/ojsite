@@ -46,7 +46,7 @@ func (this *User) Register(userName string, password string, email string, nickN
 // user login
 // return: bool if login
 //         string user level if exist
-func Login(userName string, password string) (bool, string) {
+func (this *User) Login(userName string, password string) (bool, string) {
 	if len(userName) <= 0 || len(password) <= 0 {
 		return false, ""
 	}

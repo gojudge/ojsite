@@ -21,10 +21,12 @@ func (this *LoginController) Get() {
 func (this *LoginController) Post() {
 	this.Forbbiden("login")
 
+	user := models.User{}
+
 	username := this.GetString("username")
 	password := this.GetString("password")
 
-	if result, lev := models.Login(username, password); result {
+	if result, lev := user.Login(username, password); result {
 		this.SetSession("username", username)
 		this.SetSession("level", lev)
 

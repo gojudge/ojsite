@@ -2,6 +2,7 @@ package problem
 
 import (
 	"github.com/duguying/ojsite/controllers"
+	"github.com/duguying/ojsite/models"
 )
 
 type ProblemsController struct {
@@ -9,6 +10,11 @@ type ProblemsController struct {
 }
 
 func (this *ProblemsController) Get() {
+	pro := &models.Problem{}
+	problems, hasNext, _, _ := pro.ListProblem(1, 3, "public")
+
+	this.Data["problems"] = problems
 	this.Data["title"] = this.Lang("title_problems")
+	this.Data["has_next"] = hasNext
 	this.TplNames = "problem/problems.tpl"
 }
