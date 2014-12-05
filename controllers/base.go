@@ -72,7 +72,8 @@ func (this *BaseController) Prepare() {
 		}
 
 		username := user.(string)
-		u, err := models.GetUser(0, username, "", "")
+		usr := models.User{}
+		u, err := usr.GetUser(0, username, "", "")
 		if err != nil {
 			this.Data["nickname"] = ""
 			this.Data["email_md5"] = ""

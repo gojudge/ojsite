@@ -17,6 +17,7 @@ type User struct {
 	Level        string
 	RegistorTime time.Time
 	Nickname     string
+	GithubToken  string
 }
 
 // user registor
@@ -74,7 +75,7 @@ func (this *User) Login(userName string, password string) (bool, string) {
 // get user by `id` or `username` or `email` or `nickname`
 // return: User if successfully get
 //         error if getting failed, and User is empty
-func GetUser(id int, username string, email string, nickname string) (User, error) {
+func (this *User) GetUser(id int, username string, email string, nickname string) (User, error) {
 	o := orm.NewOrm()
 	var user User
 	var err error
@@ -96,4 +97,21 @@ func GetUser(id int, username string, email string, nickname string) (User, erro
 	}
 
 	return user, err
+}
+
+// github login
+func (this *User) GithubLogin(githubToken string) (bool, User) {
+	o := orm.NewOrm()
+	var user User
+	var err error
+
+	user.GithubToken = githubToken
+	err = o.Read(&user, "GithubToken")
+	if err != nil {
+		return false, user
+	} else if user.Id == 0 {
+		return false, user
+	} else {
+		return true, user
+	}
 }
