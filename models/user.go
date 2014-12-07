@@ -6,6 +6,7 @@ import (
 	"github.com/astaxie/beego/orm"
 	"github.com/duguying/ojsite/utils"
 	"github.com/gogather/com"
+	"github.com/gogather/com/log"
 	"time"
 )
 
@@ -18,7 +19,6 @@ type User struct {
 	Level        string
 	RegistorTime time.Time
 	Nickname     string
-	GithubToken  string
 }
 
 // user registor
@@ -106,41 +106,7 @@ func (this *User) GetAvatar(id int, username string, email string, nickname stri
 	if nil == err {
 		return beego.AppConfig.String("avatar") + com.Md5(user.Email), err
 	} else {
+		log.Warnln("GetAvatar Failed.", err)
 		return "", err
-	}
-}
-
-// github login
-func (this *User) GithubLogin(githubToken string) (bool, User) {
-	o := orm.NewOrm()
-	var user User
-	var err error
-
-	user.GithubToken = githubToken
-	err = o.Read(&user, "GithubToken")
-	if err != nil {
-		return false, user
-	} else if user.Id == 0 {
-		return false, user
-	} else {
-		return true, user
-	}
-}
-
-// github oauth binding
-func (this *User) GithubBind(githubToken string, username string) bool {
-	o := orm.NewOrm()
-	var user User
-	var err error
-
-	user.Username = username
-	err = o.Read(&user, "Username")
-
-	user.GithubToken = githubToken
-	_, err = o.Update(&user)
-	if err == nil {
-		return true
-	} else {
-		return false
 	}
 }

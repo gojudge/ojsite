@@ -28,10 +28,11 @@ func (this *OAuthController) Get() {
 		log.Blueln(json)
 	}
 
-	if this.Data["userIs"] == "guest" {
+	user := models.User{}
+	oa := models.OAuth{}
 
-		user := models.User{}
-		result, usr := user.GithubLogin(token)
+	if this.Data["userIs"] == "guest" {
+		result, usr := oa.GithubLogin(token, "github")
 		if result {
 			log.Blueln("github login success.")
 			this.SetSession("username", usr.Username)
@@ -47,9 +48,11 @@ func (this *OAuthController) Get() {
 		data := json.(map[string]interface{})
 		avatar := data["avatar_url"].(string)
 		username := data["login"].(string)
+		gojAvatar, _ := user.GetAvatar(0, this.Data["username"].(string), "", "")
+
 		this.Data["title"] = "github绑定确认"
 		this.Data["github_avatar"] = avatar
-		this.Data["goj_avatar"] = avatar
+		this.Data["goj_avatar"] = gojAvatar
 		this.Data["token"] = token
 		this.Data["github_username"] = username
 
@@ -64,10 +67,24 @@ func (this *OAuthController) Post() {
 	password := this.GetString("password")
 	token := this.GetString("token")
 	username := this.Data["username"].(string)
+
 	user := models.User{}
+	oa := models.OAuth{}
+
 	result, _ := user.Login(username, password)
+
 	if result {
-		if user.GithubBind(token, username) {
+		u, err := user.GetUser(0, username, "", "")
+		if err != nil {
+			log.Warnln("get uid failed.")
+			this.Data["json"] = map[string]interface{}{
+				"result": false,
+				"msg":    "get uid failed.",
+				"refer":  nil,
+			}
+		}
+
+		if oa.GithubBind(token, "github", u.Id) {
 			this.Data["json"] = map[string]interface{}{
 				"result": true,
 				"msg":    "binding success",
