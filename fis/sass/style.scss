@@ -229,11 +229,12 @@ input[type="text"], input[type="password"], input[type="email"], input[type="num
 .lang{
 	display: inline-block;
 	cursor: pointer;
+	position: relative;
 
 	ul{
 		display: none;
 		position: absolute;
-		bottom: 38px;
+		top: -51px;
 		padding: 0px;
 		margin: 0 0px 0 -5px;
 		box-shadow: 0 0 2px 1px gray;

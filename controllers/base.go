@@ -78,6 +78,7 @@ func (this *BaseController) Prepare() {
 			this.Data["nickname"] = ""
 			this.Data["email_md5"] = ""
 		} else {
+			this.Data["username"] = username
 			this.Data["nickname"] = u.Nickname
 			this.Data["email_md5"] = com.Md5(u.Email)
 		}

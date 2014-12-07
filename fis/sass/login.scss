@@ -47,4 +47,37 @@
 
 		
 	}
+
+	.binding-confirm{
+		form{
+			ul{
+				li{
+					label{
+						width: 100px;
+					}
+					
+					.avatars{
+						height: 90px;
+						padding: 20px;
+
+						img{
+							width: 60px;
+							height: 60px;
+							position: relative;
+							border-radius: 6px;
+							border: 6px solid white;
+						}
+						.github-avatar{
+							left: 20px;
+							top: -10px;
+						}
+						.goj-avatar{
+							left: -20px;
+							top: 20px;
+						}
+					}
+				}
+			}
+		}
+	}
 }

@@ -2,6 +2,7 @@ package models
 
 import (
 	"errors"
+	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	"github.com/duguying/ojsite/utils"
 	"github.com/gogather/com"
@@ -99,6 +100,16 @@ func (this *User) GetUser(id int, username string, email string, nickname string
 	return user, err
 }
 
+// get avatar
+func (this *User) GetAvatar(id int, username string, email string, nickname string) (string, error) {
+	user, err := this.GetUser(id, username, email, nickname)
+	if nil == err {
+		return beego.AppConfig.String("avatar") + com.Md5(user.Email), err
+	} else {
+		return "", err
+	}
+}
+
 // github login
 func (this *User) GithubLogin(githubToken string) (bool, User) {
 	o := orm.NewOrm()
@@ -113,5 +124,23 @@ func (this *User) GithubLogin(githubToken string) (bool, User) {
 		return false, user
 	} else {
 		return true, user
+	}
+}
+
+// github oauth binding
+func (this *User) GithubBind(githubToken string, username string) bool {
+	o := orm.NewOrm()
+	var user User
+	var err error
+
+	user.Username = username
+	err = o.Read(&user, "Username")
+
+	user.GithubToken = githubToken
+	_, err = o.Update(&user)
+	if err == nil {
+		return true
+	} else {
+		return false
 	}
 }
