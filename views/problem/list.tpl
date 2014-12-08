@@ -1,5 +1,6 @@
 {{template "inc/header.tpl" .}}
 {{asset "sass/problem.scss"}}
+{{asset "fontello/css/fontello.css"}}
 	<div class="announcement">
 		Announcement
 We have changed the behavior of solution buttons, since some of you mentioned it was difficult to differentiate between the solutions that are available vs. the unavailable ones.
@@ -35,14 +36,14 @@ Still have problem while using OJ? Welcome to email admin@leetcode.com.
 		</div>
 		<div class="cata">
 			<ul class="hot">
-				<li>hot-list</li>
-				<li>hot-list</li>
-				<li>hot-list</li>
+				<li><i class="icon-fire"></i>Top 10</li>
+				<li class="item"><a href="">hot-list</a></li>
+				<li class="item"><a href="">hot-list</a></li>
 			</ul>
 			<ul class="tags">
-				<li>分类列表</li>
-				<li>分类列表</li>
-				<li>分类列表</li>
+				<li><i class="icon-tags"></i>分类</li>
+				<li class="item"><a href="">分类列表<span class="badge">1</span></a></li>
+				<li class="item"><a href="">分类列表<span class="badge">12</span></a></li>
 			</ul>
 		</div>
 	</div>

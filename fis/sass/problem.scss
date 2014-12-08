@@ -25,6 +25,7 @@
 		.problem-list{
 			display: block;
 			float: left;
+			width: 70%;
 
 			ul{
 				li{
@@ -83,22 +84,91 @@
 				}
 			}
 		}
+
+		$cata-list-border: 1px solid #ddd;
+		$list-width: 200px;
 		.cata{
 			display: block;
 			float: right;
+			max-width: 28%;
 
 			ul{
+				margin: 10px 0px;
+
 				li{
 					list-style: none;
+
+					a{
+						color: gray;
+						display: block;
+					}
 				}
 			}
 
 			.hot{
-				;
+
+				li{
+					border: $cata-list-border;
+					border-bottom: none;
+					font-size: 80%;
+					padding: 10px 15px;
+					width: $list-width;
+					line-height: 16px;
+				}
+
+				li:first-child{
+					border-top-left-radius: 4px;
+					border-top-right-radius: 4px;
+					color: #a94442;
+					font-size: 14px;
+					background-color: #f2dede;
+					font-weight: bolder;
+				}
+
+				li:last-child{
+					border-bottom-left-radius: 4px;
+					border-bottom-right-radius: 4px;
+					border-bottom: $cata-list-border;
+				}
 			}
 
 			.tags{
-				;
+				li{
+					border: $cata-list-border;
+					border-bottom: none;
+					font-size: 80%;
+					padding: 10px 15px;
+					width: $list-width;
+					line-height: 16px;
+				}
+
+				li:first-child{
+					border-top-left-radius: 4px;
+					border-top-right-radius: 4px;
+					color: #FF6600;
+					font-size: 14px;
+					background-color: #FFFFCC;
+					font-weight: bolder;
+				}
+
+				li:last-child{
+					border-bottom-left-radius: 4px;
+					border-bottom-right-radius: 4px;
+					border-bottom: $cata-list-border;
+				}
+
+				.item{
+					a{
+						.badage{
+							float: right;
+						}
+					}
+					
+				}
+			}
+
+			.item:hover{
+				background-color: #f5f5f5;
 			}
 		}
 	}

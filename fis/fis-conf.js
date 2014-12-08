@@ -19,6 +19,10 @@ fis.config.set('roadmap.path',[
     {
         reg: /^\/octicons\/(.*)/i,
         release: '/static/octicons/$1'
+    },
+    {
+        reg: /^\/fontello\/(.*)/i,
+        release: '/static/fontello/$1'
     }
 ]);
 
