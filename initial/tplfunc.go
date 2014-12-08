@@ -1,11 +1,13 @@
 package initial
 
 import (
+	// "fmt"
 	"github.com/astaxie/beego"
 	"github.com/beego/i18n"
 	"github.com/duguying/ojsite/controllers"
 	"github.com/duguying/ojsite/utils"
 	"runtime"
+	"strings"
 )
 
 const (
@@ -27,8 +29,14 @@ func getVer(tag string) string {
 
 }
 
+func dateOfTime(fullTime string) string {
+	date := strings.Split(fullTime, " ")
+	return date[0]
+}
+
 func InitTplFunc() {
 	beego.AddFuncMap("i18n", i18nGetString)
 	beego.AddFuncMap("asset", utils.Fis)
 	beego.AddFuncMap("ver", getVer)
+	beego.AddFuncMap("date", dateOfTime)
 }

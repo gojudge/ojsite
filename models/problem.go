@@ -8,6 +8,7 @@ import (
 
 type Problem struct {
 	Id          int
+	Title       string
 	Type        string
 	Description string
 	PreCode     string

@@ -1,0 +1,106 @@
+@import 'global';
+
+.main{
+	.announcement{
+		text-align: center;
+		color: #31708f;
+		background-color: #d9edf7;
+		border-color: #bce8f1;
+		padding: 10px;
+		margin: 10px 0px 10px 0px;
+		border-radius: 6px;
+	}
+
+	.problem{
+		overflow: hidden;
+
+		a{
+			color: $theme-color;
+		}
+
+		a:hover{
+			color: #31708f;
+		}
+
+		.problem-list{
+			display: block;
+			float: left;
+
+			ul{
+				li{
+					list-style: none;
+					text-align: left;
+				}
+
+				.item-id{
+					width: 30px;
+				}
+				.item-title{
+					width: 430px;
+				}
+				.item-type{
+					width: 40px;
+				}
+				.item-rate{
+					width: 40px;
+				}
+				.item-time{
+					width: 100px;
+				}
+
+				.list-header{
+					border-bottom: 1px solid gray;
+					color: $theme-color;
+					font-weight: bolder;
+
+					ul{
+						overflow: hidden;
+
+						li{
+							float: left;
+							padding: 8px;
+						}
+					}
+				}
+
+				.list-item{
+					border-top: 1px solid gray;
+
+					ul{
+						overflow: hidden;
+
+						li{
+							float: left;
+							padding: 8px;
+						}
+
+						
+					}
+				}
+
+				.list-item:nth-child(even){
+					background: #f9f9f9;
+				}
+			}
+		}
+		.cata{
+			display: block;
+			float: right;
+
+			ul{
+				li{
+					list-style: none;
+				}
+			}
+
+			.hot{
+				;
+			}
+
+			.tags{
+				;
+			}
+		}
+	}
+	
+}
