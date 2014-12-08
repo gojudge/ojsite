@@ -9,8 +9,13 @@
     <title>{{.title}}</title>
     {{asset "sass/style.scss"}}
     {{asset "octicons/octicons.scss"}}
+    {{asset "fontello/css/fontello.css"}}
     <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
     {{asset "js/global.js"}}
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
+    <link href="/static/img/favicon.ico" mce_href="/static/img/favicon.ico" rel="bookmark" type="image/x-icon" />
+    <link href="/static/img/favicon.ico" mce_href="/static/img/favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="/static/img/favicon.ico" mce_href="/static/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
   </head>
   <body>
     <div class="wrapper">
@@ -19,7 +24,7 @@
 
       <div class="header">
       	<ul>
-      		<li><a href="/"><span class="logo octicon octicon-mortar-board" title="Goj"></span></a></li>
+      		<li><a href="/"><i class="logo icon-goj"></i></a></li>
       		<li><a href="/problems">{{i18n "problems"}}</a></li>
           <li><a href="/student">{{i18n "teach"}}</a></li>
           <li><a href="">{{i18n "discuss"}}</a></li>

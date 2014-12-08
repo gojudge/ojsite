@@ -1,6 +1,5 @@
 {{template "inc/header.tpl" .}}
 {{asset "sass/problem.scss"}}
-{{asset "fontello/css/fontello.css"}}
 	<div class="announcement">
 		Announcement
 We have changed the behavior of solution buttons, since some of you mentioned it was difficult to differentiate between the solutions that are available vs. the unavailable ones.
