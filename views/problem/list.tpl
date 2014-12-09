@@ -36,13 +36,15 @@ Still have problem while using OJ? Welcome to email admin@leetcode.com.
 		<div class="cata">
 			<ul class="hot">
 				<li><i class="icon-fire"></i>Top 10</li>
-				<li class="item"><a href="">hot-list</a></li>
-				<li class="item"><a href="">hot-list</a></li>
+				{{range $i,$pro := .top10}}
+				<li class="item"><a href="">{{$pro.title}}</a></li>
+				{{end}}
 			</ul>
 			<ul class="tags">
 				<li><i class="icon-tags"></i>分类</li>
-				<li class="item"><a href="">分类列表<span class="badge">1</span></a></li>
-				<li class="item"><a href="">分类列表<span class="badge">12</span></a></li>
+				{{range $i,$t := .tag_list}}
+				<li class="item"><a href="">{{$t.tag}}<span class="badge">{{$t.problem_num}}</span></a></li>
+				{{end}}
 			</ul>
 		</div>
 	</div>

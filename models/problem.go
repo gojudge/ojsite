@@ -63,3 +63,19 @@ func (this *Problem) ListProblem(page int, itemsPerPage int, level string) (prob
 		return nil, false, tatalPages, err
 	}
 }
+
+// get top 10 problem
+func (this *Problem) GetTop10() ([]orm.Params, error) {
+	sql := `SELECT problem.id as id, problem.title as title, count(*) AS count FROM submissions,problem where submissions.pid=problem.id GROUP BY pid ORDER BY count DESC limit 10`
+
+	var maps []orm.Params
+	o := orm.NewOrm()
+	_, err := o.Raw(sql).Values(&maps)
+	if err != nil {
+		log.Warnln("execute sql error:")
+		log.Warnln(err)
+		return nil, err
+	} else {
+		return maps, err
+	}
+}
