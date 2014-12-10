@@ -20,3 +20,20 @@ pre_code			预代码			预代码仅对assert类型题目有效
 io_data				IO测试数据		IO测试数据仅对IO类型题目有效
 tags				类型标签		题目分类的依据
 level				等级			目前仅分公开题目和私有题目
+
+## submission
+
+status解释
+
+状态：
+```
+	任务提交请等待(Task Added,TA)
+	通过(Accepted,AC)
+	答案错误(Wrong Answer,WA)
+	超时(Time Limit Exceed,TLE)
+	超过输出限制(Output Limit Exceed,OLE)
+	超内存(Memory Limit Exceed,MLE)
+	运行时错误(Runtime Error,RE)
+	格式错误(Presentation Error,PE)
+	或是无法编译(Compile Error,CE)
+```
