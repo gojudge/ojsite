@@ -189,7 +189,9 @@
 			}
 		}
 		.problem-description{
-			;
+			display: block;
+			border-left: 3px solid #ddd;
+			padding-left: 10px
 		}
 		.problem-links{
 			;

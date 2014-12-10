@@ -8,7 +8,7 @@ $(document).ready(function(e){
 	$(".CodeMirror").ready(function(e){
 		$(".CodeMirror").css({
 			"font-family" : "consolas",
-			"font-size" : "12px"
+			"font-size" : "14px"
 		});
 
 		editor.refresh();
@@ -22,7 +22,7 @@ $(document).ready(function(e){
 		$("#code_editor").html(content);
 	});
 
-	// $("form.submition").serialize()
+	// sbmit task
 	$("form.submition").submit(function(e){
 		$.ajax({
 			url: $(this).attr("action"),
@@ -34,6 +34,11 @@ $(document).ready(function(e){
 			}
 		});
 		return false;
+	});
+
+	$("#reset").click(function(e){
+		var raw_content = $("#code_editor_raw").val();
+		editor.setValue(raw_content);
 	});
 });
 
