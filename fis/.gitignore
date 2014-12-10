@@ -3,3 +3,6 @@
 
 # codemirror
 /codemirror/
+
+# zip
+*.zip

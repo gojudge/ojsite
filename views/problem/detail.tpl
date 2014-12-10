@@ -10,7 +10,7 @@
 	<div class="detail">
 		<div class="problem-title"><h3>{{.problem_title}}</h3></div>
 		<div class="problem-description">
-			{{.problem_description}}
+			{{str2html .problem_description}}
 		</div>
 		<div class="problem-links">discuss</div>
 	</div>
@@ -20,11 +20,12 @@
 			<select name="language" id="">
 				<option value="C">C</option>
 			</select>
-			<button class="btn"><i class="icon-arrows-cw"></i></button>
+			<a class="btn" id="reset" title="reset"><i class="icon-arrows-cw"></i></a>
 			<input type="hidden" name="type" value="assert">
 		</div>
 		<div class="subm-editor">
-
+			
+			<textarea id="code_editor_raw" style="display:none;">{{.problem_pre_code}}</textarea>
 			<textarea id="code_editor" name="code">{{.problem_pre_code}}</textarea>
 
 		</div>
