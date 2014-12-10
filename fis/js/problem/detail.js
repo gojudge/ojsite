@@ -1,24 +1,40 @@
-$(".CodeMirror").ready(function() {
-	// 初始化字体
-	var fontsize = 12;
-	var fontfamily = "consolas";
-
-	if (typeof Setting.fontsize != 'undefined') {
-		fontsize = Setting.fontsize;
-	} else {
-		Setting.fontsize = fontsize;
-	}
-
-	if (typeof Setting.fontfamily != 'undefined') {
-		fontfamily = Setting.fontfamily;
-	} else {
-		Setting.fontfamily = fontfamily;
-	}
-
-	$(".CodeMirror").css({
-		"font-family" : fontfamily,
-		"font-size" : fontsize + "px"
+$(document).ready(function(e){
+	editor = CodeMirror.fromTextArea(document.getElementById("code_editor"), {
+		lineNumbers: true,
+		mode: "text/x-csrc",
+		matchBrackets: true
 	});
 
-	instance.refreshEditors();
+	$(".CodeMirror").ready(function(e){
+		$(".CodeMirror").css({
+			"font-family" : "consolas",
+			"font-size" : "12px"
+		});
+
+		editor.refresh();
+
+		// console.log(content);
+	});
+
+	editor.on("change", function() {
+		var content = editor.getValue();
+
+		$("#code_editor").html(content);
+	});
+
+	// $("form.submition").serialize()
+	$("form.submition").submit(function(e){
+		$.ajax({
+			url: $(this).attr("action"),
+			method: "post",
+			data: $(this).serialize(),
+			dataType: "json",
+			success: function(json){
+				console.log(json);
+			}
+		});
+		return false;
+	});
 });
+
+

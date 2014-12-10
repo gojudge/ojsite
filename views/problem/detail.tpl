@@ -21,23 +21,17 @@
 				<option value="C">C</option>
 			</select>
 			<button class="btn"><i class="icon-arrows-cw"></i></button>
+			<input type="hidden" name="type" value="assert">
 		</div>
 		<div class="subm-editor">
 
-			<textarea id="demotext">{{.problem_pre_code}}</textarea>
-
-			<script>
-			var editor = CodeMirror.fromTextArea(document.getElementById("demotext"), {
-				lineNumbers: true,
-				mode: "text/x-csrc",
-				matchBrackets: true
-			});
-			</script>
+			<textarea id="code_editor" name="code">{{.problem_pre_code}}</textarea>
 
 		</div>
 		<div class="solu-submit">
-			<button class="btn">Submit</button>
+			<button class="btn"><i class="icon-goj"></i>Submit</button>
 		</div>
 	</form>
 
+{{asset "js/problem.js"}}
 {{template "inc/footer.tpl" .}}
