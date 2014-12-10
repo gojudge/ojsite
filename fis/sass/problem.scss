@@ -172,5 +172,65 @@
 			}
 		}
 	}
+
+	.detail{
+		div{
+			display: block;
+			overflow: hidden;
+			width: 100%;
+			border-bottom: 1px solid #eee;
+		}
+
+		.problem-title{
+			padding-bottom: 10px;
+
+			h3{
+				display: inline;
+			}
+		}
+		.problem-description{
+			;
+		}
+		.problem-links{
+			;
+		}
+	}
+
+	.submition{
+		.subm-header{
+			margin: 10px 0;
+
+			select{
+				width: 100px;
+				vertical-align: middle;
+				padding: 6px 12px;
+				border: 1px solid #ccc;
+				border-radius: 4px;
+				-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+				box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+				-webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+				-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+				transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+			}
+
+			.btn{
+				padding: 6px 12px;
+			}
+		}
+		.subm-editor{
+			margin: 10px 0;
+
+			.CodeMirror{
+				font-family: consolas;
+			}
+		}
+		.solu-submit{
+			margin: 10px 0;
+
+			.btn{
+				;
+			}
+		}
+	}
 	
 }

@@ -23,10 +23,10 @@ Still have problem while using OJ? Welcome to email admin@leetcode.com.
 					<ul>
 						<li class="item-id">{{$problem.id}}</li>
 						<li class="item-title">
-							<a href="">{{$problem.title}}</a>
+							<a href="/problem/{{$problem.title}}">{{$problem.title}}</a>
 						</li>
 						<li class="item-type">{{$problem.type}}</li>
-						<li class="item-rate">60%</li>
+						<li class="item-rate">{{$problem.pass_rate}}</li>
 						<li class="item-time">{{date $problem.time}}</li>
 					</ul>
 				</li>

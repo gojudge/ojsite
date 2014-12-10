@@ -6,6 +6,7 @@
 		max-width: $main-width - 2 * $margin-for-info-box;
 		height: 500px - 2 * $margin-for-info-box;
 		margin: $margin-for-info-box;
+		padding: 10px;
 		border-radius: 6px;
 		background-color: $container-color;
 	}

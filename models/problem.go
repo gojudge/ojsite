@@ -1,6 +1,7 @@
 package models
 
 import (
+	"errors"
 	"github.com/astaxie/beego/orm"
 	"github.com/gogather/com/log"
 	"strconv"
@@ -15,6 +16,26 @@ type Problem struct {
 	IoData      string
 	Tags        string
 	Level       string
+}
+
+// get problen by id or title
+func (this *Problem) GetProblem(id int, title string) (Problem, error) {
+	o := orm.NewOrm()
+	var pro Problem
+	var err error
+
+	if id > 0 {
+		pro.Id = id
+		err = o.Read(&pro, "Id")
+	} else if len(title) > 0 {
+		pro.Title = title
+		err = o.Read(&pro, "Title")
+	} else {
+		return pro, errors.New("at least one valid param")
+	}
+
+	return pro, err
+
 }
 
 // 获取problem列表

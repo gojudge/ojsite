@@ -6,11 +6,11 @@ import (
 	"github.com/gogather/com/log"
 )
 
-type ProblemsController struct {
+type ProblemListController struct {
 	controllers.BaseController
 }
 
-func (this *ProblemsController) Get() {
+func (this *ProblemListController) Get() {
 	pro := &models.Problem{}
 	problems, hasNext, _, _ := pro.ListProblem(1, 10, "public")
 
