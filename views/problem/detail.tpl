@@ -1,16 +1,16 @@
-{{template "inc/header.tpl" .}}
-{{asset "sass/problem.scss"}}
+{{{template "inc/header.tpl" .}}}
+{{{asset "sass/problem.scss"}}}
 
-{{asset "codemirror/lib/codemirror.css"}}
-{{asset "codemirror/lib/codemirror.js"}}
-{{asset "codemirror/mode/clike/clike.js"}}
-{{asset "codemirror/addon/edit/matchbrackets.js"}}
+{{{asset "codemirror/lib/codemirror.css"}}}
+{{{asset "codemirror/lib/codemirror.js"}}}
+{{{asset "codemirror/mode/clike/clike.js"}}}
+{{{asset "codemirror/addon/edit/matchbrackets.js"}}}
 
 
 	<div class="detail">
-		<div class="problem-title"><h3>{{.problem_title}}</h3></div>
+		<div class="problem-title"><h3>{{{.problem_title}}}</h3></div>
 		<div class="problem-description">
-			{{str2html .problem_description}}
+			{{{str2html .problem_description}}}
 		</div>
 		<div class="problem-links">discuss</div>
 	</div>
@@ -25,8 +25,8 @@
 		</div>
 		<div class="subm-editor">
 			
-			<textarea id="code_editor_raw" style="display:none;">{{.problem_pre_code}}</textarea>
-			<textarea id="code_editor" name="code">{{.problem_pre_code}}</textarea>
+			<textarea id="code_editor_raw" style="display:none;">{{{.problem_pre_code}}}</textarea>
+			<textarea id="code_editor" name="code">{{{.problem_pre_code}}}</textarea>
 
 		</div>
 		<div class="solu-submit">
@@ -34,5 +34,5 @@
 		</div>
 	</form>
 
-{{asset "js/problem.js"}}
-{{template "inc/footer.tpl" .}}
+{{{asset "js/problem.js"}}}
+{{{template "inc/footer.tpl" .}}}

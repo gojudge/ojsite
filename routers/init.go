@@ -11,4 +11,5 @@ func Init() {
 	User()
 	Problem()
 	Teacher()
+	Api()
 }

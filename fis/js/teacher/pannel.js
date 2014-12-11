@@ -1,3 +1,5 @@
-$(document).ready(function (e) {
-	;
-});
+function TeacherController($scope){
+	$scope.someText = "hello world.";
+}
+
+

@@ -1,5 +1,11 @@
 var goj = {};
 
+goj.close_page = function(){
+	window.opener = null;
+	window.open('','_self');
+	window.close();
+};
+
 $(document).ready(function (e) {
 	// set cookie
 	function set_cookie(name,value){

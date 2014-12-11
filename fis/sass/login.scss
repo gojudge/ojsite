@@ -81,3 +81,34 @@
 		}
 	}
 }
+
+.main{
+	.login{
+		.title{
+			display: inherit;
+			text-align: center;
+		}
+
+		form{
+			ul{
+				.school-logo{
+					position: absolute;
+					margin: 0px;
+					padding-left: 60px;
+
+					i{
+						font-size: 60px;
+					}
+				}
+
+				.login-btns{
+					.btn{
+						i.octicon{
+							margin-right: 5px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
