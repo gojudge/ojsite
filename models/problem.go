@@ -45,23 +45,50 @@ func (this *Problem) GetProblem(id int, title string) (Problem, error) {
 func (this *Problem) ListProblem(page int, itemsPerPage int, level string) (problems []orm.Params, hasNext bool, tatalPages int, err error) {
 	sql1 := "select * from problem where level=? order by time desc limit ?,?"
 	sql2 := "select count(*) as number from problem where level=?"
+
 	var maps, maps2 []orm.Params
+	var num int64
+	var number int
+
 	o := orm.NewOrm()
-	num, err := o.Raw(sql1, level, itemsPerPage*(page-1), itemsPerPage).Values(&maps)
-	if err != nil {
-		log.Warnln("execute sql1 error:")
-		log.Warnln(err)
-		return nil, false, 0, err
+
+	if len(level) <= 0 {
+		sql1 = "select * from problem order by time desc limit ?,?"
+		sql2 = "select count(*) as number from problem"
+
+		num, err = o.Raw(sql1, itemsPerPage*(page-1), itemsPerPage).Values(&maps)
+		if err != nil {
+			log.Warnln("execute sql1 error:")
+			log.Warnln(err)
+			return nil, false, 0, err
+		}
+
+		_, err = o.Raw(sql2).Values(&maps2)
+		if err != nil {
+			log.Warnln("execute sql2 error:")
+			log.Warnln(err)
+			return nil, false, 0, err
+		}
+
+	} else {
+
+		num, err = o.Raw(sql1, level, itemsPerPage*(page-1), itemsPerPage).Values(&maps)
+		if err != nil {
+			log.Warnln("execute sql1 error:")
+			log.Warnln(err)
+			return nil, false, 0, err
+		}
+
+		_, err = o.Raw(sql2, level).Values(&maps2)
+		if err != nil {
+			log.Warnln("execute sql2 error:")
+			log.Warnln(err)
+			return nil, false, 0, err
+		}
+
 	}
 
-	_, err = o.Raw(sql2, level).Values(&maps2)
-	if err != nil {
-		log.Warnln("execute sql2 error:")
-		log.Warnln(err)
-		return nil, false, 0, err
-	}
-
-	number, err := strconv.Atoi(maps2[0]["number"].(string))
+	number, err = strconv.Atoi(maps2[0]["number"].(string))
 
 	var addFlag int
 	if 0 == (number % itemsPerPage) {

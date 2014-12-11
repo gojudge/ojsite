@@ -3,7 +3,79 @@
 .main{
 	.pannel{
 		.main-pannel{
-			;
+
+			.problem-list{
+				ul{
+					li{
+						list-style: none;
+
+						ul{
+							overflow: hidden;
+							padding: 5px;
+
+							li{
+								float: left;
+							}
+
+							.item-id{
+								width: 50px;
+							}
+
+							.item-title{
+								width: 170px;
+							}
+
+							.item-type{
+								width: 50px;
+							}
+
+							.item-time{
+								width: 180px;
+							}
+
+							.item-right{
+								float: right;
+								padding-left: 10px;
+
+								a{
+									color: #444444;
+								}
+
+							}
+
+							.item-nav{
+								cursor: pointer;
+
+								.disabled{
+									display: none;
+								}
+							}
+
+						}
+					}
+
+					.item:first-child{
+						@extend .list-header;
+
+						&:hover{
+							@extend .list-header;
+						}
+					}
+
+					.item{
+						border: 1px solid #ddd;
+						border-bottom: none;
+
+						&:hover{
+							background-color: #ffe;
+						}
+					}
+
+					.item:last-child{
+						@extend .last-item;
+					}
+				}
+			}
 		}
 	}
 }
