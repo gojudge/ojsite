@@ -26,6 +26,8 @@ func (this *ProblemDetailController) Get() {
 		return
 	}
 
+	this.Data["title"] = this.Lang("problem") + " - " + pro.Title
+
 	this.Data["problem_id"] = pro.Id
 	this.Data["problem_title"] = pro.Title
 	this.Data["problem_type"] = pro.Type

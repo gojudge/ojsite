@@ -13,3 +13,13 @@ $brace-height: 70px;
 $bg-success: #dff0d8;
 $bg-warning: #fcf8e3;
 $bg-danger: #fcdede;
+
+// the header of ver-list
+.list-header{
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	color: #444444;
+	font-size: 14px;
+	background-color: #eeeeee;
+	font-weight: bolder;
+}

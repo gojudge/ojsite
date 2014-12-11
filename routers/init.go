@@ -10,4 +10,5 @@ func Init() {
 
 	User()
 	Problem()
+	Teacher()
 }

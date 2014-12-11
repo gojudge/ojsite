@@ -1,11 +1,6 @@
 {{template "inc/header.tpl" .}}
 {{asset "sass/problem.scss"}}
-	<div class="announcement">
-		Announcement
-We have changed the behavior of solution buttons, since some of you mentioned it was difficult to differentiate between the solutions that are available vs. the unavailable ones.
-Now if the solution is not yet available, the button will be disabled. Do you want to see our problem's analysis? Solve it and get your solution accepted now!
-Still have problem while using OJ? Welcome to email admin@leetcode.com.
-	</div>
+	<div class="announcement" style="display:none;"></div>
 	<div class="problem">
 		<div class="problem-list">
 			<ul>

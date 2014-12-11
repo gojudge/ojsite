@@ -21,6 +21,8 @@ func (this *ProblemListController) Get() {
 	tagList, _ := tag.TagList()
 	log.Blueln("[tags]", tagList)
 
+	this.Data["title"] = this.Lang("title_problem_list")
+
 	this.Data["problems"] = problems
 	this.Data["title"] = this.Lang("title_problems")
 	this.Data["has_next"] = hasNext

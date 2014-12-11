@@ -36,6 +36,7 @@ fis.config.set('roadmap.path',[
 
 fis.config.set('project.exclude', [
     /^\/(.*)\.md/i,
+    /^\/(.*)\.zip/i,
     /^\/sass\/_(.*)\.scss/i,
     /^\/js\/user\/(.*)/i,
     /^\/js\/student\/(.*)/i,
