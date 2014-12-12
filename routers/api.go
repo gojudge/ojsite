@@ -11,4 +11,5 @@ func Api() {
 	beego.Router("/api/user/nickname/exist", &api.UserNicknameExistController{})
 	beego.Router("/api/problem/list/:page", &api.ProblemListController{})
 	beego.Router("/api/problem/title/exist", &api.ProblemTitleExistController{})
+	beego.Router("/api/problem/delete/:id", &api.ProblemDeleteController{})
 }

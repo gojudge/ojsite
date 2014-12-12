@@ -127,3 +127,26 @@ func (this *Problem) GetTop10() ([]orm.Params, error) {
 		return maps, err
 	}
 }
+
+func (this *Problem) DeleteProblem(id int, title string) error {
+	o := orm.NewOrm()
+	var pro Problem
+	var err error
+	var num int64
+
+	if id > 0 {
+		pro.Id = id
+		num, err = o.Delete(&pro)
+	} else if len(title) > 0 {
+		pro.Title = title
+		num, err = o.Delete(&pro)
+	} else {
+		return errors.New("at least one valid param")
+	}
+
+	if num == 0 {
+		return errors.New("no row to delete")
+	}
+
+	return err
+}

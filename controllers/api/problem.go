@@ -75,3 +75,48 @@ func (this *ProblemTitleExistController) Get() {
 
 	this.ServeJson()
 }
+
+// get problem list
+type ProblemDeleteController struct {
+	controllers.BaseController
+}
+
+// uri /api/problem/delete/:id
+func (this *ProblemDeleteController) Get() {
+	id, err := this.GetInt("id")
+	if nil != err || id < 0 {
+		id = 0
+	}
+
+	s := this.Ctx.Input.Param(":id")
+	idParm, err := strconv.Atoi(s)
+	if nil != err || idParm < 0 {
+		idParm = 0
+	} else {
+		id = idParm
+	}
+
+	if 0 == id {
+		id = 1
+	}
+
+	pro := models.Problem{}
+	err = pro.DeleteProblem(id, "")
+
+	if err != nil {
+		this.Data["json"] = map[string]interface{}{
+			"result": false,
+			"msg":    "get list failed",
+			"debug":  err,
+			"refer":  nil,
+		}
+	} else {
+		this.Data["json"] = map[string]interface{}{
+			"result": true,
+			"msg":    "get list success",
+			"refer":  nil,
+		}
+	}
+
+	this.ServeJson()
+}

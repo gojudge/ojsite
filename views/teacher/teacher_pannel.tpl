@@ -6,7 +6,7 @@
 	<div class="pannel">
 		{{{template "teacher/inc_menu.tpl" .}}}
 
-		<div class="main-pannel" ng-app >
+		<div class="main-pannel" ng-app="tpApp" >
 			<div ng-controller="TeacherController" class="problem-list">
 				<ul>
 					<li class="item">
@@ -32,8 +32,8 @@
 							<li class="item-right">
 								<a href="/problem/edit/{{item.edit}}"><i class="icon-edit"></i></a>
 							</li>
-							<li class="item-right">
-								<a href="/problem/del/{{item.id}}"><i class="icon-trash"></i></a>
+							<li class="item-right" >
+								<a delete ng-model="item"><i class="icon-trash"></i></a>
 							</li>
 						</ul>
 					</li>
