@@ -33,6 +33,10 @@ fis.config.set('roadmap.path',[
         release: '/static/img/$1'
     },
     {
+        reg: /^\/ng\/(.*)/i,
+        release: '/static/ng/$1'
+    },
+    {
         reg: /^\/js\/angular.min.js/i,
         release: '/static/js/angular.min.js'
     }

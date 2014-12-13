@@ -1,7 +1,19 @@
-var tpApp = angular.module('tpApp',[]);
+var tpApp = angular.module('tpApp',['ngRoute']);
 
 tpApp.factory('Data', function () {
 	return {};
+})
+
+tpApp.config(function($routeProvider) {
+  $routeProvider
+  	.when('/', {
+  		// controller:'TeacherCtrl',
+  		templateUrl:'/static/ng/problem_list.html'
+  	})
+    .when('/problem/add', {
+		// controller:'TestCtrl',
+		templateUrl:'/static/ng/problem_add.html'
+    })
 })
 
 tpApp.directive("delete",function($document,$http){
@@ -15,13 +27,14 @@ tpApp.directive("delete",function($document,$http){
         scope.$apply(function(){
           for(var i=0; i<scope.data.list.length; i++){
             if(scope.data.list[i].id==id){
-            	scope.data.list.splice(idx,1);
+            	scope.data.list.splice(i,1);
 
                 $http.get("/api/problem/delete/"+id, {
 					params: {"id":id}
 				}).success(function(data){
 					if (data.result) {
 						console.log("delete success.");
+						// TeacherCtrl.hello();
 					} else{
 						console.log("delete failed.", data.debug)
 					};
@@ -34,13 +47,12 @@ tpApp.directive("delete",function($document,$http){
   }
 });
 
-function TeacherController($scope,$http,Data){
-
+tpApp.controller("TeacherCtrl", function($scope,$http,Data) {
 	var current_page = 1;
 	$scope.data = Data;
 	$scope.data.has_next = false;
 
-	var get_page = function (page) {
+	this.get_page = function (page) {
 		$http.get("/api/problem/list/"+page, {
 			params: {"page":page}
 		}).success(function(data){
@@ -48,11 +60,7 @@ function TeacherController($scope,$http,Data){
 		});
 	}
 
-	var hello = function () {
-		console.log("hello world")
-	}
-
-	get_page(current_page);
+	this.get_page(current_page);
 
     $scope.prevPage = function() { 
 		get_page(current_page--)
@@ -72,9 +80,8 @@ function TeacherController($scope,$http,Data){
 		return !$scope.data.has_next ? "disabled" : "";
 	}
 
-	$scope.del = function (element) {
-		console.log(element)
-	}
+});
 
-};
-
+tpApp.controller("TestCtrl", function($scope,$http,Data) {
+	console.log("hello world. TestCtrl.")
+});
