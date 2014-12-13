@@ -41,6 +41,12 @@
 				<li class="item"><a href="">{{{$t.tag}}}<span class="badge">{{{$t.problem_num}}}</span></a></li>
 				{{{end}}}
 			</ul>
+			<ul class="tags">
+				<li><i class="icon-link"></i>链接</li>
+				
+				<li class="item"><a href="/problem/add" target="_blank">我要添加题目</a></li>
+				
+			</ul>
 		</div>
 	</div>
 	

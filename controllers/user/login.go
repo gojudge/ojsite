@@ -11,7 +11,7 @@ type LoginController struct {
 }
 
 func (this *LoginController) Get() {
-	this.Forbbiden("login")
+	this.Forbbiden("not", "guest")
 
 	this.Data["title"] = this.Lang("title_login")
 	this.Data["github_client_id"] = beego.AppConfig.String("github_client_id")
@@ -19,7 +19,7 @@ func (this *LoginController) Get() {
 }
 
 func (this *LoginController) Post() {
-	this.Forbbiden("login")
+	this.Forbbiden("not", "guest")
 
 	user := models.User{}
 

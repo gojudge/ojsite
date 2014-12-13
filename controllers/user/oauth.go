@@ -62,7 +62,7 @@ func (this *OAuthController) Get() {
 }
 
 func (this *OAuthController) Post() {
-	this.Forbbiden("guest")
+	this.Forbbiden("is", "guest")
 
 	password := this.GetString("password")
 	token := this.GetString("token")

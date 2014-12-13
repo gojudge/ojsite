@@ -27,6 +27,11 @@
 							<label class="option-right checkbox">
 								<input name="type" type="checkbox" value="assert" />assert
 							</label>
+							{{{if eq .userIs "teacher"}}}
+							<label class="option-right radio">
+								<input name="level" type="radio" value="private" />private
+							</label>
+							{{{end}}}
 						</div>
 					</span>
 					<label for="" class="item-title">题目描述</label>
@@ -55,6 +60,15 @@
 						<label for="">OUTPUT</label>
 						<textarea name="output" id="" cols="30" rows="10"></textarea>
 					</div>
+
+					{{{if eq .userIs "guest"}}}
+					<div class="author-info">
+						<span class="item-title">作者信息</span>
+						<p>感谢您做出的贡献，请留下联系方式</p>
+						<label for="">Email</label>
+						<input type="text" name="author-email" id="">
+					</div>
+					{{{end}}}
 
 					<input class="btn" type="submit" value="添加">
 				</form>

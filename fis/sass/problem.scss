@@ -269,7 +269,8 @@
 
 						.title{
 							vertical-align: middle;
-							width: 80%;
+							max-width: 80%;
+							min-width: 75%;
 							margin: 0 10px;
 						}
 
@@ -289,7 +290,10 @@
 					}
 
 					.precode{
-						;
+						
+						.CodeMirror{
+							border: 1px solid $border-color;
+						}
 					}
 
 					.io-data{

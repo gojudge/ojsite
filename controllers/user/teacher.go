@@ -9,6 +9,7 @@ type TeacherPannelController struct {
 }
 
 func (this *TeacherPannelController) Get() {
+	this.Forbbiden("not", "teacher")
 	this.Data["title"] = this.Lang("title_teacher_pannel")
 	this.TplNames = "teacher/teacher_pannel.tpl"
 }
