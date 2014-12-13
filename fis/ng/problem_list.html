@@ -13,7 +13,7 @@
 					<a ng-click="prevPage()" ng-class="prevPageDisabled()"><i class="icon-left-open"></i></a>
 				</li>
 				<li class="item-right">
-					<a ng-href="#/problem/add">
+					<a href="/problem/add" target="_blank">
 						<i class="icon-plus"></i>
 					</a>
 				</li>
@@ -26,7 +26,7 @@
 				<li class="item-type">{{item.type}}</li>
 				<li class="item-time">{{item.time}}</li>
 				<li class="item-right">
-					<a href="/problem/edit/{{item.edit}}"><i class="icon-edit"></i></a>
+					<a href="/problem/edit/{{item.id}}"><i class="icon-edit"></i></a>
 				</li>
 				<li class="item-right" >
 					<a href="javascript:void(0);" delete ng-model="item"><i class="icon-trash"></i></a>

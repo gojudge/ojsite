@@ -232,3 +232,87 @@
 	}
 	
 }
+
+.main{
+
+	.problem-add{
+		.box-add{
+			float: left;
+
+			li{
+				list-style: none;
+			}
+
+			.item:hover{
+				background-color: #FFF;
+			}
+
+			.item{
+				
+				form{
+					.item-add-header{
+						display: block;
+						margin: 10px 0;
+						
+						div{
+							border: 1px dashed $border-color;
+							display: inline-block;
+							vertical-align: middle;
+							float: right;
+							margin-top: 1px;
+
+							label{
+								cursor: pointer;
+								display: block;
+							}
+						}
+
+						.title{
+							vertical-align: middle;
+							width: 80%;
+							margin: 0 10px;
+						}
+
+						.option-right{
+							float: right;
+							margin: 0 10px;
+
+							input{
+								vertical-align: middle;
+							}
+						}
+					}
+
+					.ueditor{
+						width: 99%;
+						margin: 0 auto;
+					}
+
+					.precode{
+						;
+					}
+
+					.io-data{
+						margin: 10px 0;
+
+						textarea{
+							resize: none;
+						}
+					}
+
+					.btn{
+						margin: 10px 0;
+					}
+				}
+
+				.item-title{
+					font-style: italic;
+					display: inline-block;
+					margin: 10px 0;
+					width: 100%;
+				}
+			}
+		}
+	}
+	
+}

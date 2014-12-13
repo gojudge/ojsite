@@ -7,13 +7,9 @@ tpApp.factory('Data', function () {
 tpApp.config(function($routeProvider) {
   $routeProvider
   	.when('/', {
-  		// controller:'TeacherCtrl',
+  		controller:'TeacherCtrl',
   		templateUrl:'/static/ng/problem_list.html'
   	})
-    .when('/problem/add', {
-		// controller:'TestCtrl',
-		templateUrl:'/static/ng/problem_add.html'
-    })
 })
 
 tpApp.directive("delete",function($document,$http){
@@ -27,6 +23,11 @@ tpApp.directive("delete",function($document,$http){
         scope.$apply(function(){
           for(var i=0; i<scope.data.list.length; i++){
             if(scope.data.list[i].id==id){
+
+            	if (!window.confirm("Sure to Delete?")) {
+            		return;
+            	}
+
             	scope.data.list.splice(i,1);
 
                 $http.get("/api/problem/delete/"+id, {
@@ -34,7 +35,6 @@ tpApp.directive("delete",function($document,$http){
 				}).success(function(data){
 					if (data.result) {
 						console.log("delete success.");
-						// TeacherCtrl.hello();
 					} else{
 						console.log("delete failed.", data.debug)
 					};
@@ -82,6 +82,3 @@ tpApp.controller("TeacherCtrl", function($scope,$http,Data) {
 
 });
 
-tpApp.controller("TestCtrl", function($scope,$http,Data) {
-	console.log("hello world. TestCtrl.")
-});

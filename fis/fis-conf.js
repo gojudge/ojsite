@@ -37,6 +37,10 @@ fis.config.set('roadmap.path',[
         release: '/static/ng/$1'
     },
     {
+        reg: /^\/ueditor\/(.*)/i,
+        release: '/static/ueditor/$1'
+    },
+    {
         reg: /^\/js\/angular.min.js/i,
         release: '/static/js/angular.min.js'
     }
