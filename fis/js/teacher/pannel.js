@@ -1,16 +1,9 @@
-var tpApp = angular.module('tpApp',['ngRoute']);
+var tpApp = angular.module('tpApp',[]);
 
 tpApp.factory('Data', function () {
 	return {};
 })
 
-tpApp.config(function($routeProvider) {
-  $routeProvider
-  	.when('/', {
-  		controller:'TeacherCtrl',
-  		templateUrl:'/static/ng/problem_list.html'
-  	})
-})
 
 tpApp.directive("delete",function($document,$http){
   return{
@@ -47,7 +40,7 @@ tpApp.directive("delete",function($document,$http){
   }
 });
 
-tpApp.controller("TeacherCtrl", function($scope,$http,Data) {
+tpApp.controller("ProblemListCtrl", function($scope,$http,Data) {
 	var current_page = 1;
 	$scope.data = Data;
 	$scope.data.has_next = false;
@@ -82,3 +75,6 @@ tpApp.controller("TeacherCtrl", function($scope,$http,Data) {
 
 });
 
+tpApp.controller("AuditCtrl", function($scope,$http,Data) {
+	;
+});

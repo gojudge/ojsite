@@ -29,7 +29,7 @@
           <li><a href="/student">{{{i18n "teach"}}}</a></li>
           <li><a href="">{{{i18n "discuss"}}}</a></li>
           <li>
-            <form action="" method="get" target="_blank">
+            <form action="/search" method="get" target="_blank">
               <input type="text" name="keyword" id="" placeholder="Search">
             </form>
           </li>

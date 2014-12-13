@@ -4,7 +4,9 @@
 	.pannel{
 		.main-pannel{
 
-			.problem-list{
+			.problem-list,.audit-list,.list-banner{
+				margin: 0 0 10px 0;
+
 				ul{
 					li{
 						list-style: none;
@@ -41,6 +43,14 @@
 									color: #444444;
 								}
 
+								.del{
+									color: $fg-danger;
+								}
+
+								.edit{
+									color: $theme-color;
+								}
+
 							}
 
 							.item-nav{
@@ -75,6 +85,21 @@
 						@extend .last-item;
 					}
 				}
+			}
+
+			.list-banner{
+				ul{
+					.item{
+						background-color: lighten($theme-color, 40%) !important;
+						border-color: lighten($theme-color, 10%) !important;
+						
+					}
+
+					*{
+						color: darken($theme-color, 20%);
+					}
+				}
+				
 			}
 		}
 	}
