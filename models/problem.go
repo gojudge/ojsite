@@ -5,10 +5,12 @@ import (
 	"github.com/astaxie/beego/orm"
 	"github.com/gogather/com/log"
 	"strconv"
+	"time"
 )
 
 type Problem struct {
 	Id          int
+	Pbid        int
 	Title       string
 	Type        string
 	Description string
@@ -16,6 +18,8 @@ type Problem struct {
 	IoData      string
 	Tags        string
 	Level       string
+	PassRate    float64
+	Time        time.Time
 }
 
 // get problen by id or title
@@ -129,17 +133,29 @@ func (this *Problem) GetTop10() ([]orm.Params, error) {
 }
 
 // put problem into trash
-func (this *Problem) TrashProblem(id int, title string) error {
+func (this *Problem) TrashProblem(id int) error {
 	o := orm.NewOrm()
 	var pro Problem
+	var prob ProblemBank
 	var err error
 	var num int64
 
 	if id > 0 {
+
 		pro.Id = id
-		num, err = o.Delete(&pro)
-	} else if len(title) > 0 {
-		pro.Title = title
+		err = o.Read(&pro, "Id")
+		if err != nil {
+			return err
+		}
+
+		prob.Id = pro.Pbid
+		if o.Read(&prob) == nil {
+			prob.Status = "deleted"
+			o.Update(&prob)
+		} else {
+			return err
+		}
+
 		num, err = o.Delete(&pro)
 	} else {
 		return errors.New("at least one valid param")

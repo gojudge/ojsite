@@ -145,7 +145,7 @@ func (this *ProblemDeleteController) Get() {
 	}
 
 	pro := models.Problem{}
-	err = pro.TrashProblem(id, "")
+	err = pro.TrashProblem(id)
 
 	if err != nil {
 		this.Data["json"] = map[string]interface{}{

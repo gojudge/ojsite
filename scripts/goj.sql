@@ -32,6 +32,7 @@ CREATE TABLE IF NOT EXISTS `oauth` (
 -- 导出  表 goj.problem 结构
 CREATE TABLE IF NOT EXISTS `problem` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `pbid` int(11) NOT NULL COMMENT 'Problem Bank ID',
   `title` varchar(128) NOT NULL COMMENT '题目标题',
   `type` set('asset','io') NOT NULL COMMENT '题目类型',
   `description` text COMMENT '题目描述',
