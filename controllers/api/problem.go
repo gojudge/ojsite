@@ -37,28 +37,67 @@ func (this *ProblemListController) Get() {
 		status = "ok"
 	}
 
-	pro := models.Problem{}
-	data, hasNext, totalPage, err := pro.ListProblem(page, 20, "", status)
+	if status == "ok" {
+		pro := models.Problem{}
+		data, hasNext, totalPage, err := pro.ListProblem(page, 20, "")
 
-	if err != nil {
-		this.Data["json"] = map[string]interface{}{
-			"result":     false,
-			"msg":        "get list failing",
-			"list":       nil,
-			"has_next":   false,
-			"total_page": 0,
-			"refer":      nil,
+		if err != nil {
+			this.Data["json"] = map[string]interface{}{
+				"result":     false,
+				"msg":        "get list failing",
+				"list":       nil,
+				"has_next":   false,
+				"total_page": 0,
+				"refer":      nil,
+			}
+		} else {
+			log.Blueln(data)
+
+			this.Data["json"] = map[string]interface{}{
+				"result":     true,
+				"msg":        "get list success",
+				"list":       data,
+				"has_next":   hasNext,
+				"total_page": totalPage,
+				"refer":      nil,
+			}
 		}
 	} else {
-		log.Blueln(data)
+		if status != "audit" && status != "ok" && status != "deleted" {
+			this.Data["json"] = map[string]interface{}{
+				"result":     false,
+				"msg":        "invalid status",
+				"list":       nil,
+				"has_next":   false,
+				"total_page": 0,
+				"refer":      nil,
+			}
+		} else {
 
-		this.Data["json"] = map[string]interface{}{
-			"result":     true,
-			"msg":        "get list success",
-			"list":       data,
-			"has_next":   hasNext,
-			"total_page": totalPage,
-			"refer":      nil,
+			pro := models.ProblemBank{}
+			data, hasNext, totalPage, err := pro.ListProblem(page, 20, status)
+
+			if err != nil {
+				this.Data["json"] = map[string]interface{}{
+					"result":     false,
+					"msg":        "get list failing",
+					"list":       nil,
+					"has_next":   false,
+					"total_page": 0,
+					"refer":      nil,
+				}
+			} else {
+				log.Blueln(data)
+
+				this.Data["json"] = map[string]interface{}{
+					"result":     true,
+					"msg":        "get list success",
+					"list":       data,
+					"has_next":   hasNext,
+					"total_page": totalPage,
+					"refer":      nil,
+				}
+			}
 		}
 	}
 

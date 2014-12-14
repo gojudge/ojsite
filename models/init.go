@@ -8,6 +8,7 @@ func init() {
 	orm.RegisterModel(new(User))
 	orm.RegisterModel(new(Student))
 	orm.RegisterModel(new(Problem))
+	orm.RegisterModel(new(ProblemBank))
 	orm.RegisterModel(new(OAuth))
 	orm.RegisterModel(new(Tags))
 	orm.RegisterModel(new(Submissions))

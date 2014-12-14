@@ -48,6 +48,24 @@ CREATE TABLE IF NOT EXISTS `problem` (
 -- 数据导出被取消选择。
 
 
+-- 导出  表 goj.problem_bank 结构
+CREATE TABLE IF NOT EXISTS `problem_bank` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `title` varchar(128) NOT NULL COMMENT '题目标题',
+  `type` set('assert','io') NOT NULL COMMENT '题目类型',
+  `description` text COMMENT '题目描述',
+  `pre_code` text COMMENT '预代码[assert]',
+  `io_data` text COMMENT '输入输出样本，json类型[io]',
+  `tags` varchar(256) DEFAULT NULL COMMENT '分类标签，逗号分割',
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
+  `status` enum('audit','ok','deleted') NOT NULL DEFAULT 'audit' COMMENT '题目状态：audit待审，ok正常，deleted已删除',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `title` (`title`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='预存题库';
+
+-- 数据导出被取消选择。
+
+
 -- 导出  表 goj.student 结构
 CREATE TABLE IF NOT EXISTS `student` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',

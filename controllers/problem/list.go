@@ -12,7 +12,7 @@ type ProblemListController struct {
 
 func (this *ProblemListController) Get() {
 	pro := &models.Problem{}
-	problems, hasNext, _, _ := pro.ListProblem(1, 10, "public", "ok")
+	problems, hasNext, _, _ := pro.ListProblem(1, 10, "public")
 
 	top10, _ := pro.GetTop10()
 	log.Blueln("[top 10]", top10)
