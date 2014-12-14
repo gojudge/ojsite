@@ -32,8 +32,13 @@ func (this *ProblemListController) Get() {
 		page = 1
 	}
 
+	status := this.GetString("status")
+	if len(status) <= 0 {
+		status = "ok"
+	}
+
 	pro := models.Problem{}
-	data, hasNext, totalPage, err := pro.ListProblem(page, 20, "")
+	data, hasNext, totalPage, err := pro.ListProblem(page, 20, "", status)
 
 	if err != nil {
 		this.Data["json"] = map[string]interface{}{
@@ -76,7 +81,7 @@ func (this *ProblemTitleExistController) Get() {
 	this.ServeJson()
 }
 
-// get problem list
+// problem delete
 type ProblemDeleteController struct {
 	controllers.BaseController
 }
@@ -101,7 +106,7 @@ func (this *ProblemDeleteController) Get() {
 	}
 
 	pro := models.Problem{}
-	err = pro.DeleteProblem(id, "")
+	err = pro.TrashProblem(id, "")
 
 	if err != nil {
 		this.Data["json"] = map[string]interface{}{

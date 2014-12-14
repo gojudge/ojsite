@@ -16,6 +16,7 @@ type Problem struct {
 	IoData      string
 	Tags        string
 	Level       string
+	Status      string
 }
 
 // get problen by id or title
@@ -42,9 +43,9 @@ func (this *Problem) GetProblem(id int, title string) (Problem, error) {
 // page 页码
 // itemsPerPage 每页数量
 // level 题目权限级别
-func (this *Problem) ListProblem(page int, itemsPerPage int, level string) (problems []orm.Params, hasNext bool, tatalPages int, err error) {
-	sql1 := "select * from problem where level=? order by time desc limit ?,?"
-	sql2 := "select count(*) as number from problem where level=?"
+func (this *Problem) ListProblem(page int, itemsPerPage int, level string, status string) (problems []orm.Params, hasNext bool, tatalPages int, err error) {
+	sql1 := "select * from problem where level=? and status=? order by time desc limit ?,?"
+	sql2 := "select count(*) as number from problem where level=? and status=?"
 
 	var maps, maps2 []orm.Params
 	var num int64
@@ -53,17 +54,17 @@ func (this *Problem) ListProblem(page int, itemsPerPage int, level string) (prob
 	o := orm.NewOrm()
 
 	if len(level) <= 0 {
-		sql1 = "select * from problem order by time desc limit ?,?"
-		sql2 = "select count(*) as number from problem"
+		sql1 = "select * from problem where status=? order by time desc limit ?,?"
+		sql2 = "select count(*) as number from problem where status=?"
 
-		num, err = o.Raw(sql1, itemsPerPage*(page-1), itemsPerPage).Values(&maps)
+		num, err = o.Raw(sql1, status, itemsPerPage*(page-1), itemsPerPage).Values(&maps)
 		if err != nil {
 			log.Warnln("execute sql1 error:")
 			log.Warnln(err)
 			return nil, false, 0, err
 		}
 
-		_, err = o.Raw(sql2).Values(&maps2)
+		_, err = o.Raw(sql2, status).Values(&maps2)
 		if err != nil {
 			log.Warnln("execute sql2 error:")
 			log.Warnln(err)
@@ -72,14 +73,14 @@ func (this *Problem) ListProblem(page int, itemsPerPage int, level string) (prob
 
 	} else {
 
-		num, err = o.Raw(sql1, level, itemsPerPage*(page-1), itemsPerPage).Values(&maps)
+		num, err = o.Raw(sql1, level, status, itemsPerPage*(page-1), itemsPerPage).Values(&maps)
 		if err != nil {
 			log.Warnln("execute sql1 error:")
 			log.Warnln(err)
 			return nil, false, 0, err
 		}
 
-		_, err = o.Raw(sql2, level).Values(&maps2)
+		_, err = o.Raw(sql2, level, status).Values(&maps2)
 		if err != nil {
 			log.Warnln("execute sql2 error:")
 			log.Warnln(err)
@@ -114,7 +115,7 @@ func (this *Problem) ListProblem(page int, itemsPerPage int, level string) (prob
 
 // get top 10 problem
 func (this *Problem) GetTop10() ([]orm.Params, error) {
-	sql := `SELECT problem.id as id, problem.title as title, count(*) AS count FROM submissions,problem where submissions.pid=problem.id GROUP BY pid ORDER BY count DESC limit 10`
+	sql := `SELECT problem.id as id, problem.title as title, count(*) AS count FROM submissions,problem where problem.status='ok' and submissions.pid=problem.id GROUP BY pid ORDER BY count DESC limit 10`
 
 	var maps []orm.Params
 	o := orm.NewOrm()
@@ -126,6 +127,32 @@ func (this *Problem) GetTop10() ([]orm.Params, error) {
 	} else {
 		return maps, err
 	}
+}
+
+// put problem into trash
+func (this *Problem) TrashProblem(id int, title string) error {
+	o := orm.NewOrm()
+	var pro Problem
+	var err error
+	var num int64
+
+	if id > 0 {
+		pro.Id = id
+		pro.Status = "deleted"
+		num, err = o.Update(&pro)
+	} else if len(title) > 0 {
+		pro.Title = title
+		pro.Status = "deleted"
+		num, err = o.Update(&pro)
+	} else {
+		return errors.New("at least one valid param")
+	}
+
+	if num == 0 {
+		return errors.New("no row to trashed")
+	}
+
+	return err
 }
 
 func (this *Problem) DeleteProblem(id int, title string) error {

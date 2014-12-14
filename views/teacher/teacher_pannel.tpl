@@ -85,13 +85,13 @@
 							<li class="item-type">{{item.type}}</li>
 							<li class="item-time">{{item.time}}</li>
 							<li class="item-right" title="edit">
-								<a href="/problem/edit/{{item.id}}" class="edit">
-									<i class="icon-edit"></i>
+								<a href="" class="check">
+									<i class="icon-check"></i>
 								</a>
 							</li>
 							<li class="item-right" title="delete">
 								<a href="javascript:void(0);" class="del" delete ng-model="item">
-									<i class="icon-trash"></i>
+									<i class="icon-cancel"></i>
 								</a>
 							</li>
 						</ul>
