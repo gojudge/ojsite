@@ -149,12 +149,9 @@ func (this *Problem) TrashProblem(id int) error {
 		}
 
 		prob.Id = pro.Pbid
-		if o.Read(&prob) == nil {
-			prob.Status = "deleted"
-			o.Update(&prob)
-		} else {
-			return err
-		}
+
+		prob.Status = "deleted"
+		o.Update(&prob)
 
 		num, err = o.Delete(&pro)
 	} else {

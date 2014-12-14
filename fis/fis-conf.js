@@ -41,6 +41,10 @@ fis.config.set('roadmap.path',[
         release: '/static/ueditor/$1'
     },
     {
+        reg: /^\/epiceditor\/(.*)/i,
+        release: '/static/epiceditor/$1'
+    },
+    {
         reg: /^\/js\/angular.min.js/i,
         release: '/static/js/angular.min.js'
     }

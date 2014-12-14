@@ -8,6 +8,7 @@
 {{{asset "codemirror/lib/codemirror.js"}}}
 {{{asset "codemirror/mode/clike/clike.js"}}}
 {{{asset "codemirror/addon/edit/matchbrackets.js"}}}
+{{{asset "epiceditor/js/epiceditor.min.js"}}}
 
 	<div class="problem-add">
 		<ul class="box-add">
@@ -34,18 +35,11 @@
 							{{{end}}}
 						</div>
 					</span>
-					<label for="" class="item-title">题目描述</label>
-					<!-- 加载编辑器的容器 -->
-					<script id="container" name="content" type="text/plain">
-					</script>
-	<script type="text/javascript" charset="utf-8" src="http://ueditor.baidu.com/ueditor/ueditor.config.js"></script>
-	<script type="text/javascript" charset="utf-8" src="http://ueditor.baidu.com/ueditor/ueditor.all.js"></script>
-	<script type="text/javascript" charset="utf-8" src="http://ueditor.baidu.com/ueditor/lang/zh-cn/zh-cn.js"></script>
-	<script type="text/javascript" charset="utf-8" src="http://ueditor.baidu.com/ueditor/lang/en/en.js"></script>
-
-					<script type="text/javascript">
-					    var ue = UE.getEditor('container');
-					</script>
+					<label for="" class="item-title">题目描述<small>(支持Markdown语法，不支持HTML)</small></label>
+					
+					<div class="goj-editor">
+						<div id="epiceditor"></div>
+					</div>
 
 					<div class="precode">
 						<label for="" class="item-title">预代码</label>

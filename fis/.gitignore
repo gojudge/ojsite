@@ -4,5 +4,8 @@
 # codemirror
 /codemirror/
 
+# epiceditor
+/epiceditor/
+
 # zip
 *.zip
