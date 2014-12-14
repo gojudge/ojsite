@@ -164,3 +164,45 @@ func (this *ProblemDeleteController) Get() {
 
 	this.ServeJson()
 }
+
+// problem add
+type ProblemAddController struct {
+	controllers.BaseController
+}
+
+func (this *ProblemAddController) Get() {
+	this.Data["json"] = map[string]interface{}{
+		"result": false,
+		"msg":    "only post method support",
+		"refer":  nil,
+	}
+
+	this.ServeJson()
+}
+
+func (this *ProblemAddController) Post() {
+	title := this.GetString("title")
+	description := this.GetString("description")
+	ptype := this.GetString("type")
+	precode := this.GetString("precode")
+	input := this.GetString("input")
+	output := this.GetString("output")
+
+	email := this.GetString("email")
+
+	this.Data["json"] = map[string]interface{}{
+		"result": false,
+		"msg":    "only post method support",
+		"refer":  nil,
+
+		"title":       title,
+		"description": description,
+		"ptype":       ptype,
+		"precode":     precode,
+		"input":       input,
+		"output":      output,
+		"email":       email,
+	}
+
+	this.ServeJson()
+}

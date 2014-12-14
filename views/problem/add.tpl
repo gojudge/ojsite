@@ -17,7 +17,7 @@
 				</ul>
 			</li>
 			<li class="item">
-				<form action="/problem/add" method="post">
+				<form action="/api/problem/add" method="post">
 					<span class="item-add-header">
 						<label for="">标题</label><input type="text" name="title" id="" class="title">
 						<div>

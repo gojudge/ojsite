@@ -12,4 +12,7 @@ func Api() {
 	beego.Router("/api/problem/list/:page", &api.ProblemListController{})
 	beego.Router("/api/problem/title/exist", &api.ProblemTitleExistController{})
 	beego.Router("/api/problem/delete/:id", &api.ProblemDeleteController{})
+	beego.Router("/api/problem/add", &api.ProblemAddController{})
+
+	beego.Router("/api/markdown/preview", &api.MarkdownController{})
 }

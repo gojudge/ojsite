@@ -1,18 +1,22 @@
 package utils
 
 import (
-	"fmt"
-	"github.com/astaxie/beego/logs"
+	// "fmt"
+	"github.com/gogather/com/log"
+	"github.com/russross/blackfriday"
+	"html"
 )
 
 func Trace(format string, v ...interface{}) {
-	log := logs.NewLogger(10000)
-	fmt.Printf(format, v...)
-	log.Trace(format, v...)
+	log.Bluef(format, v...)
 }
 
 func Warn(format string, v ...interface{}) {
-	log := logs.NewLogger(10000)
-	fmt.Printf(format, v...)
-	log.Warn(format, v...)
+	log.Warnf(format, v...)
+}
+
+func Markdown2HTML(content string) string {
+	content = html.EscapeString(content)
+	output := blackfriday.MarkdownCommon([]byte(content))
+	return string(output)
 }
