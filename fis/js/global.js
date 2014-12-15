@@ -53,3 +53,19 @@ $(document).ready(function (e) {
 		$(".main>.info").html("&nbsp").removeClass().addClass("info");
 	}
 });
+
+console.blue = function (text) {
+	console.log("%c"+text, "color:blue;font-weight:bolder")
+}
+
+console.green = function (text) {
+	console.log("%c"+text, "color:green;font-weight:bolder")
+}
+
+console.red = function (text) {
+	console.log("%c"+text, "color:red;font-weight:bolder")
+}
+
+console.log("%c","padding:16px 24px;line-height:40px;background:url('http://oj.duguying.net/static/img/favicon.ico') no-repeat")
+console.log("%cwelcome to Goj front-end debug console.","color:blue;font-weight:bolder;font-size:20px")
+console.green("you can join us. QQ group: 235149571")

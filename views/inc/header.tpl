@@ -12,7 +12,6 @@
     {{{asset "fontello/css/fontello.css"}}}
     <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
     {{{asset "js/global.js"}}}
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
     <link href="/static/img/favicon.ico" mce_href="/static/img/favicon.ico" rel="bookmark" type="image/x-icon" />
     <link href="/static/img/favicon.ico" mce_href="/static/img/favicon.ico" rel="icon" type="image/x-icon" />
     <link href="/static/img/favicon.ico" mce_href="/static/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
