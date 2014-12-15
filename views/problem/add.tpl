@@ -1,13 +1,7 @@
 {{{template "inc/header.tpl" .}}}
 {{{asset "sass/problem.scss"}}}
 
-<script type="text/javascript" src="http://ueditor.baidu.com/ueditor/ueditor.config.js"></script>
-<script type="text/javascript" src="http://ueditor.baidu.com/ueditor/ueditor.all.js"></script>
-
-{{{asset "codemirror/lib/codemirror.css"}}}
-{{{asset "codemirror/lib/codemirror.js"}}}
-{{{asset "codemirror/mode/clike/clike.js"}}}
-{{{asset "codemirror/addon/edit/matchbrackets.js"}}}
+{{{asset "ace/src-min-noconflict/ace.js"}}}
 {{{asset "epiceditor/js/epiceditor.min.js"}}}
 
 	<div class="problem-add">
@@ -43,8 +37,11 @@
 
 					<div class="precode">
 						<label for="" class="item-title">预代码</label>
-						<textarea id="code_editor_raw" style="display:none;"></textarea>
-						<textarea id="code_editor" name="code"></textarea>
+
+						<textarea id="code_editor_raw" style="display:none;">{{{.problem_pre_code}}}</textarea>
+					
+						<pre id="editor"></pre>
+					
 					</div>
 
 					<div class="io-data">

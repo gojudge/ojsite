@@ -304,9 +304,16 @@
 
 					.precode{
 						
-						.CodeMirror{
-							border: 1px solid $border-color;
+
+						#editor {
+							// *{
+							// 	margin: auto;
+							// 	padding: auto;
+							// }
+							
 						}
+						
+						
 					}
 
 					.io-data{

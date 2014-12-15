@@ -33,7 +33,55 @@ $(document).ready(function(e){
 			toggleEdit: 'Toggle Edit Mode',
 			toggleFullscreen: 'Enter Fullscreen'
 		},
-		autogrow: false
+		autogrow: false,
+		highlight: true,
 	}
-	var editor = new EpicEditor(opts).load();
+	mdeditor = new EpicEditor(opts).load();
+
+	function checkbox_val(selector){
+		var s=''; 
+		$(selector+":checked").each(function(){ 
+			s+=$(this).val()+','; 
+		}); 
+
+		if (s.length > 0) { 
+			s = s.substring(0,s.length - 1); 
+		}
+		
+		return s;
+	}
+
+	$(".item>form").submit(function (e) {
+		var title = $("input[name='title']").val();
+		var type = checkbox_val("input[name='type']");
+		var description = mdeditor.exportFile();
+		var precode = editor.getValue();
+		var input = $(".io-data>textarea[name='input']").val();
+		var output = $(".io-data>textarea[name='output']").val();
+		var email = $(".author-info>input[name='author-email']").val();
+
+		var form_data = {
+				"title":title,
+				"type":type,
+				"description":description,
+				"precode":precode,
+				"input":input,
+				"output":output,
+				"email":email,
+			}
+
+		$.ajax({
+			type: $(this).attr("method"),
+			url: $(this).attr("action"),
+			data: form_data,
+			dataType:"json",
+			success: function(json){
+				// console.log(form_data)
+				// console.log(json);
+			}
+		});
+
+		return false;
+	});
+	
 });

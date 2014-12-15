@@ -1,20 +1,10 @@
 $(document).ready(function(e){
-	editor = CodeMirror.fromTextArea(document.getElementById("code_editor"), {
-		lineNumbers: true,
-		mode: "text/x-csrc",
-		matchBrackets: true
-	});
-
-	$(".CodeMirror").ready(function(e){
-		$(".CodeMirror").css({
-			"font-family" : "consolas",
-			"font-size" : "14px"
-		});
-
-		editor.refresh();
-
-		// console.log(content);
-	});
+	
+	editor = ace.edit("editor");
+    editor.setTheme("ace/theme/tomorrow");
+    editor.getSession().setMode("ace/mode/c_cpp");
+    editor.setOption("minLines", 20);
+    editor.setOption("maxLines", 20);
 
 	editor.on("change", function() {
 		var content = editor.getValue();

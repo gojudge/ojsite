@@ -1,11 +1,7 @@
 {{{template "inc/header.tpl" .}}}
 {{{asset "sass/problem.scss"}}}
 
-{{{asset "codemirror/lib/codemirror.css"}}}
-{{{asset "codemirror/lib/codemirror.js"}}}
-{{{asset "codemirror/mode/clike/clike.js"}}}
-{{{asset "codemirror/addon/edit/matchbrackets.js"}}}
-
+{{{asset "ace/src-min-noconflict/ace.js"}}}
 
 	<div class="detail">
 		<div class="problem-title"><h3>{{{.problem_title}}}</h3></div>
@@ -26,7 +22,7 @@
 		<div class="subm-editor">
 			
 			<textarea id="code_editor_raw" style="display:none;">{{{.problem_pre_code}}}</textarea>
-			<textarea id="code_editor" name="code">{{{.problem_pre_code}}}</textarea>
+			<pre id="editor" name="code">{{{.problem_pre_code}}}</pre>
 
 		</div>
 		<div class="solu-submit">
@@ -34,5 +30,5 @@
 		</div>
 	</form>
 
-{{{asset "js/problem.js"}}}
+{{{asset "js/problem/detail.js"}}}
 {{{template "inc/footer.tpl" .}}}

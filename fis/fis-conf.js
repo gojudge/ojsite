@@ -29,6 +29,10 @@ fis.config.set('roadmap.path',[
         release: '/static/codemirror/$1'
     },
     {
+        reg: /^\/ace\/(.*)/i,
+        release: '/static/ace/$1'
+    },
+    {
         reg: /^\/img\/(.*)/i,
         release: '/static/img/$1'
     },
