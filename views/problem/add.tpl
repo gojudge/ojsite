@@ -45,7 +45,7 @@
 					</div>
 
 					<div class="io-data">
-						<span class="item-title">IO数据</span>
+						<span class="item-title">IO数据<small>(每行一条记录)</small></span>
 						<label for="">INPUT</label>
 						<textarea name="input" id="" cols="30" rows="10"></textarea>
 						<label for="">OUTPUT</label>

@@ -4,6 +4,7 @@ import (
 	// "github.com/astaxie/beego"
 	"github.com/duguying/ojsite/controllers"
 	"github.com/duguying/ojsite/models"
+	"github.com/duguying/ojsite/utils"
 	"github.com/gogather/com/log"
 	"strconv"
 )
@@ -190,18 +191,44 @@ func (this *ProblemAddController) Post() {
 
 	email := this.GetString("email")
 
-	this.Data["json"] = map[string]interface{}{
-		"result": false,
-		"msg":    "only post method support",
-		"refer":  nil,
+	// decode iodata
+	_, iodata, _ := utils.DecodeIoData(input, output)
 
-		"title":       title,
-		"description": description,
-		"ptype":       ptype,
-		"precode":     precode,
-		"input":       input,
-		"output":      output,
-		"email":       email,
+	// store into database
+	pro := models.Problem{}
+	id, err := pro.AddProblem(title, ptype, description, precode, iodata)
+
+	if err != nil {
+		this.Data["json"] = map[string]interface{}{
+			"result": false,
+			"msg":    "add problem failed",
+			"refer":  nil,
+
+			"title":       title,
+			"description": description,
+			"ptype":       ptype,
+			"precode":     precode,
+			"input":       input,
+			"output":      output,
+			"email":       email,
+
+			"debug": err,
+		}
+	} else {
+		this.Data["json"] = map[string]interface{}{
+			"result": true,
+			"msg":    "add problem success",
+			"refer":  nil,
+
+			"id":          id,
+			"title":       title,
+			"description": description,
+			"ptype":       ptype,
+			"precode":     precode,
+			"input":       input,
+			"output":      output,
+			"email":       email,
+		}
 	}
 
 	this.ServeJson()

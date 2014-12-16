@@ -28,7 +28,7 @@ func (this *MarkdownController) Post() {
 	rst := utils.Markdown2HTML(content)
 
 	this.Data["json"] = map[string]interface{}{
-		"result":  false,
+		"result":  true,
 		"msg":     "success",
 		"preview": rst,
 		"refer":   nil,

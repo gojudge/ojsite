@@ -10,6 +10,6 @@ func User() {
 	beego.Router("/logout", &user.LogoutController{})
 	beego.Router("/register", &user.RegisterController{})
 	beego.Router("/oauth/github", &user.OAuthController{})
-	beego.Router("/oauth/github", &user.OAuthOSCController{})
+	beego.Router("/oauth/osc", &user.OAuthOSCController{})
 	beego.Router("/student/verify", &user.StudentVerityController{})
 }
