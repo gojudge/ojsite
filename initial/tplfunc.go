@@ -34,9 +34,18 @@ func dateOfTime(fullTime string) string {
 	return date[0]
 }
 
+func cut(val string, length int) string {
+	if length > len(val) {
+		length = len(val)
+	}
+
+	return val[0:length]
+}
+
 func InitTplFunc() {
 	beego.AddFuncMap("i18n", i18nGetString)
 	beego.AddFuncMap("asset", utils.Fis)
 	beego.AddFuncMap("ver", getVer)
 	beego.AddFuncMap("date", dateOfTime)
+	beego.AddFuncMap("cut", cut)
 }

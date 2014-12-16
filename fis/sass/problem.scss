@@ -14,6 +14,7 @@
 	.problem{
 		overflow: hidden;
 		width: 100%;
+		clear: both;
 
 		a{
 			color: $theme-color;
@@ -239,6 +240,7 @@
 	.problem-add{
 		overflow: hidden;
 		width: 100%;
+		clear: both;
 
 		.box-add{
 			float: left;

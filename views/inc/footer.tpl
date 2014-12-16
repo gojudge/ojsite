@@ -12,6 +12,7 @@
             <ul>
               <li><a lang="en-US">English</a></li>
               <li><a lang="zh-CN">简体中文</a></li>
+              <li><a lang="zh-TW">繁体中文</a></li>
             </ul>
             <a class="right-tag">{{{i18n "language"}}}</a>
           </span>

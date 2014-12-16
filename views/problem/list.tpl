@@ -21,7 +21,7 @@
 							<a href="/problem/{{{$problem.title}}}">{{{$problem.title}}}</a>
 						</li>
 						<li class="item-type">{{{$problem.type}}}</li>
-						<li class="item-rate">{{{$problem.pass_rate}}}</li>
+						<li class="item-rate">{{{cut $problem.pass_rate 3}}}</li>
 						<li class="item-time">{{{date $problem.time}}}</li>
 					</ul>
 				</li>
