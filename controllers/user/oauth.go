@@ -9,6 +9,7 @@ import (
 	"github.com/gogather/oauth"
 )
 
+// github oauth
 type OAuthController struct {
 	controllers.BaseController
 }
@@ -108,4 +109,17 @@ func (this *OAuthController) Post() {
 
 	this.ServeJson()
 
+}
+
+// oschina oauth
+type OAuthOSCController struct {
+	controllers.BaseController
+}
+
+func (this *OAuthOSCController) Get() {
+	this.Ctx.WriteString("TODO")
+}
+
+func (this *OAuthOSCController) Post() {
+	this.Ctx.WriteString("TODO")
 }

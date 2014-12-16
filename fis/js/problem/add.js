@@ -6,7 +6,19 @@ $(document).ready(function(e){
 		clientSideStorage: true,
 		localStorageName: 'epiceditor',
 		useNativeFullscreen: true,
-		parser: marked,
+		parser: function (str) {
+			var rst = $.ajax({
+				async: false,
+				type: "post",
+				url: "/api/markdown/preview",
+				data: {"content": str},
+				dataType:"json",
+
+			}).responseText;
+			var json = eval('('+rst+')')
+			console.log(json);
+			return json.preview;
+		},
 		file: {
 			name: 'epiceditor',
 			defaultContent: '',
