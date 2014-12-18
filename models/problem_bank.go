@@ -1,7 +1,7 @@
 package models
 
 import (
-	// "errors"
+	"errors"
 	"github.com/astaxie/beego/orm"
 	"github.com/gogather/com/log"
 	"strconv"
@@ -90,4 +90,51 @@ func (this *ProblemBank) ListProblem(page int, itemsPerPage int, status string) 
 	} else {
 		return nil, false, tatalPages, err
 	}
+}
+
+// 通过problem
+// id bank中的ID
+func (this *ProblemBank) AcceptProblem(id int) error {
+	o := orm.NewOrm()
+	var prob ProblemBank
+	var err error
+
+	prob.Id = id
+
+	// read problem in problem bank
+	err = o.Read(&prob, "Id")
+
+	if err != nil {
+		return err
+	}
+
+	// create problem
+	var pro Problem
+	op := orm.NewOrm()
+
+	pro.Title = prob.Title
+	pro.Pbid = prob.Id
+	pro.Type = prob.Type
+	pro.Description = prob.Description
+	pro.PreCode = prob.PreCode
+	pro.IoData = prob.IoData
+	pro.Tags = prob.Tags
+
+	// insert into problem
+	pid, err := op.Insert(&pro)
+	if err != nil {
+		return err
+	} else if pid == 0 {
+		return errors.New("insert error, id is 0.")
+	}
+
+	// update problem bank
+	prob.Status = "ok"
+	_, err = o.Update(&prob)
+	if err != nil {
+		return err
+	} else {
+		return nil
+	}
+
 }
