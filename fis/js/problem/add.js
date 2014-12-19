@@ -88,8 +88,12 @@ $(document).ready(function(e){
 			data: form_data,
 			dataType:"json",
 			success: function(json){
-				// console.log(form_data)
-				// console.log(json);
+				if (json.result) {
+					alert("add success");
+					window.location.href="/problems";
+				} else{
+					alert("add failed");
+				};
 			}
 		});
 

@@ -194,6 +194,9 @@ func (this *ProblemAddController) Post() {
 	// decode iodata
 	_, iodata, _ := utils.DecodeIoData(input, output)
 
+	// decode description
+	description = utils.Markdown2HTML(description)
+
 	// store into database
 	pro := models.Problem{}
 	id, err := pro.AddProblem(title, ptype, description, precode, iodata)
