@@ -15,6 +15,7 @@ func Api() {
 	beego.Router("/api/problem/add", &api.ProblemAddController{})
 
 	beego.Router("/api/problem_bank/accept/:id", &api.ProblemBankAcceptController{})
+	beego.Router("/api/problem_bank/deny/:id", &api.ProblemBankDenyController{})
 
 	beego.Router("/api/markdown/preview", &api.MarkdownController{})
 }

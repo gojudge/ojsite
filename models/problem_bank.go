@@ -138,3 +138,29 @@ func (this *ProblemBank) AcceptProblem(id int) error {
 	}
 
 }
+
+func (this *ProblemBank) DenyProblem(id int) error {
+	o := orm.NewOrm()
+	var prob ProblemBank
+	var err error
+
+	prob.Id = id
+
+	// read problem in problem bank
+	err = o.Read(&prob, "Id")
+
+	if err != nil {
+		return err
+	}
+
+	// update problem bank
+	prob.Status = "deny"
+	num, err := o.Update(&prob)
+	if err != nil {
+		return err
+	} else if 0 == num {
+		return errors.New("update failed, id is 0")
+	} else {
+		return nil
+	}
+}
