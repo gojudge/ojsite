@@ -22,7 +22,7 @@
 		<div class="subm-editor">
 			
 			<textarea id="code_editor_raw" style="display:none;">{{{.problem_pre_code}}}</textarea>
-			<pre id="editor" name="code">{{{.problem_pre_code}}}</pre>
+			<div id="editor" name="code">{{{.problem_pre_code}}}</div>
 
 		</div>
 		<div class="solu-submit">

@@ -1,0 +1,19 @@
+author: duguying2008@gmail.com
+description: >
+        Ojsite - web app for Goj
+
+filesets:
+    includes:
+        - conf
+        - fis
+        - scripts
+        - views
+        - README.md
+        - LICENSE
+    excludes:
+        - \.git
+    depth: 3
+settings:
+        targetdir: ""
+        build: |
+            go get; go build;
