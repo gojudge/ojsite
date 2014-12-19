@@ -85,12 +85,12 @@
 							<li class="item-type">{{item.type}}</li>
 							<li class="item-time">{{item.time}}</li>
 							<li class="item-right" title="check" check>
-								<a href="javascript:void(0);" class="check">
+								<a href="javascript:void(0);" class="check" accept ng-model="item">
 									<i class="icon-check"></i>
 								</a>
 							</li>
 							<li class="item-right" title="cancel">
-								<a href="javascript:void(0);" class="del" cancel ng-model="item">
+								<a href="javascript:void(0);" class="del" deny ng-model="item">
 									<i class="icon-cancel"></i>
 								</a>
 							</li>

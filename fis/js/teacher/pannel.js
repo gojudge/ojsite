@@ -40,6 +40,76 @@ tpApp.directive("delete",function($document,$http){
   }
 });
 
+tpApp.directive("deny",function($document,$http){
+	return{
+		restrict:'A',
+		require: 'ngModel',
+		link:function(scope, element, attrs,ngModel){
+			element.bind("click",function(){
+				var id = ngModel.$modelValue.id;
+
+				scope.$apply(function(){
+					for(var i=0; i<scope.data.list.length; i++){
+						if(scope.data.list[i].id==id){
+
+							if (!window.confirm("Sure to Deny?")) {
+								return;
+							}
+
+							scope.data.list.splice(i,1);
+
+							$http.get("/api/problem_bank/deny/"+id, {
+								params: {"id":id}
+							}).success(function(data){
+								if (data.result) {
+									console.log("deny success.");
+								} else{
+									console.log("deny failed.", data.debug)
+								};
+							});
+						}
+					}
+				})
+			})	
+		}
+	}
+});
+
+tpApp.directive("accept",function($document,$http){
+	return{
+		restrict:'A',
+		require: 'ngModel',
+		link:function(scope, element, attrs,ngModel){
+			element.bind("click",function(){
+				var id = ngModel.$modelValue.id;
+
+				scope.$apply(function(){
+					for(var i=0; i<scope.data.list.length; i++){
+						if(scope.data.list[i].id==id){
+
+							if (!window.confirm("Sure to Accept?")) {
+								return;
+							}
+
+							scope.data.list.splice(i,1);
+
+							$http.get("/api/problem_bank/accept/"+id, {
+								params: {"id":id}
+							}).success(function(data){
+								if (data.result) {
+									console.log("accept success.");
+								} else{
+									console.log("accept failed.", data.debug)
+								};
+							});
+						}
+					}
+				})
+			})	
+		}
+	}
+});
+
 tpApp.controller("ProblemListCtrl", function($scope,$http,Data) {
 	var current_page = 1;
 	$scope.data = Data;

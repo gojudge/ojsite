@@ -120,6 +120,9 @@ func (this *ProblemBank) AcceptProblem(id int) error {
 	pro.IoData = prob.IoData
 	pro.Tags = prob.Tags
 
+	log.Blueln("[problem copy from bank to list]")
+	log.Blueln(pro)
+
 	// insert into problem
 	pid, err := op.Insert(&pro)
 	if err != nil {

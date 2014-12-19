@@ -135,23 +135,27 @@ func (this *Problem) GetTop10() ([]orm.Params, error) {
 // put problem into trash
 func (this *Problem) TrashProblem(id int) error {
 	o := orm.NewOrm()
+	ob := orm.NewOrm()
 	var pro Problem
 	var prob ProblemBank
 	var err error
 	var num int64
 
 	if id > 0 {
-
+		// read from problem
 		pro.Id = id
 		err = o.Read(&pro, "Id")
 		if err != nil {
 			return err
 		}
 
+		// read from problem bank
 		prob.Id = pro.Pbid
-
-		prob.Status = "deleted"
-		o.Update(&prob)
+		err = ob.Read(&prob, "Id")
+		if err == nil {
+			prob.Status = "deleted"
+			ob.Update(&prob)
+		}
 
 		num, err = o.Delete(&pro)
 	} else {
