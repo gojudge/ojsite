@@ -119,6 +119,7 @@ func (this *ProblemBank) AcceptProblem(id int) error {
 	pro.PreCode = prob.PreCode
 	pro.IoData = prob.IoData
 	pro.Tags = prob.Tags
+	pro.Level = "public"
 
 	log.Blueln("[problem copy from bank to list]")
 	log.Blueln(pro)
