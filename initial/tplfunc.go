@@ -10,8 +10,8 @@ import (
 	"strings"
 )
 
-const (
-	APP_VER = "0.0.1.1121"
+var (
+	AppVer string
 )
 
 func i18nGetString(key string) string {
@@ -20,7 +20,7 @@ func i18nGetString(key string) string {
 
 func getVer(tag string) string {
 	if tag == "app" {
-		return APP_VER
+		return AppVer
 	} else if tag == "golang" {
 		return runtime.Version()
 	} else {

@@ -2,14 +2,29 @@ package initial
 
 import (
 	"github.com/duguying/ojsite/routers"
+	"github.com/gogather/com"
+	"github.com/gogather/com/log"
 )
 
 // 初始化
 func Initialize() {
+	CheckTplVersion()
+
 	InitErrorHandler()
 	InitLang()
 	InitTplFunc()
 	InitSql()
 
 	routers.Init()
+}
+
+// 模版与应用版本匹配检查
+func CheckTplVersion() {
+	tmpVer := com.ReadFile("views/VERSION")
+	if AppVer == tmpVer {
+		return
+	} else {
+		log.Fatal("Template Version[", tmpVer, "] Not Matched App Version[", AppVer, "], Update and Rebuild Please.")
+		return
+	}
 }
