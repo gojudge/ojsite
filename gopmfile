@@ -1,0 +1,13 @@
+[target]
+path = github.com/duguying/ojsite
+
+[deps]
+github.com/astaxie/beego = branch:master
+github.com/astaxie/i18n = branch:master
+github.com/go-sql-driver/mysql = branch:master
+github.com/gogather/com = branch:master
+github.com/gogather/oauth = branch:master
+github.com/russross/blackfriday = branch:master
+
+[res]
+include = conf|custom|fis|static|scripts|view

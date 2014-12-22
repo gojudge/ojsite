@@ -6,6 +6,7 @@ filesets:
     includes:
         - conf
         - fis
+        - custom
         - scripts
         - views
         - README.md
