@@ -1,6 +1,8 @@
 ## build static
 
+```
+npm install -g fis
 npm install -g fis-parser-sass
-npm install -g fis-parser-coffee-script
 
-fis release --dest local  -m 7
+fis release --dest local
+```

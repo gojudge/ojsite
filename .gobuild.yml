@@ -16,4 +16,4 @@ filesets:
 settings:
         targetdir: ""
         build: |
-            go get; go build;
+            go install

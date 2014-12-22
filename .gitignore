@@ -18,4 +18,4 @@ ojsite
 /map.json
 
 # custom config
-/custom/
+/custom/app.conf
