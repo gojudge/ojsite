@@ -25,7 +25,7 @@
       	<ul>
       		<li><a href="/"><i class="logo icon-goj"></i></a></li>
       		<li><a href="/problems">{{{i18n "problems"}}}</a></li>
-          <li><a href="/student">{{{i18n "teach"}}}</a></li>
+          <li><a href="/teach">{{{i18n "teach"}}}</a></li>
           <li><a href="">{{{i18n "discuss"}}}</a></li>
           <li>
             <form action="/search" method="get" target="_blank">
@@ -48,7 +48,7 @@
           <li class="right"><a href=""><span title="class" class="octicon octicon-organization"></span></a></li>
   {{{end}}}
           <li class="right">
-            <a href=""><img src="http://gravatar.duoshuo.com/avatar/{{{.email_md5}}}" alt="">{{{.nickname}}}</a>
+            <a href="/user/{{{.username}}}"><img src="http://gravatar.duoshuo.com/avatar/{{{.email_md5}}}" alt="">{{{.nickname}}}</a>
           </li>
 {{{end}}}
       	</ul>

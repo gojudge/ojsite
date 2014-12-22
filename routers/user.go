@@ -12,4 +12,5 @@ func User() {
 	beego.Router("/oauth/github", &user.OAuthController{})
 	beego.Router("/oauth/osc", &user.OAuthOSCController{})
 	beego.Router("/student/verify", &user.StudentVerityController{})
+	beego.Router("/user/:username", &user.ProfileController{})
 }

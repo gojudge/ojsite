@@ -188,6 +188,8 @@ func (this *ProblemAddController) Post() {
 	precode := this.GetString("precode")
 	input := this.GetString("input")
 	output := this.GetString("output")
+	tags := this.GetString("tags")
+	tags = utils.TagsCheck(tags)
 
 	email := this.GetString("email")
 
@@ -199,7 +201,7 @@ func (this *ProblemAddController) Post() {
 
 	// store into database
 	pro := models.Problem{}
-	id, err := pro.AddProblem(title, ptype, description, precode, iodata)
+	id, err := pro.AddProblem(title, ptype, description, precode, iodata, tags)
 
 	if err != nil {
 		this.Data["json"] = map[string]interface{}{

@@ -170,7 +170,7 @@ func (this *Problem) TrashProblem(id int) error {
 }
 
 // Add Problem into ProblemBank
-func (this *Problem) AddProblem(title string, ptype string, description string, precode string, iodata string) (id int64, err error) {
+func (this *Problem) AddProblem(title string, ptype string, description string, precode string, iodata string, tags string) (id int64, err error) {
 	o := orm.NewOrm()
 	var prob ProblemBank
 
@@ -179,6 +179,7 @@ func (this *Problem) AddProblem(title string, ptype string, description string, 
 	prob.Description = description
 	prob.PreCode = precode
 	prob.IoData = iodata
+	prob.Tags = tags
 	prob.Status = "audit"
 
 	id, err = o.Insert(&prob)

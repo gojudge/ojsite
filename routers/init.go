@@ -12,4 +12,5 @@ func Init() {
 	Problem()
 	Teacher()
 	Api()
+	Teach()
 }

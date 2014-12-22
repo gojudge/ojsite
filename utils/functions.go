@@ -46,3 +46,15 @@ func DecodeIoData(inputs string, outputs string) (num int, json string, err erro
 
 	return num, json, err
 }
+
+// parse and check tags
+func TagsCheck(tags string) string {
+	tags = strings.Replace(tags, " ", "", -1)
+	tags = strings.Replace(tags, "，", ",", -1)
+	return tags
+}
+
+// parse tags
+func TagsParse(tags string) []string {
+	return strings.Split(tags, ",")
+}
