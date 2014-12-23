@@ -1,13 +1,13 @@
 package initial
 
 import (
-	// "fmt"
 	"github.com/astaxie/beego"
 	"github.com/beego/i18n"
 	"github.com/duguying/ojsite/controllers"
 	"github.com/duguying/ojsite/utils"
 	"runtime"
 	"strings"
+	"time"
 )
 
 var (
@@ -42,10 +42,18 @@ func cut(val string, length int) string {
 	return val[0:length]
 }
 
+func loadTime(startTime int64) float64 {
+	stn := time.Now()
+	nowTime := float64(stn.UnixNano())
+
+	return (nowTime - float64(startTime)) / 1000000000
+}
+
 func InitTplFunc() {
 	beego.AddFuncMap("i18n", i18nGetString)
 	beego.AddFuncMap("asset", utils.Fis)
 	beego.AddFuncMap("ver", getVer)
 	beego.AddFuncMap("date", dateOfTime)
 	beego.AddFuncMap("cut", cut)
+	beego.AddFuncMap("load_time", loadTime)
 }

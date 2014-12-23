@@ -4,7 +4,7 @@
 
     <div class="footer">
       <div class="footer-wraper clear">
-        <p class="left">©2015 Goj · {{{i18n "version"}}}:{{{ver "app"}}} · {{{i18n "load_time"}}}</p>
+        <p class="left">©2015 Goj · {{{i18n "version"}}}:{{{ver "app"}}} · {{{i18n "load_time"}}}:{{{load_time .start}}}s</p>
 
         <div class="right">
           <a class="right-tag" href="https://github.com/duguying/ojsite"><span class="octicon octicon-mark-github"></span></a>

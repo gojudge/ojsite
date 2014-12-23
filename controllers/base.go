@@ -6,6 +6,7 @@ import (
 	"github.com/duguying/ojsite/models"
 	"github.com/gogather/com"
 	"strings"
+	"time"
 )
 
 // Controller基类继承封装
@@ -47,6 +48,10 @@ func (this *BaseController) Forbbiden(mark string, condition string) {
 func (this *BaseController) Prepare() {
 	// get user level
 	var lev string
+
+	stn := time.Now()
+	st := stn.UnixNano()
+	this.Data["start"] = st
 
 	user := this.GetSession("username")
 	if user == nil {
