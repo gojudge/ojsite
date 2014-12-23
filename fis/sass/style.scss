@@ -253,7 +253,8 @@ input[type="radio"], input[type="checkbox"], .checkbox, .radio{
 	ul{
 		display: none;
 		position: absolute;
-		top: -74px;
+		// top: -74px;
+		bottom: 24px;
 		padding: 0px;
 		margin: 0 0px 0 -5px;
 		width: 70px;
