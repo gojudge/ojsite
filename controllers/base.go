@@ -5,6 +5,7 @@ import (
 	"github.com/beego/i18n"
 	"github.com/duguying/ojsite/models"
 	"github.com/gogather/com"
+	"github.com/gogather/com/log"
 	"strings"
 	"time"
 )
@@ -52,6 +53,8 @@ func (this *BaseController) Prepare() {
 	stn := time.Now()
 	st := stn.UnixNano()
 	this.Data["start"] = st
+
+	log.Blueln(this.Ctx.Request.UserAgent())
 
 	user := this.GetSession("username")
 	if user == nil {
