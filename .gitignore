@@ -20,3 +20,7 @@ output
 
 # custom config
 /custom/app.conf
+
+# log
+/nohup.out
+
