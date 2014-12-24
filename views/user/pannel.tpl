@@ -1,9 +1,10 @@
 {{{template "inc/header.tpl" .}}}
 {{{asset "sass/login.scss"}}}
-	<div class="profile">
+	<div class="pannel">
+		{{{template "user/inc_menu.tpl" .}}}
 
-		<div class="">
-			user profile
+		<div class="main-pannel" ng-app="tpApp" >
+			
 		</div>
 
 	</div>
