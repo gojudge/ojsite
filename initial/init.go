@@ -14,6 +14,7 @@ func Initialize() {
 	InitLang()
 	InitTplFunc()
 	InitSql()
+	InitJudger()
 
 	routers.Init()
 }

@@ -12,12 +12,18 @@ $(document).ready(function(e){
 		$("#code_editor").html(content);
 	});
 
-	// sbmit task
+	// submit task
 	$("form.submition").submit(function(e){
+		var pid = $("input[name='pid']").val();
+		var language = $("select[name='language']").val();
+		var ptype = $("input[name='type']").val();
+		var code = editor.getValue();
+		// console.log(pid, language, ptype, code);
+
 		$.ajax({
 			url: $(this).attr("action"),
 			method: "post",
-			data: $(this).serialize(),
+			data: {"pid":pid, "language":language, "ptype":ptype, "code":code},
 			dataType: "json",
 			success: function(json){
 				console.log(json);

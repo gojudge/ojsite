@@ -12,6 +12,7 @@
 	</div>
 
 	<form action="/problem/submit" method="post" class="submition">
+		<input type="hidden" name="pid" value="{{{.problem_id}}}">
 		<div class="subm-header">
 			<select name="language" id="">
 				<option value="C">C</option>

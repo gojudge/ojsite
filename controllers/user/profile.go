@@ -4,6 +4,7 @@ import (
 	// "github.com/astaxie/beego"
 	"github.com/duguying/ojsite/controllers"
 	"github.com/duguying/ojsite/models"
+	"github.com/gogather/com/log"
 )
 
 type ProfileController struct {
@@ -12,6 +13,9 @@ type ProfileController struct {
 
 func (this *ProfileController) Get() {
 	username := this.Ctx.Input.Param(":username")
+
+	ip := this.Ctx.Input.IP()
+	log.Blueln(ip)
 
 	if this.Data["userIs"] == "guest" {
 		user := &models.User{}
