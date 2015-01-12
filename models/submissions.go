@@ -4,9 +4,12 @@ import (
 	// "errors"
 	// "github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
-	// "github.com/duguying/ojsite/utils"
+	"github.com/duguying/ojsite/utils"
 	// "github.com/gogather/com"
+	"fmt"
+	"github.com/duguying/judger/client"
 	"github.com/gogather/com/log"
+	"html"
 	"time"
 )
 
@@ -27,6 +30,8 @@ type Submissions struct {
 
 // add submission
 func (this *Submissions) Add(pid int, uid int, ptype string, language string, code string, judger string) (int64, error) {
+	code = html.EscapeString(code)
+
 	o := orm.NewOrm()
 	var subm Submissions
 	subm.Pid = pid
@@ -35,8 +40,29 @@ func (this *Submissions) Add(pid int, uid int, ptype string, language string, co
 	subm.Language = language
 	subm.Code = code
 	subm.Judger = judger
+	subm.SubmitTime = time.Now()
+	subm.JudgeTime = time.Now()
 
-	return o.Insert(&subm)
+	id, err := o.Insert(&subm)
+
+	if err != nil {
+		return id, err
+	}
+
+	msg := utils.MsgPack(map[string]interface{}{
+		"action":   "task_add",
+		"sid":      "randomstring",
+		"id":       id,
+		"time":     time.Now(),
+		"language": language,
+		"code":     code,
+	})
+
+	fmt.Println(msg)
+
+	client.J.Request(msg)
+
+	return id, err
 }
 
 // update submission status

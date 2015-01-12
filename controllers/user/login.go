@@ -1,6 +1,7 @@
 package user
 
 import (
+	"fmt"
 	"github.com/astaxie/beego"
 	"github.com/duguying/ojsite/controllers"
 	"github.com/duguying/ojsite/models"
@@ -36,7 +37,7 @@ func (this *LoginController) Post() {
 			}
 		} else {
 			this.SetSession("username", username)
-			this.SetSession("user", user)
+			this.SetSession("userid", fmt.Sprintf("%d", user.Id))
 			this.SetSession("level", lev)
 
 			this.Data["json"] = map[string]interface{}{

@@ -58,3 +58,13 @@ func TagsCheck(tags string) string {
 func TagsParse(tags string) []string {
 	return strings.Split(tags, ",")
 }
+
+// pack client message
+func MsgPack(data map[string]interface{}) string {
+	json, err := com.JsonEncode(data)
+	if err != nil {
+		return ""
+	} else {
+		return json + "\003"
+	}
+}

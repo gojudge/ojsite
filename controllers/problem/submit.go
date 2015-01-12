@@ -4,6 +4,7 @@ import (
 	// "github.com/duguying/judger/client"
 	"github.com/duguying/ojsite/controllers"
 	"github.com/duguying/ojsite/models"
+	"strconv"
 	// "github.com/gogather/com/log"
 )
 
@@ -26,9 +27,37 @@ func (this *ProblemSubmitController) Post() {
 	ptype := this.GetString("type")
 	code := this.GetString("code")
 
-	user := this.GetSession("user").(models.User)
+	userid := this.GetSession("userid").(string)
+	useridInt, err := strconv.Atoi(userid)
+	if err != nil {
+		this.Data["json"] = map[string]interface{}{
+			"result": false,
+			"msg":    "unknown userid",
+			"debug":  err,
+			"refer":  nil,
+		}
+		this.ServeJson()
+		return
+	}
 
 	sub := models.Submissions{}
-	sub.Add(pid, user.Id, ptype, language, code, "default")
+	id, err := sub.Add(pid, useridInt, ptype, language, code, "default")
+
+	if err != nil {
+		this.Data["json"] = map[string]interface{}{
+			"result": false,
+			"msg":    "add task failed",
+			"debug":  err,
+			"refer":  nil,
+		}
+	} else {
+		this.Data["json"] = map[string]interface{}{
+			"result": true,
+			"msg":    "add task success",
+			"id":     id,
+			"refer":  nil,
+		}
+	}
+	this.ServeJson()
 
 }

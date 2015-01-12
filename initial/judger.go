@@ -17,6 +17,6 @@ func InitJudger() {
 	}
 
 	client.New(host, port)
-	loginInfo := fmt.Sprintf("{\"action\":\"login\",\"password\":\"%s\"}#", pass)
+	loginInfo := fmt.Sprintf("{\"action\":\"login\",\"password\":\"%s\"}\003", pass)
 	client.J.Request(loginInfo)
 }
