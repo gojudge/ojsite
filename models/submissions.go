@@ -14,6 +14,8 @@ type Submissions struct {
 	Id         int
 	Pid        int
 	Uid        int
+	Type       string
+	Language   string
 	Code       string
 	Judger     string
 	Status     string
@@ -24,11 +26,13 @@ type Submissions struct {
 }
 
 // add submission
-func (this *Submissions) Add(pid int, uid int, code string, judger string) (int64, error) {
+func (this *Submissions) Add(pid int, uid int, ptype string, language string, code string, judger string) (int64, error) {
 	o := orm.NewOrm()
 	var subm Submissions
 	subm.Pid = pid
 	subm.Uid = uid
+	subm.Type = ptype
+	subm.Language = language
 	subm.Code = code
 	subm.Judger = judger
 

@@ -15,6 +15,23 @@ CREATE DATABASE IF NOT EXISTS `goj` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `goj`;
 
 
+-- 导出  表 goj.judger 结构
+CREATE TABLE IF NOT EXISTS `judger` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `ip` varchar(128) NOT NULL DEFAULT '0' COMMENT 'IP',
+  `port` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'port',
+  `nickname` varchar(50) NOT NULL DEFAULT '0' COMMENT '昵称',
+  `language` set('C','C++','Java','Python') NOT NULL DEFAULT 'C' COMMENT 'language',
+  `status` enum('online','offline') NOT NULL DEFAULT 'offline' COMMENT 'status',
+  `last_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后在线时间',
+  `info` text NOT NULL COMMENT '其他信息',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ip_port` (`ip`,`port`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='judger列表';
+
+-- 数据导出被取消选择。
+
+
 -- 导出  表 goj.oauth 结构
 CREATE TABLE IF NOT EXISTS `oauth` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -34,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `problem` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `pbid` int(11) NOT NULL COMMENT 'Problem Bank ID',
   `title` varchar(128) NOT NULL COMMENT '题目标题',
-  `type` set('asset','io') NOT NULL COMMENT '题目类型',
+  `type` set('assert','io') NOT NULL DEFAULT 'assert' COMMENT '题目类型',
   `description` text COMMENT '题目描述',
   `pre_code` text COMMENT '预代码[assert]',
   `io_data` text COMMENT '输入输出样本，json类型[io]',
@@ -59,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `problem_bank` (
   `io_data` text COMMENT '输入输出样本，json类型[io]',
   `tags` varchar(256) DEFAULT NULL COMMENT '分类标签，逗号分割',
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
-  `status` enum('audit','ok','deleted') NOT NULL DEFAULT 'audit' COMMENT '题目状态：audit待审，ok正常，deleted已删除',
+  `status` enum('audit','ok','deny','deleted') NOT NULL DEFAULT 'audit' COMMENT '题目状态：audit待审，ok正常，deny拒绝，deleted已删除',
   PRIMARY KEY (`id`),
   UNIQUE KEY `title` (`title`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='预存题库';
@@ -86,6 +103,8 @@ CREATE TABLE IF NOT EXISTS `submissions` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
   `pid` int(11) NOT NULL COMMENT 'problem id',
   `uid` int(11) NOT NULL COMMENT 'submission user id',
+  `type` enum('io','assert') NOT NULL DEFAULT 'assert' COMMENT '题目类型',
+  `language` enum('C','C++','Java','Python') NOT NULL DEFAULT 'C' COMMENT 'language',
   `code` text NOT NULL COMMENT '代码',
   `judger` varchar(128) NOT NULL COMMENT '递交给的judger标识',
   `status` enum('TA','AC','WA','TLE','OLE','MLE','RE','PE','CE') NOT NULL DEFAULT 'TA' COMMENT '执行状态',

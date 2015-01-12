@@ -1,9 +1,9 @@
 package problem
 
 import (
-	"github.com/duguying/judger/client"
+	// "github.com/duguying/judger/client"
 	"github.com/duguying/ojsite/controllers"
-	// "github.com/duguying/ojsite/models"
+	"github.com/duguying/ojsite/models"
 	// "github.com/gogather/com/log"
 )
 
@@ -12,14 +12,23 @@ type ProblemSubmitController struct {
 }
 
 func (this *ProblemSubmitController) Post() {
-	// pid, err := this.GetInt("pid")
-	// language := this.GetString("language")
-	// ptype := this.GetString("type")
-	// code := this.GetString("code")
+	pid, err := this.GetInt("pid")
 
-	// sub := models.Submissions{}
-	// sub.Add(pid, uid, code, judger)
+	if err != nil {
+		this.Data["json"] = map[string]interface{}{
+			"result": false,
+			"msg":    "get pid failed",
+			"refer":  nil,
+		}
+	}
 
-	test := `{"action":"login","password":"123456789"}#`
-	client.J.Request(test)
+	language := this.GetString("language")
+	ptype := this.GetString("type")
+	code := this.GetString("code")
+
+	user := this.GetSession("user").(models.User)
+
+	sub := models.Submissions{}
+	sub.Add(pid, user.Id, ptype, language, code, "default")
+
 }

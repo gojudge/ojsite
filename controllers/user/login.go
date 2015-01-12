@@ -27,14 +27,25 @@ func (this *LoginController) Post() {
 	password := this.GetString("password")
 
 	if result, lev := user.Login(username, password); result {
-		this.SetSession("username", username)
-		this.SetSession("level", lev)
+		user, err := user.GetUser(0, username, "", "")
+		if err != nil {
+			this.Data["json"] = map[string]interface{}{
+				"result": false,
+				"msg":    "login failed, get user info failed",
+				"refer":  nil,
+			}
+		} else {
+			this.SetSession("username", username)
+			this.SetSession("user", user)
+			this.SetSession("level", lev)
 
-		this.Data["json"] = map[string]interface{}{
-			"result": true,
-			"msg":    "login success",
-			"refer":  nil,
+			this.Data["json"] = map[string]interface{}{
+				"result": true,
+				"msg":    "login success",
+				"refer":  nil,
+			}
 		}
+
 	} else {
 		this.Data["json"] = map[string]interface{}{
 			"result": false,
