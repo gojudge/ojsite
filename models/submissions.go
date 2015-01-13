@@ -66,7 +66,7 @@ func (this *Submissions) Add(pid int, uid int, ptype string, language string, co
 }
 
 // update submission status
-func UpdateSubmissionStatus(id int, status string) error {
+func (this *Submissions) UpdateSubmissionStatus(id int, status string) error {
 	o := orm.NewOrm()
 	var subm Submissions
 	subm.Id = id
@@ -83,5 +83,19 @@ func UpdateSubmissionStatus(id int, status string) error {
 		} else {
 			return nil
 		}
+	}
+}
+
+func (this *Submissions) GetSubmissionStatus(id int) (string, error) {
+	o := orm.NewOrm()
+	var subm Submissions
+	subm.Id = id
+	err := o.Read(&subm, "Id")
+
+	if err != nil {
+		log.Warnf("记录[%d]不存在\n", id)
+		return "", err
+	} else {
+		return subm.Status, err
 	}
 }

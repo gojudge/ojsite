@@ -1,9 +1,9 @@
 package initial
 
 import (
-	"fmt"
 	"github.com/astaxie/beego"
 	"github.com/duguying/judger/client"
+	"github.com/duguying/ojsite/utils"
 )
 
 // connect judger and login
@@ -17,6 +17,10 @@ func InitJudger() {
 	}
 
 	client.New(host, port)
-	loginInfo := fmt.Sprintf("{\"action\":\"login\",\"password\":\"%s\"}\003", pass)
+	loginInfo := utils.MsgPack(map[string]interface{}{
+		"action":   "login",
+		"password": pass,
+	})
+
 	client.J.Request(loginInfo)
 }

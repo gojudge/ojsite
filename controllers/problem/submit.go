@@ -1,11 +1,9 @@
 package problem
 
 import (
-	// "github.com/duguying/judger/client"
 	"github.com/duguying/ojsite/controllers"
 	"github.com/duguying/ojsite/models"
 	"strconv"
-	// "github.com/gogather/com/log"
 )
 
 type ProblemSubmitController struct {
@@ -21,6 +19,8 @@ func (this *ProblemSubmitController) Post() {
 			"msg":    "get pid failed",
 			"refer":  nil,
 		}
+		this.ServeJson()
+		return
 	}
 
 	language := this.GetString("language")
@@ -58,6 +58,50 @@ func (this *ProblemSubmitController) Post() {
 			"refer":  nil,
 		}
 	}
+	this.ServeJson()
+
+}
+
+// get submission status
+type ProblemSubmitStatusController struct {
+	controllers.BaseController
+}
+
+func (this *ProblemSubmitStatusController) Get() {
+	sbid, err := this.GetInt("sbid")
+
+	if err != nil {
+		this.Data["json"] = map[string]interface{}{
+			"result": false,
+			"msg":    "get sbid failed",
+			"refer":  nil,
+		}
+		this.ServeJson()
+		return
+	}
+
+	sub := models.Submissions{}
+	status, err := sub.GetSubmissionStatus(sbid)
+
+	if err != nil {
+		this.Data["json"] = map[string]interface{}{
+			"result": false,
+			"sbid":   sbid,
+			"status": nil,
+			"msg":    "get status failed",
+			"refer":  nil,
+		}
+
+	} else {
+		this.Data["json"] = map[string]interface{}{
+			"result": true,
+			"sbid":   sbid,
+			"status": status,
+			"msg":    "get status failed",
+			"refer":  nil,
+		}
+	}
+
 	this.ServeJson()
 
 }
