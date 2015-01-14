@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `judger` (
   `nickname` varchar(50) NOT NULL DEFAULT '0' COMMENT '昵称',
   `language` set('C','C++','Java','Python') NOT NULL DEFAULT 'C' COMMENT 'language',
   `status` enum('online','offline') NOT NULL DEFAULT 'offline' COMMENT 'status',
-  `last_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后在线时间',
+  `last_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最后在线时间',
   `info` text NOT NULL COMMENT '其他信息',
   PRIMARY KEY (`id`),
   UNIQUE KEY `ip_port` (`ip`,`port`)
@@ -109,9 +109,9 @@ CREATE TABLE IF NOT EXISTS `submissions` (
   `judger` varchar(128) NOT NULL COMMENT '递交给的judger标识',
   `status` enum('TA','AC','WA','TLE','OLE','MLE','RE','PE','CE') NOT NULL DEFAULT 'TA' COMMENT '执行状态',
   `build_log` text COMMENT '编译日志',
-  `run_log` text COMMENT '执行日志',
-  `submit_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '提交时间',
-  `judge_time` datetime NOT NULL COMMENT '判定时间',
+  `executer_debug` text COMMENT '执行日志',
+  `submit_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '提交时间',
+  `judge_time` timestamp NOT NULL COMMENT '判定时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='给OJ的递交';
 

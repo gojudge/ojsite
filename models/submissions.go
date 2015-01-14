@@ -3,29 +3,29 @@ package models
 import (
 	// "errors"
 	// "github.com/astaxie/beego"
-	"github.com/astaxie/beego/orm"
-	"github.com/duguying/ojsite/utils"
-	// "github.com/gogather/com"
 	"fmt"
+	"github.com/astaxie/beego/orm"
 	"github.com/duguying/judger/client"
+	"github.com/duguying/ojsite/utils"
+	"github.com/gogather/com"
 	"github.com/gogather/com/log"
 	"html"
 	"time"
 )
 
 type Submissions struct {
-	Id         int
-	Pid        int
-	Uid        int
-	Type       string
-	Language   string
-	Code       string
-	Judger     string
-	Status     string
-	BuildLog   string
-	RunLog     string
-	SubmitTime time.Time
-	JudgeTime  time.Time
+	Id            int
+	Pid           int
+	Uid           int
+	Type          string
+	Language      string
+	Code          string
+	Judger        string
+	Status        string
+	BuildLog      string
+	ExecuterDebug string
+	SubmitTime    time.Time
+	JudgeTime     time.Time
 }
 
 // add submission
@@ -87,15 +87,36 @@ func (this *Submissions) UpdateSubmissionStatus(id int, status string) error {
 }
 
 func (this *Submissions) GetSubmissionStatus(id int) (string, error) {
+	msg := utils.MsgPack(map[string]interface{}{
+		"action": "task_info",
+		"sid":    "randomstring",
+		"id":     id,
+	})
+
+	response := client.J.Request(msg)
+	json, err := com.JsonDecode(response)
+
+	if err != nil {
+		return "", err
+	}
+
+	data := json.(map[string]interface{})
+	info := data["info"].(map[string]interface{})
+
 	o := orm.NewOrm()
 	var subm Submissions
 	subm.Id = id
-	err := o.Read(&subm, "Id")
+	err = o.Read(&subm, "Id")
 
 	if err != nil {
 		log.Warnf("记录[%d]不存在\n", id)
 		return "", err
 	} else {
+		subm.Status = info["run_result"].(string)
+		subm.BuildLog = info["build_log"].(string)
+		subm.ExecuterDebug = info["executer_debug"].(string)
+		o.Update(&subm)
+
 		return subm.Status, err
 	}
 }
