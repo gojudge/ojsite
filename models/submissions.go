@@ -93,7 +93,12 @@ func (this *Submissions) GetSubmissionStatus(id int) (string, error) {
 		"id":     id,
 	})
 
-	response := client.J.Request(msg)
+	response, err := client.J.Request(msg)
+
+	if err != nil {
+		log.Warnln("send Request failed:", err)
+	}
+
 	json, err := com.JsonDecode(response)
 
 	if err != nil {

@@ -44,9 +44,9 @@ func cut(val string, length int) string {
 
 func loadTime(startTime int64) float64 {
 	stn := time.Now()
-	nowTime := float64(stn.UnixNano())
+	nowTime := stn.UnixNano()
 
-	return (nowTime - float64(startTime)) / 1000000000
+	return float64(nowTime-startTime) / 1000000000
 }
 
 func InitTplFunc() {
