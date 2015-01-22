@@ -19,7 +19,5 @@ func InitCron() {
 	}
 
 	toolbox.AddTask("judger", tk)
-
 	toolbox.StartTask()
-	defer toolbox.StopTask()
 }
