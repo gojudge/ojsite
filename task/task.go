@@ -4,13 +4,21 @@ import (
 	"github.com/astaxie/beego"
 	"github.com/duguying/judger/client"
 	"github.com/duguying/ojsite/utils"
+	"github.com/gogather/com/log"
 )
 
-func CheckJudger() {
+func CheckJudger() error {
+	log.Blueln("check judger")
+
 	ping := utils.MsgPack(map[string]interface{}{
 		"action": "ping",
 	})
-	client.J.Request(loginInfo)
+	_, err := client.J.Request(ping)
+	if err != nil {
+		reconnect()
+	}
+
+	return nil
 }
 
 func reconnect() {

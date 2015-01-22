@@ -15,6 +15,7 @@ func Initialize() {
 	InitTplFunc()
 	InitSql()
 	InitJudger()
+	InitCron()
 
 	routers.Init()
 }
