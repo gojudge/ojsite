@@ -6,6 +6,8 @@ import (
 	"strconv"
 )
 
+// submit problem
+// uri:/problem/submit
 type ProblemSubmitController struct {
 	controllers.BaseController
 }
@@ -63,6 +65,7 @@ func (this *ProblemSubmitController) Post() {
 }
 
 // get submission status
+// uri:/problem/submit/status
 type ProblemSubmitStatusController struct {
 	controllers.BaseController
 }

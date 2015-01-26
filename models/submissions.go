@@ -60,7 +60,7 @@ func (this *Submissions) Add(pid int, uid int, ptype string, language string, co
 
 	fmt.Println(msg)
 
-	client.J.Request(msg)
+	_, err = client.J.Request(msg)
 
 	return id, err
 }
@@ -119,7 +119,10 @@ func (this *Submissions) GetSubmissionStatus(id int) (string, error) {
 	} else {
 		subm.Status = info["run_result"].(string)
 		subm.BuildLog = info["build_log"].(string)
-		subm.ExecuterDebug = info["executer_debug"].(string)
+		exe_debug, ok := info["executer_debug"].(string)
+		if ok {
+			subm.ExecuterDebug = exe_debug
+		}
 		o.Update(&subm)
 
 		return subm.Status, err

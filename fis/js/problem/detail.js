@@ -27,6 +27,21 @@ $(document).ready(function(e){
 			dataType: "json",
 			success: function(json){
 				console.log(json);
+				if (json.result) {
+					// get status after 1s
+					window.setInterval(function(){
+						$.ajax({
+							url: $("form.submition").attr("get-status"),
+							method: "get",
+							data: {"sbid":json.id},
+							dataType: "json",
+							success: function(json){
+								// debugger;
+								console.log(json);
+							}
+						});
+					}, 1000);
+				};
 			}
 		});
 		return false;
@@ -36,6 +51,8 @@ $(document).ready(function(e){
 		var raw_content = $("#code_editor_raw").val();
 		editor.setValue(raw_content);
 	});
+
+	
 });
 
 

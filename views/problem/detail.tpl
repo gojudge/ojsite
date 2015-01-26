@@ -11,7 +11,7 @@
 		<div class="problem-links">discuss</div>
 	</div>
 
-	<form action="/problem/submit" method="post" class="submition">
+	<form action="/problem/submit" method="post" class="submition" get-status="/problem/submit/status">
 		<input type="hidden" name="pid" value="{{{.problem_id}}}">
 		<div class="subm-header">
 			<select name="language" id="">
