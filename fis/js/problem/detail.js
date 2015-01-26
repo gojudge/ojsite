@@ -12,6 +12,23 @@ $(document).ready(function(e){
 		$("#code_editor").html(content);
 	});
 
+	// parms: TA, ER, AC
+	function update_status(status){
+		$(".solu-submit>span").show();
+		if (status == "TA") { // task add
+			// status
+			$(".solu-submit>span").removeClass().addClass("status sta-task-add");
+			// icon
+			$(".solu-submit>span>i").removeClass().addClass("icon-spin4 animate-spin");
+		}else if (status == "ER") { // error
+			$(".solu-submit>span").removeClass().addClass("status sta-error");
+			$(".solu-submit>span>i").removeClass().addClass("icon-cancel-1");
+		} else if (status == "AC"){ // accept
+			$(".solu-submit>span").removeClass().addClass("status sta-accept");
+			$(".solu-submit>span>i").removeClass().addClass("icon-ok");
+		};
+	}
+
 	// submit task
 	$("form.submition").submit(function(e){
 		var pid = $("input[name='pid']").val();
@@ -27,17 +44,30 @@ $(document).ready(function(e){
 			dataType: "json",
 			success: function(json){
 				console.log(json);
+				update_status("TA");
 				if (json.result) {
 					// get status after 1s
-					window.setInterval(function(){
+					var tc = window.setInterval(function(){
 						$.ajax({
 							url: $("form.submition").attr("get-status"),
 							method: "get",
 							data: {"sbid":json.id},
 							dataType: "json",
 							success: function(json){
-								// debugger;
 								console.log(json);
+								if (json.result) {
+									// if get result clearInterval
+									if (json.status!="TA"){
+										window.clearInterval(tc);
+										if (json.status == "AC") {
+											update_status("AC");
+										} else{
+											update_status("ER");
+										};
+									}else{
+										update_status("TA");
+									}
+								};
 							}
 						});
 					}, 1000);

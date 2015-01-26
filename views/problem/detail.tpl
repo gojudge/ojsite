@@ -1,4 +1,5 @@
 {{{template "inc/header.tpl" .}}}
+{{{asset "fontello/css/animation.css"}}}
 {{{asset "sass/problem.scss"}}}
 
 {{{asset "ace/src-min-noconflict/ace.js"}}}
@@ -28,6 +29,7 @@
 		</div>
 		<div class="solu-submit">
 			<button class="btn"><i class="icon-goj"></i>Submit</button>
+			<span class="status sta-error" style="display:none;"><i class="icon-spin4 animate-spin"></i>Accept</span>
 		</div>
 	</form>
 
