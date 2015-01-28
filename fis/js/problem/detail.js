@@ -16,14 +16,17 @@ $(document).ready(function(e){
 	function update_status(status){
 		$(".solu-submit>span").show();
 		if (status == "TA") { // task add
+			$(".solu-submit>span>a").html("Waiting");
 			// status
 			$(".solu-submit>span").removeClass().addClass("status sta-task-add");
 			// icon
 			$(".solu-submit>span>i").removeClass().addClass("icon-spin4 animate-spin");
 		}else if (status == "ER") { // error
+			$(".solu-submit>span>a").html("Error");
 			$(".solu-submit>span").removeClass().addClass("status sta-error");
 			$(".solu-submit>span>i").removeClass().addClass("icon-cancel-1");
 		} else if (status == "AC"){ // accept
+			$(".solu-submit>span>a").html("Accept");
 			$(".solu-submit>span").removeClass().addClass("status sta-accept");
 			$(".solu-submit>span>i").removeClass().addClass("icon-ok");
 		};

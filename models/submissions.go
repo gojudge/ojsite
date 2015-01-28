@@ -14,13 +14,18 @@ import (
 )
 
 type Submissions struct {
-	Id            int
-	Pid           int
-	Uid           int
-	Type          string
-	Language      string
-	Code          string
-	Judger        string
+	Id       int
+	Pid      int
+	Uid      int
+	Type     string
+	Language string
+	Code     string
+	Judger   string
+
+	//执行状态:'TA'(Task Add),'AC'(Accept),'WA',
+	//'TLE'(Time Limit Error),'OLE'(Output Limit Error),
+	//'MLE'(Memory Limit Error),'RE'(Runtime Error),
+	//'PE'(Process Exit Normally),'CE'(Compile Error),'UK'(Unknown)
 	Status        string
 	BuildLog      string
 	ExecuterDebug string

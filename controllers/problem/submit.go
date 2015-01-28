@@ -100,7 +100,6 @@ func (this *ProblemSubmitStatusController) Get() {
 			"result": true,
 			"sbid":   sbid,
 			"status": status,
-			"msg":    "get status failed",
 			"refer":  nil,
 		}
 	}
