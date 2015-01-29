@@ -22,7 +22,7 @@ type Submissions struct {
 	Code     string
 	Judger   string
 
-	//执行状态:'TA'(Task Add),'AC'(Accept),'WA',
+	//执行状态:'TA'(Task Add),'AC'(Accept),'WA'(Waiting),
 	//'TLE'(Time Limit Error),'OLE'(Output Limit Error),
 	//'MLE'(Memory Limit Error),'RE'(Runtime Error),
 	//'PE'(Process Exit Normally),'CE'(Compile Error),'UK'(Unknown)
@@ -82,6 +82,7 @@ func (this *Submissions) UpdateSubmissionStatus(id int, status string) error {
 		return err
 	} else {
 		subm.Status = status
+
 		if _, err := o.Update(&subm); err != nil {
 			log.Warnln("状态更新失败")
 			return err
@@ -122,7 +123,27 @@ func (this *Submissions) GetSubmissionStatus(id int) (string, error) {
 		log.Warnf("记录[%d]不存在\n", id)
 		return "", err
 	} else {
-		subm.Status = info["run_result"].(string)
+
+		status := info["run_result"].(string)
+
+		if status == "PEN" {
+			subm.Status = "AC"
+		} else if status == "PRE" {
+			subm.Status = "RE"
+		} else if status == "POM" {
+			subm.Status = "MLE"
+		} else if status == "POT" {
+			subm.Status = "TLE"
+		} else if status == "POL" {
+			subm.Status = "OLE"
+		} else if status == "PSF" {
+			subm.Status = "PSF"
+		} else if status == "EC" {
+			subm.Status = "CE"
+		} else {
+			subm.Status = "UK"
+		}
+
 		subm.BuildLog = info["build_log"].(string)
 		exe_debug, ok := info["executer_debug"].(string)
 		if ok {

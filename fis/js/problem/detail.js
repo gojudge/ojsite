@@ -12,24 +12,11 @@ $(document).ready(function(e){
 		$("#code_editor").html(content);
 	});
 
-	// parms: TA, ER, AC
-	function update_status(status){
+	function update_status(color,cls,icon,msg){
 		$(".solu-submit>span").show();
-		if (status == "TA") { // task add
-			$(".solu-submit>span>a").html("Waiting");
-			// status
-			$(".solu-submit>span").removeClass().addClass("status sta-task-add");
-			// icon
-			$(".solu-submit>span>i").removeClass().addClass("icon-spin4 animate-spin");
-		}else if (status == "ER") { // error
-			$(".solu-submit>span>a").html("Error");
-			$(".solu-submit>span").removeClass().addClass("status sta-error");
-			$(".solu-submit>span>i").removeClass().addClass("icon-cancel-1");
-		} else if (status == "AC"){ // accept
-			$(".solu-submit>span>a").html("Accept");
-			$(".solu-submit>span").removeClass().addClass("status sta-accept");
-			$(".solu-submit>span>i").removeClass().addClass("icon-ok");
-		};
+		$(".solu-submit>span>a").html(msg);
+		$(".solu-submit>span").removeClass().addClass("status "+cls).css("background-color",color);
+		$(".solu-submit>span>i").removeClass().addClass(icon);
 	}
 
 	// submit task
@@ -47,7 +34,7 @@ $(document).ready(function(e){
 			dataType: "json",
 			success: function(json){
 				console.log(json);
-				update_status("TA");
+				update_status("black","","icon-spin4 animate-spin","Waiting...");
 				if (json.result) {
 					// get status after 1s
 					var tc = window.setInterval(function(){
@@ -63,12 +50,25 @@ $(document).ready(function(e){
 									if (json.status!="TA"){
 										window.clearInterval(tc);
 										if (json.status == "AC") {
-											update_status("AC");
-										} else{
-											update_status("ER");
+											update_status("green","","icon-ok","Accept");
+										} else if(json.status == "RE"){
+											update_status("red","","icon-cancel","Runtime Error");
+										}else if(json.status == "MLE"){
+											update_status("red","","icon-cancel","Out Of Memory");
+										}else if(json.status == "TLE"){
+											update_status("red","","icon-cancel","Out Of Time");
+										}else if(json.status == "OLE"){
+											update_status("red","","icon-cancel","Output Limit");
+										}else if(json.status == "PSF"){
+											update_status("red","","icon-cancel","Syscal Forbidden");
+										}else if (json.status == "CE") {
+											update_status("red","","icon-cancel","Compile Error");
+										}else{
+											update_status("gray","","icon-cancel","Unknown");
 										};
 									}else{
-										update_status("TA");
+										debugger
+										update_status("black","","icon-spin4 animate-spin","Waiting...");
 									}
 								};
 							}

@@ -1,14 +1,17 @@
 package task
 
 import (
+	"fmt"
 	"github.com/astaxie/beego"
 	"github.com/duguying/judger/client"
 	"github.com/duguying/ojsite/utils"
+	"github.com/gogather/com"
 	"github.com/gogather/com/log"
+	"time"
 )
 
 func CheckJudger() error {
-	log.Blueln("check judger")
+	log.Blueln(fmt.Sprintf("[%s]", com.SubString(time.Now().String(), 0, 19)), "check judger")
 
 	ping := utils.MsgPack(map[string]interface{}{
 		"action": "ping",
