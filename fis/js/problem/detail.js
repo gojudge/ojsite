@@ -12,6 +12,11 @@ $(document).ready(function(e){
 		$("#code_editor").html(content);
 	});
 
+	if (window.user_type == "guest") {
+		editor.setReadOnly(true);
+		return;
+	};
+
 	function update_status(color,cls,icon,msg){
 		$(".solu-submit>span").show();
 		$(".solu-submit>span>a").html(msg);
@@ -26,6 +31,10 @@ $(document).ready(function(e){
 		var ptype = $("input[name='type']").val();
 		var code = editor.getValue();
 		// console.log(pid, language, ptype, code);
+		
+		if (window.user_type == "guest") {
+			return false;
+		};
 
 		$.ajax({
 			url: $(this).attr("action"),

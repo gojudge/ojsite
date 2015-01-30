@@ -4,6 +4,10 @@
 
 {{{asset "ace/src-min-noconflict/ace.js"}}}
 
+<script>
+	var user_type = {{{.userIs}}}
+</script>
+
 	<div class="detail">
 		<div class="problem-title"><h3>{{{.problem_title}}}</h3></div>
 		<div class="problem-description">
@@ -18,7 +22,9 @@
 			<select name="language" id="">
 				<option value="C">C</option>
 			</select>
+			{{{if ne .userIs "guest"}}}
 			<a class="btn" id="reset" title="reset"><i class="icon-arrows-cw"></i></a>
+			{{{end}}}
 			<input type="hidden" name="type" value="assert">
 		</div>
 		<div class="subm-editor">
@@ -27,10 +33,14 @@
 			<div id="editor" name="code">{{{.problem_pre_code}}}</div>
 
 		</div>
+		{{{if eq .userIs "guest"}}}
+		<a class="btn" href="/login"><i class="icon-goj"></i>Login First</a>
+		{{{else}}}
 		<div class="solu-submit">
 			<button class="btn"><i class="icon-goj"></i>Submit</button>
 			<span class="status sta-error" style="display:none;"><i class="icon-spin4 animate-spin"></i><a>Accept</a></span>
 		</div>
+		{{{end}}}
 	</form>
 
 {{{asset "js/problem/detail.js"}}}
