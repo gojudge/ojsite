@@ -18,7 +18,7 @@ func InitJudger() {
 		port = 1004
 	}
 
-	err = client.New(host, port)
+	_, err = client.New(host, port)
 	if err != nil {
 		log.Warnln(err)
 		return

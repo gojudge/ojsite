@@ -65,6 +65,6 @@ func MsgPack(data map[string]interface{}) string {
 	if err != nil {
 		return ""
 	} else {
-		return json + "\003"
+		return json
 	}
 }
