@@ -41,10 +41,15 @@ func (this *Submissions) Add(pid int, uid int, ptype string, language string, co
 	var subm Submissions
 	subm.Pid = pid
 	subm.Uid = uid
+
+	if len(ptype) == 0 {
+		ptype = "assert"
+	}
 	subm.Type = ptype
 	subm.Language = language
 	subm.Code = code
 	subm.Judger = judger
+	subm.Status = "TA"
 	subm.SubmitTime = time.Now()
 	subm.JudgeTime = time.Now()
 

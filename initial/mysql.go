@@ -17,5 +17,6 @@ func InitSql() {
 		port = 3306
 	}
 
+	orm.Debug = true
 	orm.RegisterDataBase("default", "mysql", fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8", user, passwd, host, port, dbname))
 }

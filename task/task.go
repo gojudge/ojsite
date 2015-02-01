@@ -11,14 +11,18 @@ import (
 )
 
 func CheckJudger() error {
-	log.Blueln(fmt.Sprintf("[%s]", com.SubString(time.Now().String(), 0, 19)), "check judger")
+	log.Bluef("%s check judger ", fmt.Sprintf("[%s]", com.SubString(time.Now().String(), 0, 19)))
 
 	ping := utils.MsgPack(map[string]interface{}{
 		"action": "ping",
 	})
-	_, err := client.J.Request(ping)
+	resp, err := client.J.Request(ping)
+	log.Dangerf("%s ", resp)
 	if err != nil {
+		log.Warnln("reconnecting")
 		reconnect()
+	} else {
+		log.Warnln("ok")
 	}
 
 	return nil
