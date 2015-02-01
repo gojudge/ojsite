@@ -1,28 +1,20 @@
 package task
 
 import (
-	"fmt"
 	"github.com/astaxie/beego"
 	"github.com/duguying/judger/client"
 	"github.com/duguying/ojsite/utils"
-	"github.com/gogather/com"
 	"github.com/gogather/com/log"
-	"time"
 )
 
 func CheckJudger() error {
-	log.Bluef("%s check judger ", fmt.Sprintf("[%s]", com.SubString(time.Now().String(), 0, 19)))
-
 	ping := utils.MsgPack(map[string]interface{}{
 		"action": "ping",
 	})
-	resp, err := client.J.Request(ping)
-	log.Dangerf("%s ", resp)
+	_, err := client.J.Request(ping)
 	if err != nil {
 		log.Warnln("reconnecting")
 		reconnect()
-	} else {
-		log.Warnln("ok")
 	}
 
 	return nil

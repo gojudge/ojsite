@@ -18,11 +18,13 @@ func InitJudger() {
 		port = 1004
 	}
 
-	_, err = client.New(host, port)
+	cli, err := client.New(host, port)
 	if err != nil {
 		log.Warnln(err)
 		return
 	}
+
+	cli.SetDebug(true)
 
 	loginInfo := utils.MsgPack(map[string]interface{}{
 		"action":   "login",
