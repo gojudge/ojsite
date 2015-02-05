@@ -2,10 +2,7 @@ package initial
 
 import (
 	"github.com/astaxie/beego"
-	"github.com/duguying/judger/client"
-	"github.com/duguying/ojsite/utils"
-	"github.com/gogather/com"
-	"github.com/gogather/com/log"
+	"github.com/duguying/ojsite/judger"
 )
 
 // connect judger and login
@@ -18,34 +15,5 @@ func InitJudger() {
 		port = 1004
 	}
 
-	cli, err := client.New(host, port)
-	if err != nil {
-		log.Warnln(err)
-		return
-	}
-
-	cli.SetDebug(true)
-
-	loginInfo := utils.MsgPack(map[string]interface{}{
-		"action":   "login",
-		"password": pass,
-	})
-
-	content, err := client.J.Request(loginInfo)
-	if err != nil {
-		log.Warnln("[Request]", err)
-		return
-	}
-
-	data, err := com.JsonDecode(content)
-	if err != nil {
-		log.Warnln(err)
-		return
-	}
-
-	json := data.(map[string]interface{})
-
-	if !json["result"].(bool) {
-		log.Warnln("Login Judger Failure!")
-	}
+	judger.ConnectJudger(host, port, pass)
 }

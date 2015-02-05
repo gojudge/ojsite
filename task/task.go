@@ -2,16 +2,13 @@ package task
 
 import (
 	"github.com/astaxie/beego"
-	"github.com/duguying/judger/client"
-	"github.com/duguying/ojsite/utils"
+	"github.com/duguying/ojsite/judger"
 	"github.com/gogather/com/log"
 )
 
 func CheckJudger() error {
-	ping := utils.MsgPack(map[string]interface{}{
-		"action": "ping",
-	})
-	_, err := client.J.Request(ping)
+	jdg := judger.Get("default")
+	err := jdg.Ping()
 	if err != nil {
 		log.Warnln("reconnecting")
 		reconnect()
@@ -29,11 +26,7 @@ func reconnect() {
 		port = 1004
 	}
 
-	client.New(host, port)
-	loginInfo := utils.MsgPack(map[string]interface{}{
-		"action":   "login",
-		"password": pass,
-	})
+	jdg := judger.Get("default")
+	jdg.Start(host, port, pass)
 
-	client.J.Request(loginInfo)
 }

@@ -1,15 +1,9 @@
 package models
 
 import (
-	// "errors"
-	// "github.com/astaxie/beego"
-	"fmt"
 	"github.com/astaxie/beego/orm"
-	"github.com/duguying/judger/client"
-	"github.com/duguying/ojsite/utils"
-	"github.com/gogather/com"
+	"github.com/duguying/ojsite/judger"
 	"github.com/gogather/com/log"
-	"html"
 	"time"
 )
 
@@ -34,8 +28,7 @@ type Submissions struct {
 }
 
 // add submission
-func (this *Submissions) Add(pid int, uid int, ptype string, language string, code string, judger string) (int64, error) {
-	code = html.EscapeString(code)
+func (this *Submissions) Add(pid int, uid int, ptype string, language string, code string, judgerName string) (int64, error) {
 
 	o := orm.NewOrm()
 	var subm Submissions
@@ -48,7 +41,7 @@ func (this *Submissions) Add(pid int, uid int, ptype string, language string, co
 	subm.Type = ptype
 	subm.Language = language
 	subm.Code = code
-	subm.Judger = judger
+	subm.Judger = judgerName
 	subm.Status = "TA"
 	subm.SubmitTime = time.Now()
 	subm.JudgeTime = time.Now()
@@ -59,18 +52,8 @@ func (this *Submissions) Add(pid int, uid int, ptype string, language string, co
 		return id, err
 	}
 
-	msg := utils.MsgPack(map[string]interface{}{
-		"action":   "task_add",
-		"sid":      "randomstring",
-		"id":       id,
-		"time":     time.Now(),
-		"language": language,
-		"code":     code,
-	})
-
-	fmt.Println(msg)
-
-	_, err = client.J.Request(msg)
+	jdg := judger.Get("default")
+	jdg.AddTask(id, "randomstring", language, code)
 
 	return id, err
 }
@@ -98,26 +81,15 @@ func (this *Submissions) UpdateSubmissionStatus(id int, status string) error {
 }
 
 func (this *Submissions) GetSubmissionStatus(id int) (string, error) {
-	msg := utils.MsgPack(map[string]interface{}{
-		"action": "task_info",
-		"sid":    "randomstring",
-		"id":     id,
-	})
 
-	response, err := client.J.Request(msg)
+	jdg := judger.Get("default")
+	response, err := jdg.GetStatus(int64(id), "randomstring")
 
 	if err != nil {
 		log.Warnln("send Request failed:", err)
 	}
 
-	json, err := com.JsonDecode(response)
-
-	if err != nil {
-		return "", err
-	}
-
-	data := json.(map[string]interface{})
-	info := data["info"].(map[string]interface{})
+	info := response["info"].(map[string]interface{})
 
 	o := orm.NewOrm()
 	var subm Submissions
