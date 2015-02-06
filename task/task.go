@@ -27,6 +27,12 @@ func reconnect() {
 	}
 
 	jdg := judger.Get("default")
-	jdg.Start(host, port, pass)
+	err = jdg.Start(host, port, pass)
+
+	if err != nil {
+		log.Warnln("Reconnect Failed", err)
+	} else {
+		log.Blueln("Reconnected.")
+	}
 
 }

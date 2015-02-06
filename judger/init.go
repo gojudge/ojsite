@@ -11,12 +11,12 @@ func ConnectJudger(host string, port int, password string) error {
 	J = make(map[string]interface{})
 
 	cli, err := client.New(host, port, password)
+	J["default"] = cli
+
 	if err != nil {
 		log.Warnln(err)
 		return err
 	}
-
-	J["default"] = cli
 
 	cli.SetDebug(true)
 
