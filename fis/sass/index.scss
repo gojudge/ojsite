@@ -9,6 +9,44 @@
 		padding: 10px;
 		border-radius: 6px;
 		background-color: $container-color;
+
+		div.msg{
+			padding: 0 30px;
+
+			ul.release{
+				padding: 5px;
+				
+				li{
+					i{
+						padding: 0 5px 0 0;
+					}
+				}
+			}
+			
+		}
+
+		div.tile{
+			display: block;
+
+			.sps{
+				display: block;
+				float: left;
+				width: 50%;
+				min-height: 1px;
+				margin-top: 35px;
+				padding: 0px;
+
+				h4,p{
+					padding: 0 30px;
+				}
+
+				h4{
+					i{
+						padding-right: 5px;
+					}
+				}
+			}
+		}
 	}
 
 	li{
