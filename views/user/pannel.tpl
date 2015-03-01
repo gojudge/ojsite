@@ -4,7 +4,7 @@
 		{{{template "user/inc_menu.tpl" .}}}
 
 		<div class="main-pannel" ng-app="tpApp" >
-			
+			here is user pannel for user setting and view
 		</div>
 
 	</div>

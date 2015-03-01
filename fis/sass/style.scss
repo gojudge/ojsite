@@ -369,3 +369,22 @@ blockquote{
 		}
 	}
 }
+
+// error info, 404/501 etc
+.main{
+	.error-info{
+		h1{
+			padding-top: 60px;
+			font-size: 160px;
+			margin: 100px;
+			text-align: center;
+			color: gray;
+		}
+
+		.tips{
+			margin: 40px;
+			text-align: center;
+			color: gray;
+		}
+	}
+}

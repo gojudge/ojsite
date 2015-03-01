@@ -10,7 +10,6 @@ import (
 func Initialize() {
 	CheckTplVersion()
 
-	InitErrorHandler()
 	InitLang()
 	InitTplFunc()
 	InitSql()

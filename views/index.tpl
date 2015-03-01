@@ -9,6 +9,7 @@
             	<ul class="release">
             		<li><i class="octicon octicon-tag"></i><a target="_blank" href="https://github.com/gojudge/gojapi-java/releases/tag/v0.0.1">java sdk</a></li>
             		<li><i class="octicon octicon-tag"></i><a target="_blank" href="https://github.com/gojudge/gojapi-csharp/releases/tag/v0.0.1">C# sdk</a></li>
+                <li><i class="octicon octicon-tag"></i><a target="_blank" href="https://github.com/gojudge/gojapi-php/releases">php sdk</a></li>
             	</ul>
             </p>
           </div>

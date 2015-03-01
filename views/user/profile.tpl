@@ -3,7 +3,8 @@
 	<div class="profile">
 
 		<div class="">
-			user profile
+			here is user profile for other user view <br>
+			this page is just like github user page
 		</div>
 
 	</div>
