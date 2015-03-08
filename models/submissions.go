@@ -53,7 +53,7 @@ func (this *Submissions) Add(pid int, uid int, ptype string, language string, co
 	}
 
 	jdg := judger.Get("default")
-	jdg.AddTask(id, "randomstring", language, code)
+	jdg.AddTask(id, language, code)
 
 	return id, err
 }
@@ -83,7 +83,7 @@ func (this *Submissions) UpdateSubmissionStatus(id int, status string) error {
 func (this *Submissions) GetSubmissionStatus(id int) (string, error) {
 
 	jdg := judger.Get("default")
-	response, err := jdg.GetStatus(int64(id), "randomstring")
+	response, err := jdg.GetStatus(int64(id))
 
 	if err != nil {
 		log.Warnln("send Request failed:", err)

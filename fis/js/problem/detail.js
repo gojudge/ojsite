@@ -36,6 +36,8 @@ $(document).ready(function(e){
 			return false;
 		};
 
+		update_status("blue","","icon-spin4 animate-spin","Sending...");
+
 		$.ajax({
 			url: $(this).attr("action"),
 			method: "post",
