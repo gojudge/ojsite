@@ -22,11 +22,12 @@ func (this *ProfileController) Get() {
 		u, _ := user.GetUser(0, username, "", "")
 
 		this.Data["title"] = u.Nickname + this.Lang("title_profile")
-		this.TplNames = "user/profile.tpl"
+
 	} else {
-		this.Data["title"] = this.Data["nickname"].(string) + this.Lang("title_user_pannel")
-		this.TplNames = "user/pannel.tpl"
+		this.Data["title"] = this.Data["nickname"].(string) + this.Lang("title_profile")
 	}
+
+	this.TplNames = "user/profile.tpl"
 
 }
 
