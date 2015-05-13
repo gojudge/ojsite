@@ -6,13 +6,38 @@ import (
 	// "github.com/gogather/com/log"
 )
 
-type SettingController struct {
+// setting profile
+type SettingProfileController struct {
 	controllers.BaseController
 }
 
-func (this *SettingController) Get() {
+func (this *SettingProfileController) Get() {
+	this.Data["title"] = this.Lang("title_user_setting_profile")
+	this.Data["nav"] = "profile"
 
-	this.Data["title"] = this.Lang("title_user_pannel")
+	this.TplNames = "user/setting/profile.tpl"
+}
 
-	this.TplNames = "user/pannel.tpl"
+// setting password
+type SettingPwdController struct {
+	controllers.BaseController
+}
+
+func (this *SettingPwdController) Get() {
+	this.Data["title"] = this.Lang("title_user_setting_pwd")
+	this.Data["nav"] = "pwd"
+
+	this.TplNames = "user/setting/pwd.tpl"
+}
+
+// setting binding
+type SettingBindController struct {
+	controllers.BaseController
+}
+
+func (this *SettingBindController) Get() {
+	this.Data["title"] = this.Lang("title_user_setting_bind")
+	this.Data["nav"] = "bind"
+
+	this.TplNames = "user/setting/bind.tpl"
 }

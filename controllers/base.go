@@ -87,6 +87,8 @@ func (this *BaseController) Prepare() {
 	}
 
 	this.Data["userIs"] = lev
+
+	// log.Pinkln(lev)
 }
 
 // run after finished
