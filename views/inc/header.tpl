@@ -47,7 +47,7 @@
   {{{if eq .userIs "student"}}}
           <li class="right"><a href=""><span title="class" class="octicon octicon-organization"></span></a></li>
   {{{end}}}
-          <li class="right"><a href="/user/setting"><span title="user setting" class="octicon octicon-settings"></span></a></li>
+          <li class="right"><a href="/user/setting/profile"><span title="user setting" class="octicon octicon-settings"></span></a></li>
           <li class="right">
             <a href="/{{{.username}}}"><img src="http://gravatar.duoshuo.com/avatar/{{{.email_md5}}}" alt="">{{{.nickname}}}</a>
           </li>

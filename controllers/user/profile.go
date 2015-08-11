@@ -1,7 +1,7 @@
 package user
 
 import (
-	// "github.com/astaxie/beego"
+// "github.com/astaxie/beego"
 	"github.com/duguying/ojsite/controllers"
 	"github.com/duguying/ojsite/models"
 	"github.com/gogather/com/log"
@@ -32,5 +32,10 @@ func (this *ProfileController) Get() {
 }
 
 func (this *ProfileController) Post() {
+	this.Data["json"] = map[string]interface{}{
+		"result":false,
+		"msg":"only get method is valid",
+	}
 
+	this.ServeJson()
 }

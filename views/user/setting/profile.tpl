@@ -1,23 +1,20 @@
 {{{template "inc/header.tpl" .}}}
-{{{asset "sass/login.scss"}}}
+{{{asset "sass/user.scss"}}}
 	<div class="pannel">
 		{{{template "user/setting/inc_menu.tpl" .}}}
 
 		<div class="main-pannel" ng-app="tpApp" >
-			<ul>
+			<ul class="profile">
 				<li>Public profile</li>
 				<li>
-					<div>
+					<div class="fileinput-button">
 						<img src="http://gravatar.duoshuo.com/avatar/{{{.email_md5}}}" alt="">
+						<input type="file" name="avatar" id="">
 					</div>
 					<div>
-						<input type="file" name="avatar" id="">
 						<span>upload you avatar</span>
 					</div>
 				</li>
-			</ul>
-
-			<ul>
 				<li>
 					<span>username</span>
 					<input type="text" name="username" id="">
@@ -31,8 +28,6 @@
 					<input type="email" name="email" id="">
 				</li>
 			</ul>
-
-			
 		</div>
 
 	</div>
