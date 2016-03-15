@@ -30,5 +30,5 @@ func (this *ProblemListController) Get() {
 	this.Data["top10"] = top10
 	this.Data["tag_list"] = tagList
 
-	this.TplNames = "problem/list.tpl"
+	this.TplName = "problem/list.tpl"
 }

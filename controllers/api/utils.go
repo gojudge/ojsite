@@ -18,7 +18,7 @@ func (this *MarkdownController) Get() {
 		"refer":  nil,
 	}
 
-	this.ServeJson()
+	this.ServeJSON()
 }
 
 func (this *MarkdownController) Post() {
@@ -34,5 +34,5 @@ func (this *MarkdownController) Post() {
 		"refer":   nil,
 	}
 
-	this.ServeJson()
+	this.ServeJSON()
 }

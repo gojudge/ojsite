@@ -21,7 +21,7 @@ func Initialize() {
 
 // 模版与应用版本匹配检查
 func CheckTplVersion() {
-	tmpVer := com.ReadFile("views/VERSION")
+	tmpVer, _ := com.ReadFile("views/VERSION")
 	if AppVer == tmpVer {
 		return
 	} else {

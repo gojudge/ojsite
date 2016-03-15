@@ -1,7 +1,7 @@
 package user
 
 import (
-// "github.com/astaxie/beego"
+	// "github.com/astaxie/beego"
 	"github.com/duguying/ojsite/controllers"
 	"github.com/duguying/ojsite/models"
 	"github.com/gogather/com/log"
@@ -27,15 +27,15 @@ func (this *ProfileController) Get() {
 		this.Data["title"] = this.Data["nickname"].(string) + this.Lang("title_profile")
 	}
 
-	this.TplNames = "user/profile.tpl"
+	this.TplName = "user/profile.tpl"
 
 }
 
 func (this *ProfileController) Post() {
 	this.Data["json"] = map[string]interface{}{
-		"result":false,
-		"msg":"only get method is valid",
+		"result": false,
+		"msg":    "only get method is valid",
 	}
 
-	this.ServeJson()
+	this.ServeJSON()
 }

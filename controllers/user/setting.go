@@ -15,7 +15,7 @@ func (this *SettingProfileController) Get() {
 	this.Data["title"] = this.Lang("title_user_setting_profile")
 	this.Data["nav"] = "profile"
 
-	this.TplNames = "user/setting/profile.tpl"
+	this.TplName = "user/setting/profile.tpl"
 }
 
 // setting password
@@ -27,7 +27,7 @@ func (this *SettingPwdController) Get() {
 	this.Data["title"] = this.Lang("title_user_setting_pwd")
 	this.Data["nav"] = "pwd"
 
-	this.TplNames = "user/setting/pwd.tpl"
+	this.TplName = "user/setting/pwd.tpl"
 }
 
 // setting binding
@@ -39,5 +39,5 @@ func (this *SettingBindController) Get() {
 	this.Data["title"] = this.Lang("title_user_setting_bind")
 	this.Data["nav"] = "bind"
 
-	this.TplNames = "user/setting/bind.tpl"
+	this.TplName = "user/setting/bind.tpl"
 }

@@ -35,5 +35,5 @@ func (this *ProblemDetailController) Get() {
 	this.Data["problem_pre_code"] = pro.PreCode
 	this.Data["problem_tags"] = pro.Tags
 
-	this.TplNames = "problem/detail.tpl"
+	this.TplName = "problem/detail.tpl"
 }

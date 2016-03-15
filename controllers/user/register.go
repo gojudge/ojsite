@@ -14,7 +14,7 @@ func (this *RegisterController) Get() {
 	this.Forbbiden("not", "guest")
 
 	this.Data["title"] = this.Lang("title_register")
-	this.TplNames = "user/register.tpl"
+	this.TplName = "user/register.tpl"
 }
 
 func (this *RegisterController) Post() {
@@ -42,5 +42,5 @@ func (this *RegisterController) Post() {
 		}
 	}
 
-	this.ServeJson()
+	this.ServeJSON()
 }

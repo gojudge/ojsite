@@ -21,7 +21,7 @@ func (this *ProblemSubmitController) Post() {
 			"msg":    "get pid failed",
 			"refer":  nil,
 		}
-		this.ServeJson()
+		this.ServeJSON()
 		return
 	}
 
@@ -38,7 +38,7 @@ func (this *ProblemSubmitController) Post() {
 			"debug":  err,
 			"refer":  nil,
 		}
-		this.ServeJson()
+		this.ServeJSON()
 		return
 	}
 
@@ -60,7 +60,7 @@ func (this *ProblemSubmitController) Post() {
 			"refer":  nil,
 		}
 	}
-	this.ServeJson()
+	this.ServeJSON()
 
 }
 
@@ -79,7 +79,7 @@ func (this *ProblemSubmitStatusController) Get() {
 			"msg":    "get sbid failed",
 			"refer":  nil,
 		}
-		this.ServeJson()
+		this.ServeJSON()
 		return
 	}
 
@@ -104,6 +104,6 @@ func (this *ProblemSubmitStatusController) Get() {
 		}
 	}
 
-	this.ServeJson()
+	this.ServeJSON()
 
 }

@@ -13,10 +13,10 @@ type TeachController struct {
 
 func (this *TeachController) Get() {
 	this.Data["title"] = this.Lang("title_teach")
-	this.TplNames = "teach/teach.tpl"
+	this.TplName = "teach/teach.tpl"
 }
 
 func (this *TeachController) Post() {
 	this.Data["title"] = this.Lang("title_teach")
-	this.TplNames = "teach/teach.tpl"
+	this.TplName = "teach/teach.tpl"
 }

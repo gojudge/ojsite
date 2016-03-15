@@ -11,11 +11,11 @@ type AddProblemController struct {
 func (this *AddProblemController) Get() {
 	this.Data["title"] = this.Lang("title_add_problem")
 
-	this.TplNames = "problem/add.tpl"
+	this.TplName = "problem/add.tpl"
 }
 
 func (this *AddProblemController) Post() {
 	this.Data["title"] = this.Lang("title_add_problem")
 
-	this.TplNames = "problem/add.tpl"
+	this.TplName = "problem/add.tpl"
 }

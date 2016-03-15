@@ -10,10 +10,10 @@ type ErrorController struct {
 
 func (this *ErrorController) Error404() {
 	this.Data["title"] = "404"
-	this.TplNames = "error/404.tpl"
+	this.TplName = "error/404.tpl"
 }
 
 func (this *ErrorController) Error501() {
 	this.Data["title"] = "501"
-	this.TplNames = "error/501.tpl"
+	this.TplName = "error/501.tpl"
 }

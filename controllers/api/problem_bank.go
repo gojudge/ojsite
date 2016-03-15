@@ -49,7 +49,7 @@ func (this *ProblemBankAcceptController) Get() {
 		}
 	}
 
-	this.ServeJson()
+	this.ServeJSON()
 }
 
 // deny problem
@@ -95,5 +95,5 @@ func (this *ProblemBankDenyController) Get() {
 		}
 	}
 
-	this.ServeJson()
+	this.ServeJSON()
 }

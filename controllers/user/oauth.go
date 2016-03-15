@@ -57,7 +57,7 @@ func (this *OAuthController) Get() {
 		this.Data["token"] = token
 		this.Data["github_username"] = username
 
-		this.TplNames = "user/github_binding_confirm.tpl"
+		this.TplName = "user/github_binding_confirm.tpl"
 	}
 
 }
@@ -107,7 +107,7 @@ func (this *OAuthController) Post() {
 		}
 	}
 
-	this.ServeJson()
+	this.ServeJSON()
 
 }
 

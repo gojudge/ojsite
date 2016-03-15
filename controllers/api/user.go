@@ -19,7 +19,7 @@ func (this *UsernameExistController) Get() {
 		"refer":  nil,
 	}
 
-	this.ServeJson()
+	this.ServeJSON()
 }
 
 // check user email exist
@@ -35,7 +35,7 @@ func (this *UserEmailExistController) Get() {
 		"refer":  nil,
 	}
 
-	this.ServeJson()
+	this.ServeJSON()
 }
 
 // check user nickname exist
@@ -51,5 +51,5 @@ func (this *UserNicknameExistController) Get() {
 		"refer":  nil,
 	}
 
-	this.ServeJson()
+	this.ServeJSON()
 }

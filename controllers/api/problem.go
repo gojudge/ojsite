@@ -102,7 +102,7 @@ func (this *ProblemListController) Get() {
 		}
 	}
 
-	this.ServeJson()
+	this.ServeJSON()
 }
 
 // check problem title exist
@@ -118,7 +118,7 @@ func (this *ProblemTitleExistController) Get() {
 		"refer":  nil,
 	}
 
-	this.ServeJson()
+	this.ServeJSON()
 }
 
 // problem delete
@@ -163,7 +163,7 @@ func (this *ProblemDeleteController) Get() {
 		}
 	}
 
-	this.ServeJson()
+	this.ServeJSON()
 }
 
 // problem add
@@ -178,7 +178,7 @@ func (this *ProblemAddController) Get() {
 		"refer":  nil,
 	}
 
-	this.ServeJson()
+	this.ServeJSON()
 }
 
 func (this *ProblemAddController) Post() {
@@ -236,5 +236,5 @@ func (this *ProblemAddController) Post() {
 		}
 	}
 
-	this.ServeJson()
+	this.ServeJSON()
 }
