@@ -2,7 +2,7 @@ package routers
 
 import (
 	"github.com/astaxie/beego"
-	"github.com/duguying/ojsite/controllers/user"
+	"github.com/gojudge/ojsite/controllers/user"
 )
 
 func User() {

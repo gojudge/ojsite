@@ -2,8 +2,8 @@ package api
 
 import (
 	// "github.com/astaxie/beego"
-	"github.com/duguying/ojsite/controllers"
-	// "github.com/duguying/ojsite/models"
+	"github.com/gojudge/ojsite/controllers"
+	// "github.com/gojudge/ojsite/models"
 )
 
 // check username exist

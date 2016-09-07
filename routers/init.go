@@ -1,17 +1,25 @@
 package routers
 
 import (
-	"github.com/astaxie/beego"
-	"github.com/duguying/ojsite/controllers"
+	"github.com/echo-contrib/pongor"
+	"github.com/gojudge/ojsite/controllers"
+	"github.com/labstack/echo"
 )
 
-func Init() {
-	beego.Router("/", &controllers.MainController{})
-	beego.ErrorController(&controllers.ErrorController{})
+func Init() *echo.Echo {
+	e := echo.New()
+	e.Debug()
 
-	User()
-	Problem()
-	Teacher()
-	Api()
-	Teach()
+	r := pongor.GetRenderer()
+	e.SetRenderer(r)
+
+	e.Get("/", controllers.Index)
+
+	return e
+
+	//User()
+	//Problem()
+	//Teacher()
+	//Api()
+	//Teach()
 }

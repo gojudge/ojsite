@@ -3,8 +3,8 @@ package initial
 import (
 	"github.com/astaxie/beego"
 	"github.com/beego/i18n"
-	"github.com/duguying/ojsite/controllers"
-	"github.com/duguying/ojsite/utils"
+	"github.com/gojudge/ojsite/controllers"
+	//"github.com/gojudge/ojsite/utils"
 	"runtime"
 	"strings"
 	"time"
@@ -51,7 +51,7 @@ func loadTime(startTime int64) float64 {
 
 func InitTplFunc() {
 	beego.AddFuncMap("i18n", i18nGetString)
-	beego.AddFuncMap("asset", utils.Fis)
+	//beego.AddFuncMap("asset", utils.Fis)
 	beego.AddFuncMap("ver", getVer)
 	beego.AddFuncMap("date", dateOfTime)
 	beego.AddFuncMap("cut", cut)

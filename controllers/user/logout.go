@@ -1,7 +1,7 @@
 package user
 
 import (
-	"github.com/duguying/ojsite/controllers"
+	"github.com/gojudge/ojsite/controllers"
 )
 
 type LogoutController struct {

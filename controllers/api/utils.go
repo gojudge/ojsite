@@ -1,9 +1,9 @@
 package api
 
 import (
-	"github.com/duguying/ojsite/controllers"
-	"github.com/duguying/ojsite/utils"
 	"github.com/gogather/com/log"
+	"github.com/gojudge/ojsite/controllers"
+	"github.com/gojudge/ojsite/utils"
 )
 
 // parse markdown

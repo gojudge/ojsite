@@ -1,5 +1,5 @@
 [target]
-path = github.com/duguying/ojsite
+path = github.com/gojudge/ojsite
 
 [deps]
 github.com/astaxie/beego = branch:master

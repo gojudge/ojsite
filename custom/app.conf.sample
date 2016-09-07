@@ -1,0 +1,14 @@
+mysqluser = ""
+mysqlpass = ""
+mysqlurls = ""
+mysqlport = 
+mysqldb   = ""
+
+static_map = "map.json"
+
+judgerhost = "127.0.0.1"
+judgerport = 1004
+judgerpass = ""
+
+github_client_id = 
+github_client_secret = 

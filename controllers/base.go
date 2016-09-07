@@ -3,9 +3,9 @@ package controllers
 import (
 	"github.com/astaxie/beego"
 	"github.com/beego/i18n"
-	"github.com/duguying/ojsite/models"
 	"github.com/gogather/com"
 	"github.com/gogather/com/log"
+	"github.com/gojudge/ojsite/models"
 	"strings"
 	"time"
 )

@@ -2,10 +2,10 @@ package api
 
 import (
 	// "github.com/astaxie/beego"
-	"github.com/duguying/ojsite/controllers"
-	"github.com/duguying/ojsite/models"
-	"github.com/duguying/ojsite/utils"
 	"github.com/gogather/com/log"
+	"github.com/gojudge/ojsite/controllers"
+	"github.com/gojudge/ojsite/models"
+	"github.com/gojudge/ojsite/utils"
 	"strconv"
 )
 

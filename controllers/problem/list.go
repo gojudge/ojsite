@@ -1,9 +1,9 @@
 package problem
 
 import (
-	"github.com/duguying/ojsite/controllers"
-	"github.com/duguying/ojsite/models"
 	"github.com/gogather/com/log"
+	"github.com/gojudge/ojsite/controllers"
+	"github.com/gojudge/ojsite/models"
 )
 
 type ProblemListController struct {

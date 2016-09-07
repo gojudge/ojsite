@@ -2,7 +2,7 @@ package initial
 
 import (
 	"github.com/astaxie/beego"
-	"github.com/duguying/ojsite/judger"
+	"github.com/gojudge/ojsite/judger"
 )
 
 // connect judger and login

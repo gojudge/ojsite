@@ -2,8 +2,8 @@ package models
 
 import (
 	"github.com/astaxie/beego/orm"
-	"github.com/duguying/ojsite/judger"
 	"github.com/gogather/com/log"
+	"github.com/gojudge/ojsite/judger"
 	"time"
 )
 

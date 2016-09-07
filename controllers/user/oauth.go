@@ -3,10 +3,10 @@ package user
 import (
 	// "fmt"
 	"github.com/astaxie/beego"
-	"github.com/duguying/ojsite/controllers"
-	"github.com/duguying/ojsite/models"
 	"github.com/gogather/com/log"
 	"github.com/gogather/oauth"
+	"github.com/gojudge/ojsite/controllers"
+	"github.com/gojudge/ojsite/models"
 )
 
 // github oauth

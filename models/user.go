@@ -4,9 +4,9 @@ import (
 	"errors"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
-	"github.com/duguying/ojsite/utils"
 	"github.com/gogather/com"
 	"github.com/gogather/com/log"
+	"github.com/gojudge/ojsite/utils"
 	"time"
 )
 

@@ -2,8 +2,8 @@ package task
 
 import (
 	"github.com/astaxie/beego"
-	"github.com/duguying/ojsite/judger"
 	"github.com/gogather/com/log"
+	"github.com/gojudge/ojsite/judger"
 )
 
 func CheckJudger() error {

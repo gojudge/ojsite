@@ -3,8 +3,8 @@ package initial
 import (
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/toolbox"
-	"github.com/duguying/ojsite/task"
 	"github.com/gogather/com/log"
+	"github.com/gojudge/ojsite/task"
 )
 
 func InitCron() {

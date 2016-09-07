@@ -1,20 +1,20 @@
 package initial
 
 import (
-	"github.com/duguying/ojsite/routers"
 	"github.com/gogather/com"
 	"github.com/gogather/com/log"
+	"github.com/gojudge/ojsite/routers"
 )
 
 // 初始化
 func Initialize() {
-	CheckTplVersion()
+	//CheckTplVersion()
 
-	InitLang()
-	InitTplFunc()
-	InitSql()
-	InitJudger()
-	InitCron()
+	//InitLang()
+	//InitTplFunc()
+	//InitSql()
+	//InitJudger()
+	//InitCron()
 
 	routers.Init()
 }

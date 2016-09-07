@@ -66,6 +66,6 @@ console.red = function (text) {
 	console.log("%c"+text, "color:red;font-weight:bolder")
 }
 
-console.log("%c","padding:16px 24px;line-height:40px;background:url('http://oj.duguying.net/static/img/favicon.ico') no-repeat")
+console.log("%c","padding:16px 24px;line-height:40px;background:url('http://oj.gojudge.net/static/img/favicon.ico') no-repeat")
 console.log("%cwelcome to Goj front-end debug console.","color:blue;font-weight:bolder;font-size:20px")
 console.green("you can join us. QQ group: 235149571")

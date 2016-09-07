@@ -1,0 +1,20 @@
+{% extends "common/layout.html" %}
+{% block content %}
+        <div class="install-page">
+            <div class="intro"></div>
+            <div class="db-area">
+                <div>
+                    <span>数据库地址</span> <span><input type="text" name="db-url"></span>
+                    <span>数据库用户</span> <span><input type="text" name="db-user"></span>
+                    <span>数据库密码</span> <span><input type="text" name="db-pwd"></span>
+                    <span>数据库端口</span> <span><input type="text" name="db-port" value="3306"></span>
+                    <span>数据库名称</span> <span><input type="text" name="db-name"></span>
+                </div>
+            </div>
+            <div class="admin-area">
+                <span>管理员用户</span> <span><input type="text" name="admin-user"></span>
+                <span>管理员密码</span> <span><input type="text" name="admin-pwd"></span>
+            </div>
+        
+        </div>
+{% endblock %}

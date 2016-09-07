@@ -1,0 +1,349 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'vue',
+1 verbose cli   'vue-resources',
+1 verbose cli   'bootstrap',
+1 verbose cli   '--save',
+1 verbose cli   '-d' ]
+2 info using npm@2.14.7
+3 info using node@v4.2.2
+4 verbose install initial load of /Users/Laily/go_data/src/github.com/Laily123/ojsite/views/package.json
+5 warn package.json views@1.0.0 No description
+6 warn package.json views@1.0.0 No repository field.
+7 warn package.json views@1.0.0 No README data
+8 verbose readDependencies loading dependencies from /Users/Laily/go_data/src/github.com/Laily123/ojsite/views/package.json
+9 silly cache add args [ 'vue', null ]
+10 verbose cache add spec vue
+11 silly cache add args [ 'vue-resources', null ]
+12 verbose cache add spec vue-resources
+13 silly cache add args [ 'bootstrap', null ]
+14 verbose cache add spec bootstrap
+15 silly cache add parsed spec Result {
+15 silly cache add   raw: 'vue',
+15 silly cache add   scope: null,
+15 silly cache add   name: 'vue',
+15 silly cache add   rawSpec: '',
+15 silly cache add   spec: '*',
+15 silly cache add   type: 'range' }
+16 silly addNamed vue@*
+17 verbose addNamed "*" is a valid semver range for vue
+18 silly addNameRange { name: 'vue', range: '*', hasData: false }
+19 silly mapToRegistry name vue
+20 silly mapToRegistry using default registry
+21 silly mapToRegistry registry https://registry.npm.taobao.org/
+22 silly mapToRegistry uri https://registry.npm.taobao.org/vue
+23 verbose addNameRange registry:https://registry.npm.taobao.org/vue not in flight; fetching
+24 silly cache add parsed spec Result {
+24 silly cache add   raw: 'vue-resources',
+24 silly cache add   scope: null,
+24 silly cache add   name: 'vue-resources',
+24 silly cache add   rawSpec: '',
+24 silly cache add   spec: '*',
+24 silly cache add   type: 'range' }
+25 silly addNamed vue-resources@*
+26 verbose addNamed "*" is a valid semver range for vue-resources
+27 silly addNameRange { name: 'vue-resources', range: '*', hasData: false }
+28 silly mapToRegistry name vue-resources
+29 silly mapToRegistry using default registry
+30 silly mapToRegistry registry https://registry.npm.taobao.org/
+31 silly mapToRegistry uri https://registry.npm.taobao.org/vue-resources
+32 verbose addNameRange registry:https://registry.npm.taobao.org/vue-resources not in flight; fetching
+33 silly cache add parsed spec Result {
+33 silly cache add   raw: 'bootstrap',
+33 silly cache add   scope: null,
+33 silly cache add   name: 'bootstrap',
+33 silly cache add   rawSpec: '',
+33 silly cache add   spec: '*',
+33 silly cache add   type: 'range' }
+34 silly addNamed bootstrap@*
+35 verbose addNamed "*" is a valid semver range for bootstrap
+36 silly addNameRange { name: 'bootstrap', range: '*', hasData: false }
+37 silly mapToRegistry name bootstrap
+38 silly mapToRegistry using default registry
+39 silly mapToRegistry registry https://registry.npm.taobao.org/
+40 silly mapToRegistry uri https://registry.npm.taobao.org/bootstrap
+41 verbose addNameRange registry:https://registry.npm.taobao.org/bootstrap not in flight; fetching
+42 verbose request uri https://registry.npm.taobao.org/vue-resources
+43 verbose request no auth needed
+44 info attempt registry request try #1 at 12:00:48
+45 verbose request id 176d74791dfb1167
+46 http request GET https://registry.npm.taobao.org/vue-resources
+47 verbose request uri https://registry.npm.taobao.org/bootstrap
+48 verbose request no auth needed
+49 info attempt registry request try #1 at 12:00:48
+50 http request GET https://registry.npm.taobao.org/bootstrap
+51 verbose request uri https://registry.npm.taobao.org/vue
+52 verbose request no auth needed
+53 info attempt registry request try #1 at 12:00:48
+54 verbose etag "29bb2-Z78vjZrCpcPCp38NahMUKA"
+55 http request GET https://registry.npm.taobao.org/vue
+56 http 200 https://registry.npm.taobao.org/bootstrap
+57 verbose headers { date: 'Thu, 31 Mar 2016 04:00:49 GMT',
+57 verbose headers   'content-type': 'application/json; charset=utf-8',
+57 verbose headers   'content-length': '32860',
+57 verbose headers   connection: 'keep-alive',
+57 verbose headers   etag: '"805c-Kn7nRgq4Vp2zLaMGUrG+oA"',
+57 verbose headers   'x-readtime': '50' }
+58 silly get cb [ 200,
+58 silly get   { date: 'Thu, 31 Mar 2016 04:00:49 GMT',
+58 silly get     'content-type': 'application/json; charset=utf-8',
+58 silly get     'content-length': '32860',
+58 silly get     connection: 'keep-alive',
+58 silly get     etag: '"805c-Kn7nRgq4Vp2zLaMGUrG+oA"',
+58 silly get     'x-readtime': '50' } ]
+59 verbose get saving bootstrap to /Users/Laily/.npm/registry.npm.taobao.org/bootstrap/.cache.json
+60 silly addNameRange number 2 { name: 'bootstrap', range: '*', hasData: true }
+61 silly addNameRange versions [ 'bootstrap',
+61 silly addNameRange   [ '4.0.0-alpha.2',
+61 silly addNameRange     '3.3.6',
+61 silly addNameRange     '3.3.5',
+61 silly addNameRange     '3.3.4',
+61 silly addNameRange     '3.3.2',
+61 silly addNameRange     '3.3.1',
+61 silly addNameRange     '3.3.0',
+61 silly addNameRange     '3.2.0',
+61 silly addNameRange     '3.1.1',
+61 silly addNameRange     '0.0.2',
+61 silly addNameRange     '0.0.1' ] ]
+62 silly addNamed bootstrap@3.3.6
+63 verbose addNamed "3.3.6" is a plain semver version for bootstrap
+64 silly mapToRegistry name bootstrap
+65 silly mapToRegistry using default registry
+66 silly mapToRegistry registry https://registry.npm.taobao.org/
+67 silly mapToRegistry uri https://registry.npm.taobao.org/bootstrap
+68 verbose addRemoteTarball https://registry.npm.taobao.org/bootstrap/download/bootstrap-3.3.6.tgz not in flight; adding
+69 verbose addRemoteTarball [ 'https://registry.npm.taobao.org/bootstrap/download/bootstrap-3.3.6.tgz',
+69 verbose addRemoteTarball   '8de8f749dc8a743f2ac5b510d988371e3daa6589' ]
+70 info retry fetch attempt 1 at 12:00:48
+71 info attempt registry request try #1 at 12:00:48
+72 http fetch GET https://registry.npm.taobao.org/bootstrap/download/bootstrap-3.3.6.tgz
+73 http 200 https://registry.npm.taobao.org/vue
+74 verbose headers { date: 'Thu, 31 Mar 2016 04:00:49 GMT',
+74 verbose headers   'content-type': 'application/json; charset=utf-8',
+74 verbose headers   'content-length': '253017',
+74 verbose headers   connection: 'keep-alive',
+74 verbose headers   etag: '"3dc59-cJWNWQ1ntKrdyvPXvZV6wA"',
+74 verbose headers   'x-readtime': '94' }
+75 silly get cb [ 200,
+75 silly get   { date: 'Thu, 31 Mar 2016 04:00:49 GMT',
+75 silly get     'content-type': 'application/json; charset=utf-8',
+75 silly get     'content-length': '253017',
+75 silly get     connection: 'keep-alive',
+75 silly get     etag: '"3dc59-cJWNWQ1ntKrdyvPXvZV6wA"',
+75 silly get     'x-readtime': '94' } ]
+76 verbose get saving vue to /Users/Laily/.npm/registry.npm.taobao.org/vue/.cache.json
+77 silly addNameRange number 2 { name: 'vue', range: '*', hasData: true }
+78 silly addNameRange versions [ 'vue',
+78 silly addNameRange   [ '1.0.20-csp',
+78 silly addNameRange     '1.0.20',
+78 silly addNameRange     '1.0.19-csp',
+78 silly addNameRange     '1.0.19',
+78 silly addNameRange     '1.0.18-csp',
+78 silly addNameRange     '1.0.18',
+78 silly addNameRange     '1.0.17-csp',
+78 silly addNameRange     '1.0.17',
+78 silly addNameRange     '1.0.16-csp',
+78 silly addNameRange     '1.0.16',
+78 silly addNameRange     '1.0.15-csp',
+78 silly addNameRange     '1.0.15',
+78 silly addNameRange     '1.0.14-csp',
+78 silly addNameRange     '1.0.14',
+78 silly addNameRange     '1.0.13-csp',
+78 silly addNameRange     '1.0.13',
+78 silly addNameRange     '1.0.12-csp-1',
+78 silly addNameRange     '1.0.12-csp',
+78 silly addNameRange     '1.0.12',
+78 silly addNameRange     '1.0.11-csp',
+78 silly addNameRange     '1.0.11',
+78 silly addNameRange     '1.0.10-csp',
+78 silly addNameRange     '1.0.10',
+78 silly addNameRange     '1.0.9',
+78 silly addNameRange     '1.0.8',
+78 silly addNameRange     '1.0.7',
+78 silly addNameRange     '1.0.6',
+78 silly addNameRange     '1.0.5',
+78 silly addNameRange     '1.0.4',
+78 silly addNameRange     '1.0.3',
+78 silly addNameRange     '1.0.2',
+78 silly addNameRange     '1.0.1',
+78 silly addNameRange     '1.0.0',
+78 silly addNameRange     '1.0.0-migration',
+78 silly addNameRange     '1.0.0-csp',
+78 silly addNameRange     '1.0.0-rc.2',
+78 silly addNameRange     '1.0.0-rc.2-migration',
+78 silly addNameRange     '1.0.0-rc.1',
+78 silly addNameRange     '1.0.0-beta.4',
+78 silly addNameRange     '1.0.0-alpha.8',
+78 silly addNameRange     '1.0.0-beta.3',
+78 silly addNameRange     '1.0.0-alpha.7',
+78 silly addNameRange     '1.0.0-beta.2',
+78 silly addNameRange     '1.0.0-alpha.6',
+78 silly addNameRange     '0.12.16-csp',
+78 silly addNameRange     '0.12.16',
+78 silly addNameRange     '1.0.0-beta.1',
+78 silly addNameRange     '1.0.0-alpha.5',
+78 silly addNameRange     '0.12.15-csp',
+78 silly addNameRange     '0.12.15',
+78 silly addNameRange     '1.0.0-alpha.4',
+78 silly addNameRange     '0.12.14-csp',
+78 silly addNameRange     '0.12.14',
+78 silly addNameRange     '1.0.0-alpha.3',
+78 silly addNameRange     '0.12.13-csp',
+78 silly addNameRange     '0.12.13',
+78 silly addNameRange     '1.0.0-alpha.2',
+78 silly addNameRange     '1.0.0-alpha.1',
+78 silly addNameRange     '0.12.12-csp',
+78 silly addNameRange     '0.12.12',
+78 silly addNameRange     '0.12.11-csp',
+78 silly addNameRange     '0.12.11',
+78 silly addNameRange     '0.12.10-csp',
+78 silly addNameRange     '0.12.10',
+78 silly addNameRange     '0.12.9-csp',
+78 silly addNameRange     '0.12.9',
+78 silly addNameRange     '0.12.8-csp',
+78 silly addNameRange     '0.12.8',
+78 silly addNameRange     '0.12.7-csp',
+78 silly addNameRange     '0.12.7',
+78 silly addNameRange     '0.12.6-csp',
+78 silly addNameRange     '0.12.6',
+78 silly addNameRange     '0.12.5-csp',
+78 silly addNameRange     '0.12.5',
+78 silly addNameRange     '0.12.4',
+78 silly addNameRange     '0.12.3',
+78 silly addNameRange     '0.12.2',
+78 silly addNameRange     '0.12.1-csp.2',
+78 silly addNameRange     '0.12.1-csp.1',
+78 silly addNameRange     '0.12.1-csp',
+78 silly addNameRange     '0.12.1',
+78 silly addNameRange     '0.12.0-csp',
+78 silly addNameRange     '0.12.0',
+78 silly addNameRange     '0.12.0-rc2',
+78 silly addNameRange     '0.12.0-rc',
+78 silly addNameRange     '0.12.0-beta5',
+78 silly addNameRange     '0.12.0-beta4',
+78 silly addNameRange     '0.12.0-beta3',
+78 silly addNameRange     '0.12.0-beta2',
+78 silly addNameRange     '0.12.0-beta1',
+78 silly addNameRange     '0.11.10',
+78 silly addNameRange     '0.11.9',
+78 silly addNameRange     '0.11.8',
+78 silly addNameRange     '0.11.7',
+78 silly addNameRange     '0.11.6',
+78 silly addNameRange     '0.11.5',
+78 silly addNameRange     '0.11.4',
+78 silly addNameRange     '0.11.3',
+78 silly addNameRange     '0.11.2',
+78 silly addNameRange     '0.11.1',
+78 silly addNameRange     '0.11.0',
+78 silly addNameRange     '0.11.0-rc3',
+78 silly addNameRange     '0.11.0-rc2',
+78 silly addNameRange     '0.11.0-rc',
+78 silly addNameRange     '0.10.6',
+78 silly addNameRange     '0.10.5',
+78 silly addNameRange     '0.10.4',
+78 silly addNameRange     '0.10.3',
+78 silly addNameRange     '0.10.2',
+78 silly addNameRange     '0.10.1',
+78 silly addNameRange     '0.10.0',
+78 silly addNameRange     '0.9.3',
+78 silly addNameRange     '0.9.2',
+78 silly addNameRange     '0.9.1',
+78 silly addNameRange     '0.9.0',
+78 silly addNameRange     '0.8.8',
+78 silly addNameRange     '0.8.7',
+78 silly addNameRange     '0.8.6',
+78 silly addNameRange     '0.8.4',
+78 silly addNameRange     '0.8.3',
+78 silly addNameRange     '0.8.2',
+78 silly addNameRange     '0.8.1',
+78 silly addNameRange     '0.8.0',
+78 silly addNameRange     '0.7.6',
+78 silly addNameRange     '0.7.5',
+78 silly addNameRange     '0.7.4',
+78 silly addNameRange     '0.7.3',
+78 silly addNameRange     '0.7.1',
+78 silly addNameRange     '0.7.0',
+78 silly addNameRange     '0.6.0',
+78 silly addNameRange     '0.0.0' ] ]
+79 silly addNamed vue@1.0.20
+80 verbose addNamed "1.0.20" is a plain semver version for vue
+81 silly mapToRegistry name vue
+82 silly mapToRegistry using default registry
+83 silly mapToRegistry registry https://registry.npm.taobao.org/
+84 silly mapToRegistry uri https://registry.npm.taobao.org/vue
+85 verbose addRemoteTarball https://registry.npm.taobao.org/vue/download/vue-1.0.20.tgz not in flight; adding
+86 verbose addRemoteTarball [ 'https://registry.npm.taobao.org/vue/download/vue-1.0.20.tgz',
+86 verbose addRemoteTarball   '8426deb6a6ba8aed998b816701e45ac4751b8e4d' ]
+87 info retry fetch attempt 1 at 12:00:49
+88 info attempt registry request try #1 at 12:00:49
+89 http fetch GET https://registry.npm.taobao.org/vue/download/vue-1.0.20.tgz
+90 http fetch 200 https://registry.npm.taobao.org/vue/download/vue-1.0.20.tgz
+91 http fetch 200 https://registry.npm.taobao.org/bootstrap/download/bootstrap-3.3.6.tgz
+92 silly fetchAndShaCheck shasum 8426deb6a6ba8aed998b816701e45ac4751b8e4d
+93 verbose addTmpTarball /var/folders/dx/hss450150y19g1wp3tc9p4dm0000gn/T/npm-44906-6ec431bd/registry.npm.taobao.org/vue/download/vue-1.0.20.tgz not in flight; adding
+94 verbose addTmpTarball already have metadata; skipping unpack for vue@1.0.20
+95 silly cache afterAdd vue@1.0.20
+96 verbose afterAdd /Users/Laily/.npm/vue/1.0.20/package/package.json not in flight; writing
+97 verbose afterAdd /Users/Laily/.npm/vue/1.0.20/package/package.json written
+98 silly fetchAndShaCheck shasum 8de8f749dc8a743f2ac5b510d988371e3daa6589
+99 verbose addTmpTarball /var/folders/dx/hss450150y19g1wp3tc9p4dm0000gn/T/npm-44906-6ec431bd/registry.npm.taobao.org/bootstrap/download/bootstrap-3.3.6.tgz not in flight; adding
+100 verbose addTmpTarball already have metadata; skipping unpack for bootstrap@3.3.6
+101 silly cache afterAdd bootstrap@3.3.6
+102 verbose afterAdd /Users/Laily/.npm/bootstrap/3.3.6/package/package.json not in flight; writing
+103 verbose afterAdd /Users/Laily/.npm/bootstrap/3.3.6/package/package.json written
+104 http 404 https://registry.npm.taobao.org/vue-resources
+105 verbose headers { 'content-type': 'application/json',
+105 verbose headers   'cache-control': 'max-age=0',
+105 verbose headers   'content-length': '2',
+105 verbose headers   'accept-ranges': 'bytes',
+105 verbose headers   date: 'Thu, 31 Mar 2016 04:00:52 GMT',
+105 verbose headers   via: '1.1 varnish',
+105 verbose headers   age: '0',
+105 verbose headers   connection: 'close',
+105 verbose headers   'x-served-by': 'cache-nrt6131-NRT',
+105 verbose headers   'x-cache': 'MISS',
+105 verbose headers   'x-cache-hits': '0',
+105 verbose headers   'x-timer': 'S1459396852.054568,VS0,VE554' }
+106 silly get cb [ 404,
+106 silly get   { 'content-type': 'application/json',
+106 silly get     'cache-control': 'max-age=0',
+106 silly get     'content-length': '2',
+106 silly get     'accept-ranges': 'bytes',
+106 silly get     date: 'Thu, 31 Mar 2016 04:00:52 GMT',
+106 silly get     via: '1.1 varnish',
+106 silly get     age: '0',
+106 silly get     connection: 'close',
+106 silly get     'x-served-by': 'cache-nrt6131-NRT',
+106 silly get     'x-cache': 'MISS',
+106 silly get     'x-cache-hits': '0',
+106 silly get     'x-timer': 'S1459396852.054568,VS0,VE554' } ]
+107 verbose stack Error: Registry returned 404 for GET on https://registry.npm.taobao.org/vue-resources
+107 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+107 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:242:14)
+107 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+107 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:198:22)
+107 verbose stack     at emitTwo (events.js:87:13)
+107 verbose stack     at Request.emit (events.js:172:7)
+107 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1063:14)
+107 verbose stack     at emitOne (events.js:82:20)
+107 verbose stack     at Request.emit (events.js:169:7)
+107 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1009:12)
+108 verbose statusCode 404
+109 verbose pkgid vue-resources
+110 verbose cwd /Users/Laily/go_data/src/github.com/Laily123/ojsite/views
+111 error Darwin 14.5.0
+112 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install" "vue" "vue-resources" "bootstrap" "--save" "-d"
+113 error node v4.2.2
+114 error npm  v2.14.7
+115 error code E404
+116 error 404 Registry returned 404 for GET on https://registry.npm.taobao.org/vue-resources
+116 error 404
+116 error 404 'vue-resources' is not in the npm registry.
+116 error 404 You should bug the author to publish it (or use the name yourself!)
+116 error 404 It was specified as a dependency of 'views'
+116 error 404
+116 error 404 Note that you can also install from a
+116 error 404 tarball, folder, http url, or git url.
+117 verbose exit [ 1, true ]
