@@ -14,6 +14,7 @@ func Init() *echo.Echo {
 	e.SetRenderer(r)
 
 	e.Get("/", controllers.Index)
+	e.Get("/install", controllers.Install)
 
 	return e
 
