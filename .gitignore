@@ -14,11 +14,17 @@ output
 
 # static
 /static/dist/
+/static/node_modules/
+
 # static map
 /map.json
 
 # custom config
 /custom/app.conf
+/custom/conf.ini
+
+# mac system file
+/**/.DS_Store
 
 # log
 /nohup.out
