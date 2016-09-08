@@ -2,6 +2,7 @@
 *.exe
 ojsite
 output
+main
 
 # swap
 *~
