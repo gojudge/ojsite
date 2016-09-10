@@ -11,8 +11,8 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- 导出 goj 的数据库结构
-CREATE DATABASE IF NOT EXISTS `goj` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `goj`;
+-- CREATE DATABASE IF NOT EXISTS `goj` /*!40100 DEFAULT CHARACTER SET utf8 */;
+-- USE `goj`;
 
 
 -- 导出  表 goj.judger 结构

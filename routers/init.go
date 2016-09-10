@@ -13,8 +13,16 @@ func Init() *echo.Echo {
 	r := pongor.GetRenderer()
 	e.SetRenderer(r)
 
+	e.Static("static", "static/dist")
+	e.Static("staticasset", "static/asset")
+
 	e.Get("/", controllers.Index)
-	e.Get("/install", controllers.Install)
+
+	rInstall := e.Group("/install")
+	{
+		rInstall.Get("/index", controllers.InstallIndex)
+		rInstall.Post("/do_submit", controllers.InstallDoSubmit)
+	}
 
 	return e
 

@@ -22,7 +22,7 @@ main
 
 # custom config
 /custom/app.conf
-/custom/conf.ini
+/conf/conf.ini
 
 # mac system file
 /**/.DS_Store

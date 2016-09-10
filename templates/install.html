@@ -1,21 +1,48 @@
 {% extends "common/layout.html" %}
 {% block title %} 安装 {% endblock %}
 {% block content %}
+<link rel="stylesheet" href="/static/css/install.css" type="text/css" >
+<script type="text/javascript" src="/static/js/install.js"></script>
         <div class="install-page">
-            <div class="intro"></div>
-            <div class="db-area">
-                <div>
-                    <span>数据库地址</span> <span><input type="text" name="db-url"></span>
-                    <span>数据库用户</span> <span><input type="text" name="db-user"></span>
-                    <span>数据库密码</span> <span><input type="text" name="db-pwd"></span>
-                    <span>数据库端口</span> <span><input type="text" name="db-port" value="3306"></span>
-                    <span>数据库名称</span> <span><input type="text" name="db-name"></span>
+            <div class="intro">
+                <h1>欢迎安装 Goj</h1>
+                <h3 class="sub-title">你需要简单填写以下资料完成安装。</h3>
+            </div>
+            <div class="db-area area">
+                <div class="title">数据库信息</div>
+                <div class="db-info">
+                    <div class="row">
+                    <span class="lable">数据库地址</span> <span class="ui input"><input type="text" name="db-url"></span>
+                    </div>
+                    <div class="row">
+                    <span class="lable">数据库用户</span> <span class="ui input"><input type="text" name="db-user"></span>
+                    </div>
+                    <div class="row">
+                    <span class="lable">数据库密码</span> <span class="ui input"><input type="text" name="db-pwd"></span>
+                    </div>
+                    <div class="row">
+                    <span class="lable">数据库端口</span> <span class="ui input"><input type="text" name="db-port" value="3306"></span>
+                    </div>
+                    <div class="row">
+                        <span class="lable">数据库名称</span> <span class="ui input"><input type="text" name="db-name"></span>
+                    </div>
                 </div>
             </div>
-            <div class="admin-area">
-                <span>管理员用户</span> <span><input type="text" name="admin-user"></span>
-                <span>管理员密码</span> <span><input type="text" name="admin-pwd"></span>
+            <div class="admin-area area">
+                <div class="title">管理员信息</div>
+                <div class="admin-info">
+                    <div class="row">
+                        <span class="lable">管理员用户</span> <span class="ui input"><input  type="text" name="admin-user"></span>
+                    </div>
+                    <div class="row">
+                        <span class="lable">管理员密码</span> <span class="ui input"><input  type="text" name="admin-pwd"></span>
+                    </div>
+                </div>
             </div>
-        
+            <div class="button">
+                <button class="ui primary button" onclick="area.submit()">下一步</button>
+            </div>
+
+
         </div>
 {% endblock %}

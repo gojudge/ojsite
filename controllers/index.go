@@ -14,16 +14,36 @@ func Index(c echo.Context) error {
 		fmt.Println("config is nil")
 		var err error
 		global.Config, err = service.ConfigLoad()
-		if true || err != nil {
-			Install(c)
+		if err != nil {
+			InstallIndex(c)
 			fmt.Println("install page")
 			return nil
 		}
 	}
-	service.DBInit()
-	return c.Render(http.StatusOK, "index1.html", nil)
+	return c.Render(http.StatusOK, "index.html", nil)
 }
 
-func Install(c echo.Context) error {
+func InstallIndex(c echo.Context) error {
 	return c.Render(http.StatusOK, "install.html", nil)
+}
+
+// InstallDoSubmit to init a new database
+func InstallDoSubmit(c echo.Context) error {
+	dburl := c.FormValue("dburl")
+	dbport := c.FormValue("dbport")
+	dbuser := c.FormValue("dbuser")
+	dbpwd := c.FormValue("dbpwd")
+	dbname := c.FormValue("dbname")
+	adminuser := c.FormValue("admin-user")
+	adminpwd := c.FormValue("adminpwd")
+	err := service.DBInit(dburl, dbport, dbuser, dbpwd, dbname, adminuser, adminpwd)
+	res := make(map[string]interface{})
+	res["success"] = true
+	if err != nil {
+		res["success"] = false
+		res["msg"] = err
+		return c.JSON(http.StatusOK, res)
+	}
+	Index(c)
+	return nil
 }
