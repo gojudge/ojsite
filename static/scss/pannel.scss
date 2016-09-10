@@ -1,0 +1,115 @@
+@import 'global';
+
+.main{
+	.pannel{
+		clear: both;
+		
+		.main-pannel{
+
+			.problem-list,.audit-list,.list-banner{
+				margin: 0 0 10px 0;
+
+				ul{
+					li{
+						list-style: none;
+
+						ul{
+							overflow: hidden;
+							padding: 5px;
+
+							li{
+								float: left;
+								min-height: 24px;
+							}
+
+							.item-id{
+								width: 50px;
+							}
+
+							.item-title{
+								width: 170px;
+							}
+
+							.item-type{
+								width: 50px;
+							}
+
+							.item-time{
+								width: 180px;
+							}
+
+							.item-right{
+								float: right;
+								padding-left: 10px;
+
+								a{
+									color: #444444;
+								}
+
+								.del{
+									color: $fg-danger;
+								}
+
+								.edit{
+									color: $theme-color;
+								}
+
+								.check{
+									color: darken($bg-success,30%);
+								}
+
+							}
+
+							.item-nav{
+								cursor: pointer;
+
+								.disabled{
+									display: none;
+								}
+							}
+
+						}
+					}
+
+					.item:first-child{
+						@extend .list-header;
+
+						&:hover{
+							@extend .list-header;
+						}
+					}
+
+					.item{
+						border: 1px solid #ddd;
+						border-bottom: none;
+
+						&:hover{
+							background-color: #ffe;
+						}
+					}
+
+					.item:last-child{
+						@extend .last-item;
+					}
+				}
+			}
+
+			.list-banner{
+				ul{
+					.item{
+						background-color: lighten($theme-color, 40%) !important;
+						border-color: lighten($theme-color, 10%) !important;
+						
+					}
+
+					*{
+						color: darken($theme-color, 20%);
+					}
+				}
+				
+			}
+		}
+	}
+}
+
+

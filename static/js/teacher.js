@@ -1,0 +1,1 @@
+__inline("teacher/pannel.js")

@@ -1,0 +1,114 @@
+@import 'global';
+
+.main{
+	.login{
+		margin: 0 auto;
+		max-width: 500px;
+		background: $container-color;
+		padding: 10px;
+		border-radius: 6px;
+
+		form{
+			ul{
+				text-align: center;
+
+				li{
+					list-style: none;
+					margin: 10px 0 0 0;
+
+					input{
+						width: 200px;
+					}
+
+					.btn{
+						float: left;
+						margin: 5px;
+					}
+
+					.oauth-login{
+						.octicon{
+							vertical-align: middle;
+						}
+					}
+
+					label{
+						width: 70px;
+						text-align: right;
+						display: inline-block;
+						margin: 0 10px 0 0;
+					}
+				}
+
+				.login-btns{
+					display: inline-block;
+				}
+			}
+		}
+
+		
+	}
+
+	.binding-confirm{
+		form{
+			ul{
+				li{
+					label{
+						width: 100px;
+					}
+					
+					.avatars{
+						height: 90px;
+						padding: 20px;
+
+						img{
+							width: 60px;
+							height: 60px;
+							position: relative;
+							border-radius: 6px;
+							border: 6px solid white;
+						}
+						.github-avatar{
+							left: 20px;
+							top: -10px;
+						}
+						.goj-avatar{
+							left: -20px;
+							top: 20px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.main{
+	.login{
+		.title{
+			display: inherit;
+			text-align: center;
+		}
+
+		form{
+			ul{
+				.school-logo{
+					position: absolute;
+					margin: 0px;
+					padding-left: 60px;
+
+					i{
+						font-size: 60px;
+					}
+				}
+
+				.login-btns{
+					.btn{
+						i.octicon{
+							margin-right: 5px;
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,67 @@
+.install-page{
+    margin: 1em auto;
+    width: 80%;
+    .intro{
+        text-align: center;
+        margin-top: 4em;
+        .sub-title{
+            line-height: 3em;
+            color: #999;
+        }
+    }
+    .area{
+        margin-top: 2em;
+        .title{
+            border-bottom: solid 0.1em #ddd;
+            font-size: 1.5em;
+            height: 2em;
+        }
+    }
+    .db-area{
+        margin: 2em auto 2em auto;
+        width: 70%;
+        .title{
+
+        }
+        .db-info{
+            margin-left: 3em;
+            font-size: 1.2em;
+            color: #777;
+            .input{
+                height: 2em;
+                width: 15em;
+            }
+            .row{
+                margin: 1em 0;
+                .lable{
+                    display: inline-block;
+                    width: 8em;
+                }
+            }
+        }
+    }
+    .admin-area{
+        width: 70%;
+        margin: 2em auto;
+        .admin-info{
+            margin-left: 3em;
+            font-size: 1.2em;
+            color: #777;
+
+            .input{
+                height: 2em;
+                width: 15em;
+            }
+            .row{
+                margin: 1em 0;
+                .lable{
+                    display: inline-block;
+                    width: 8em;
+                }
+            }
+        }
+    }
+    .button{
+         text-align: center;
+    }
+}
