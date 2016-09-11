@@ -3,6 +3,7 @@ package routers
 import (
 	"github.com/echo-contrib/pongor"
 	"github.com/gojudge/ojsite/controllers"
+	//"github.com/gojudge/ojsite/middleware"
 	"github.com/labstack/echo"
 )
 
@@ -13,6 +14,8 @@ func Init() *echo.Echo {
 	r := pongor.GetRenderer()
 	e.SetRenderer(r)
 
+	//e.Use(middleware.CheckConfig)
+
 	e.Static("static", "static/dist")
 	e.Static("staticasset", "static/asset")
 
@@ -20,8 +23,8 @@ func Init() *echo.Echo {
 
 	rInstall := e.Group("/install")
 	{
-		rInstall.Get("/index", controllers.InstallIndex)
 		rInstall.Post("/do_submit", controllers.InstallDoSubmit)
+		rInstall.Get("/", controllers.InstallIndex)
 	}
 
 	return e

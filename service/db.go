@@ -15,17 +15,13 @@ var engine *xorm.Engine
 // 初始化数据库，检查数据库用户名，密码是否正确
 func DBInit(url, port, user, pwd, name, adminuser, adminpwd string) error {
 	var err error
-	engine, err = xorm.NewEngine("mysql", fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8", user, pwd, url, port, name))
+	_, err = DBGetEngine(url, port, user, pwd, name)
 	if err != nil {
 		fmt.Println(err)
 		return err
 	}
-	err = engine.Ping()
-	if err != nil {
-		fmt.Println("connect error")
-		fmt.Println(err)
-		return err
-	}
+	fmt.Println("global config")
+	fmt.Println(global.Config)
 	global.Config.SetValue("database", "dburl", url)
 	global.Config.SetValue("database", "dbport", port)
 	global.Config.SetValue("database", "dbuser", user)
@@ -43,7 +39,7 @@ func DBInit(url, port, user, pwd, name, adminuser, adminpwd string) error {
 		fmt.Println(err)
 	}
 	// if table user is exsit, go back, otherwise import a sql file
-	// 如果数据库中有数据，直接返回，否则倒入初始化数据
+	// 如果数据库中有数据，直接返回，否则导入初始化数据
 	if exist {
 		fmt.Println("sql exist")
 		return nil
@@ -61,6 +57,29 @@ func DBInit(url, port, user, pwd, name, adminuser, adminpwd string) error {
 	return nil
 }
 
-func InstallApp() {
+// DBGetEngine to get a new xorm engine
+func DBGetEngine(url, port, user, pwd, name string) (*xorm.Engine, error) {
+	var err error
+	engine, err = xorm.NewEngine("mysql", fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8", user, pwd, url, port, name))
+	if err != nil {
+		fmt.Println(err)
+		return nil, err
+	}
+	err = engine.Ping()
+	if err != nil {
+		fmt.Println("connect error")
+		fmt.Println(err)
+		return nil, err
+	}
+	return engine, nil
+}
 
+func DBGetEngineWithConfig() {
+	url, _ := global.Config.GetValue("database", "dburl")
+	port, _ := global.Config.GetValue("database", "dbport")
+	user, _ := global.Config.GetValue("database", "dbuser")
+	pwd, _ := global.Config.GetValue("database", "dbpwd")
+	name, _ := global.Config.GetValue("database", "dbname")
+
+	DBGetEngine(url, port, user, pwd, name)
 }

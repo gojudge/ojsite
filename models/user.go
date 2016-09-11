@@ -2,13 +2,15 @@ package models
 
 import (
 	"errors"
-	"github.com/astaxie/beego"
-	"github.com/astaxie/beego/orm"
+	"github.com/go-xorm/xorm"
 	"github.com/gogather/com"
 	"github.com/gogather/com/log"
+	"github.com/gojudge/ojsite/global"
 	"github.com/gojudge/ojsite/utils"
 	"time"
 )
+
+var engine *xorm.Engine
 
 type User struct {
 	Id           int
@@ -33,7 +35,6 @@ func (this *User) Register(userName string, password string, email string, nickN
 		nickName = userName + com.RandString(5) // gen the default nickname
 	}
 
-	o := orm.NewOrm()
 	var user User
 	user.Username = userName
 	user.Salt = com.RandString(7)
@@ -42,7 +43,7 @@ func (this *User) Register(userName string, password string, email string, nickN
 	user.Level = "user"
 	user.Nickname = nickName
 
-	return o.Insert(&user)
+	return engine.Insert(&user)
 }
 
 // user login
@@ -53,11 +54,11 @@ func (this *User) Login(userName string, password string) (bool, string) {
 		return false, ""
 	}
 
-	o := orm.NewOrm()
 	var user User
 	user.Username = userName
 
-	err := o.Read(&user, "Username")
+	var err error
+	_, err = engine.Get(&user)
 
 	if err != nil {
 		utils.Trace("查询不到")
@@ -77,22 +78,21 @@ func (this *User) Login(userName string, password string) (bool, string) {
 // return: User if successfully get
 //         error if getting failed, and User is empty
 func (this *User) GetUser(id int, username string, email string, nickname string) (User, error) {
-	o := orm.NewOrm()
 	var user User
 	var err error
 
 	if id > 0 {
 		user.Id = id
-		err = o.Read(&user, "Id")
+		_, err = engine.Get(&user)
 	} else if len(username) > 0 {
 		user.Username = username
-		err = o.Read(&user, "Username")
+		_, err = engine.Get(&user)
 	} else if len(email) > 0 {
 		user.Email = email
-		err = o.Read(&user, "Email")
+		_, err = engine.Get(&user)
 	} else if len(nickname) > 0 {
 		user.Nickname = nickname
-		err = o.Read(&user, "Nickname")
+		_, err = engine.Get(&user)
 	} else {
 		return user, errors.New("at least one parm")
 	}
@@ -104,7 +104,8 @@ func (this *User) GetUser(id int, username string, email string, nickname string
 func (this *User) GetAvatar(id int, username string, email string, nickname string) (string, error) {
 	user, err := this.GetUser(id, username, email, nickname)
 	if nil == err {
-		return beego.AppConfig.String("avatar") + com.Md5(user.Email), err
+		addr, _ := global.Config.GetValue("custom", "avatar")
+		return addr + com.Md5(user.Email), err
 	} else {
 		log.Warnln("GetAvatar Failed.", err)
 		return "", err

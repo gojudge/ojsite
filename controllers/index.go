@@ -10,14 +10,15 @@ import (
 
 func Index(c echo.Context) error {
 	//return c.String(http.StatusOK, "welcome")
-	if true || global.Config == nil {
+	if global.Config == nil {
 		fmt.Println("config is nil")
 		var err error
 		global.Config, err = service.ConfigLoad()
 		if err != nil {
-			InstallIndex(c)
 			fmt.Println("install page")
-			return nil
+			fmt.Println(global.Config)
+			//controllers.InstallIndex(c)
+			return InstallIndex(c)
 		}
 	}
 	return c.Render(http.StatusOK, "index.html", nil)
