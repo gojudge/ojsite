@@ -9,6 +9,11 @@ var area = {
             adminuser: $("[name=admin-user]").val(),
             adminpwd: $("[name=admin-pwd]").val()
         },function(data){
+            if(data.success){
+                location.href="/"
+            }else{
+
+            }
 
         })
     }

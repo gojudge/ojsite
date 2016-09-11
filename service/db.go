@@ -20,8 +20,6 @@ func DBInit(url, port, user, pwd, name, adminuser, adminpwd string) error {
 		fmt.Println(err)
 		return err
 	}
-	fmt.Println("global config")
-	fmt.Println(global.Config)
 	global.Config.SetValue("database", "dburl", url)
 	global.Config.SetValue("database", "dbport", port)
 	global.Config.SetValue("database", "dbuser", user)

@@ -15,9 +15,12 @@ func Index(c echo.Context) error {
 		var err error
 		global.Config, err = service.ConfigLoad()
 		if err != nil {
-			fmt.Println("install page")
+			fmt.Println("load config file error")
 			fmt.Println(global.Config)
-			//controllers.InstallIndex(c)
+		}
+		dburl, _ := global.Config.GetValue("database", "dburl")
+		if dburl == "" {
+			fmt.Println("install page")
 			return InstallIndex(c)
 		}
 	}
@@ -45,6 +48,5 @@ func InstallDoSubmit(c echo.Context) error {
 		res["msg"] = err
 		return c.JSON(http.StatusOK, res)
 	}
-	Index(c)
-	return nil
+	return c.JSON(http.StatusOK, res)
 }

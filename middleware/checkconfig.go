@@ -10,6 +10,7 @@ import (
 )
 
 /// CheckConfig to check if config file exist and orm engine is exist
+/*
 func CheckConfig(next echo.HandlerFunc) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		if c.Path() != "/" && c.Path() != "/index" && strings.Contains(c.Path(), "/install/") {
@@ -24,5 +25,12 @@ func CheckConfig(next echo.HandlerFunc) echo.HandlerFunc {
 			}
 		}
 		return next(c)
+	}
+}*/
+
+func Prepare(next echo.HandlerFunc) echo.HandlerFunc {
+	return func(c echo.Context) error {
+		res := make(map[string]interface{})
+
 	}
 }
