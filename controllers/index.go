@@ -18,16 +18,20 @@ func Index(c echo.Context) error {
 			fmt.Println("load config file error")
 			fmt.Println(global.Config)
 		}
-		dburl, _ := global.Config.GetValue("database", "dburl")
-		if dburl == "" {
-			fmt.Println("install page")
-			return InstallIndex(c)
-		}
 	}
+
+	dburl, _ := global.Config.GetValue("database", "dburl")
+	fmt.Println("dburl is %s\n", dburl)
+	if dburl == "" {
+		fmt.Println("go to install page")
+		return InstallIndex(c)
+	}
+
 	return c.Render(http.StatusOK, "index.html", nil)
 }
 
 func InstallIndex(c echo.Context) error {
+	fmt.Println("here it is install page")
 	return c.Render(http.StatusOK, "install.html", nil)
 }
 

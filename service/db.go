@@ -25,6 +25,7 @@ func DBInit(url, port, user, pwd, name, adminuser, adminpwd string) error {
 	global.Config.SetValue("database", "dbuser", user)
 	global.Config.SetValue("database", "dbpwd", pwd)
 	global.Config.SetValue("database", "dbname", name)
+	fmt.Println("to save config file")
 	goconfig.SaveConfigFile(global.Config, "conf/conf.ini")
 
 	// check if there is any data in database, depend on if Table user is exsit

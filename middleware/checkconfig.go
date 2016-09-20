@@ -1,12 +1,12 @@
 package middleware
 
 import (
-	"fmt"
-	//"github.com/gojudge/ojsite/controllers"
-	"github.com/gojudge/ojsite/global"
-	"github.com/gojudge/ojsite/service"
-	"github.com/labstack/echo"
-	"strings"
+//"fmt"
+//"github.com/gojudge/ojsite/controllers"
+//"github.com/gojudge/ojsite/global"
+//"github.com/gojudge/ojsite/service"
+//"github.com/labstack/echo"
+//"strings"
 )
 
 /// CheckConfig to check if config file exist and orm engine is exist
@@ -28,9 +28,9 @@ func CheckConfig(next echo.HandlerFunc) echo.HandlerFunc {
 	}
 }*/
 
-func Prepare(next echo.HandlerFunc) echo.HandlerFunc {
-	return func(c echo.Context) error {
-		res := make(map[string]interface{})
-
-	}
-}
+//func Prepare(next echo.HandlerFunc) echo.HandlerFunc {
+//	return func(c echo.Context) error {
+//		res := make(map[string]interface{})
+//
+//	}
+//}
