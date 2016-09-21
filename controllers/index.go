@@ -2,36 +2,37 @@ package controllers
 
 import (
 	"fmt"
+	log "github.com/Sirupsen/logrus"
 	"github.com/gojudge/ojsite/global"
 	"github.com/gojudge/ojsite/service"
 	"github.com/labstack/echo"
 	"net/http"
 )
 
+// Index index page
 func Index(c echo.Context) error {
 	//return c.String(http.StatusOK, "welcome")
 	if global.Config == nil {
-		fmt.Println("config is nil")
+		log.Info("没有配置文件")
 		var err error
 		global.Config, err = service.ConfigLoad()
 		if err != nil {
-			fmt.Println("load config file error")
-			fmt.Println(global.Config)
+			log.Error("读取配置文件错误")
 		}
 	}
 
 	dburl, _ := global.Config.GetValue("database", "dburl")
 	fmt.Println("dburl is %s\n", dburl)
 	if dburl == "" {
-		fmt.Println("go to install page")
+		log.Info("准备安装")
 		return InstallIndex(c)
 	}
 
 	return c.Render(http.StatusOK, "index.html", nil)
 }
 
+// InsallIndex install page
 func InstallIndex(c echo.Context) error {
-	fmt.Println("here it is install page")
 	return c.Render(http.StatusOK, "install.html", nil)
 }
 
@@ -42,7 +43,7 @@ func InstallDoSubmit(c echo.Context) error {
 	dbuser := c.FormValue("dbuser")
 	dbpwd := c.FormValue("dbpwd")
 	dbname := c.FormValue("dbname")
-	adminuser := c.FormValue("admin-user")
+	adminuser := c.FormValue("adminuser")
 	adminpwd := c.FormValue("adminpwd")
 	err := service.DBInit(dburl, dbport, dbuser, dbpwd, dbname, adminuser, adminpwd)
 	res := make(map[string]interface{})

@@ -2,6 +2,7 @@ package service
 
 import (
 	"fmt"
+	log "github.com/Sirupsen/logrus"
 	"github.com/Unknwon/goconfig"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/go-xorm/xorm"
@@ -17,7 +18,7 @@ func DBInit(url, port, user, pwd, name, adminuser, adminpwd string) error {
 	var err error
 	_, err = DBGetEngine(url, port, user, pwd, name)
 	if err != nil {
-		fmt.Println(err)
+		log.WithFields(log.Fields{"msg": err}).Error("连接数据库失败")
 		return err
 	}
 	global.Config.SetValue("database", "dburl", url)
@@ -25,7 +26,7 @@ func DBInit(url, port, user, pwd, name, adminuser, adminpwd string) error {
 	global.Config.SetValue("database", "dbuser", user)
 	global.Config.SetValue("database", "dbpwd", pwd)
 	global.Config.SetValue("database", "dbname", name)
-	fmt.Println("to save config file")
+	log.Info("连接数据库成功")
 	goconfig.SaveConfigFile(global.Config, "conf/conf.ini")
 
 	// check if there is any data in database, depend on if Table user is exsit
@@ -43,15 +44,22 @@ func DBInit(url, port, user, pwd, name, adminuser, adminpwd string) error {
 		fmt.Println("sql exist")
 		return nil
 	} else {
-		fmt.Println("import sql")
-		res, err := engine.ImportFile("scripts/goj.sql")
+		log.Info("开始导入数据库")
+		_, err := engine.ImportFile("scripts/goj.sql")
+
+		// register admin user
+		log.WithFields(log.Fields{
+			"username": adminuser,
+		}).Info("添加管理员用户")
+		var user models.User
+		user.Register(adminuser, adminpwd, "yzhl314@126.com", "Laily")
 
 		if err != nil {
-			fmt.Println("import sql error")
-			fmt.Println(err)
+			log.WithFields(log.Fields{
+				"msg": err,
+			}).Error("导入数据库失败")
 		}
-		fmt.Println("import sql res")
-		fmt.Println(res)
+		log.Info("导入数据库完成")
 	}
 	return nil
 }
@@ -61,13 +69,16 @@ func DBGetEngine(url, port, user, pwd, name string) (*xorm.Engine, error) {
 	var err error
 	engine, err = xorm.NewEngine("mysql", fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8", user, pwd, url, port, name))
 	if err != nil {
-		fmt.Println(err)
+		log.WithFields(log.Fields{
+			"msg": err,
+		}).Error("创建数据库引擎失败")
 		return nil, err
 	}
 	err = engine.Ping()
 	if err != nil {
-		fmt.Println("connect error")
-		fmt.Println(err)
+		log.WithFields(log.Fields{
+			"msg": err,
+		}).Error("连接数据库失败")
 		return nil, err
 	}
 	return engine, nil

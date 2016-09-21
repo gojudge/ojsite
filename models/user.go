@@ -2,9 +2,10 @@ package models
 
 import (
 	"errors"
+	"fmt"
+	log "github.com/Sirupsen/logrus"
 	"github.com/go-xorm/xorm"
 	"github.com/gogather/com"
-	"github.com/gogather/com/log"
 	"github.com/gojudge/ojsite/global"
 	"github.com/gojudge/ojsite/utils"
 	"time"
@@ -43,7 +44,13 @@ func (this *User) Register(userName string, password string, email string, nickN
 	user.Level = "user"
 	user.Nickname = nickName
 
-	return engine.Insert(&user)
+	_, err := engine.Insert(&user)
+	if err != nil {
+
+		fmt.Println(err)
+		return 0, err
+	}
+	return int64(user.Id), nil
 }
 
 // user login
