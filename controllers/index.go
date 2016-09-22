@@ -51,6 +51,8 @@ func InstallDoSubmit(c echo.Context) error {
 		"username": adminuser,
 	}).Info("添加管理员用户")
 
+	models.SetEngine(service.Engine)
+
 	var user models.User
 	user.Register(adminuser, adminpwd, "yzhl314@126.com", "Laily")
 

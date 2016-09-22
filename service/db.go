@@ -63,12 +63,12 @@ func DBGetEngine(url, port, user, pwd, name string) (*xorm.Engine, error) {
 	return Engine, nil
 }
 
-func DBGetEngineWithConfig() {
+func DBGetEngineWithConfig() (*xorm.Engine, error) {
 	url, _ := global.Config.GetValue("database", "dburl")
 	port, _ := global.Config.GetValue("database", "dbport")
 	user, _ := global.Config.GetValue("database", "dbuser")
 	pwd, _ := global.Config.GetValue("database", "dbpwd")
 	name, _ := global.Config.GetValue("database", "dbname")
 
-	DBGetEngine(url, port, user, pwd, name)
+	return DBGetEngine(url, port, user, pwd, name)
 }

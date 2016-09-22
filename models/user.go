@@ -16,7 +16,7 @@ type User struct {
 	Salt         string
 	Email        string
 	Level        string
-	RegistorTime time.Time
+	RegistorTime time.Time `xorm:"created"`
 	Nickname     string
 }
 
