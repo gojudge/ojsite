@@ -27,7 +27,8 @@ func Index(c echo.Context) error {
 		return InstallIndex(c)
 	}
 
-	return c.Render(http.StatusOK, "index.html", nil)
+	log.Info(c.Get("res"))
+	return c.Render(http.StatusOK, "index.html", c.Get("res"))
 }
 
 // InsallIndex install page

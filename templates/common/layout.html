@@ -19,28 +19,25 @@
               <input type="text" name="keyword" id="" placeholder="Search">
             </form>
             </li>
-          {% comment %}
-          <!--
-            {{{if eq .userIs "guest"}}}
-                  <li class="right"><a href="/register">{{ .register}}</a></li>
-                  <li class="right"><a href="/login"><span title="sign in" class="octicon octicon-sign-in"></span> {{.login}}</a></li>
-            {{{else}}}
+            {% if userIs == "guest" %}
+                  <li class="right"><a href="/register">{{ register}}</a></li>
+                  <li class="right"><a href="/login"><span title="sign in" class="octicon octicon-sign-in">login</span></a></li>
+            {% else %}
                   <li class="right"><a href="/logout"><span title="sign out" class="octicon octicon-sign-out"></span></a></li>
-            {{{if eq .userIs "admin"}}}
-                  <li class="right"><a href=""><span title="administration" class="octicon octicon-circuit-board"></span></a></li>
-            {{{end}}}
-            {{{if eq .userIs "teacher"}}}
+            {% if eq .userIs == "admin" %}
+                  <li class="right"><a href=""><span title="administration" class="octicon octicon-circuit-board">admin</span></a></li>
+            {% endif %}
+            {% if userIs == "teacher" %}
                   <li class="right"><a href="/teacher"><span title="teacher" class="octicon octicon-person"></span></a></li>
-            {{{end}}}
-            {{{if eq .userIs "student"}}}
+            {% endif %}
+            {% if userIs == "student" %}
                   <li class="right"><a href=""><span title="class" class="octicon octicon-organization"></span></a></li>
-            {{{end}}}
+            {% endif %}
             <li class="right"><a href="/user/setting/profile"><span title="user setting" class="octicon octicon-settings"></span></a></li>
             <li class="right">
-                <a href="/{{{.username}}}"><img src="http://gravatar.duoshuo.com/avatar/{{{.email_md5}}}" alt="">{{.nickname}}</a>
+                <a href="/username"><img src="http://gravatar.duoshuo.com/avatar/email_md5" alt="">{{nickname}}</a>
             </li>
-          {{{end}}}-->
-          {% endcomment %}
+            {% endif %}
         </ul>
         </div>
         <div class="main">

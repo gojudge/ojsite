@@ -3,7 +3,7 @@ package routers
 import (
 	"github.com/echo-contrib/pongor"
 	"github.com/gojudge/ojsite/controllers"
-	//"github.com/gojudge/ojsite/middleware"
+	"github.com/gojudge/ojsite/middleware"
 	"github.com/labstack/echo"
 )
 
@@ -20,6 +20,8 @@ func Init() *echo.Echo {
 	e.Static("staticasset", "static/asset")
 
 	e.Get("/", controllers.Index)
+
+	e.Use(middleware.UserCheck)
 
 	rInstall := e.Group("/install")
 	{
