@@ -2,16 +2,12 @@ package models
 
 import (
 	"errors"
-	"fmt"
 	log "github.com/Sirupsen/logrus"
-	"github.com/go-xorm/xorm"
 	"github.com/gogather/com"
 	"github.com/gojudge/ojsite/global"
 	"github.com/gojudge/ojsite/utils"
 	"time"
 )
-
-var engine *xorm.Engine
 
 type User struct {
 	Id           int
@@ -46,8 +42,9 @@ func (this *User) Register(userName string, password string, email string, nickN
 
 	_, err := engine.Insert(&user)
 	if err != nil {
-
-		fmt.Println(err)
+		log.WithFields(log.Fields{
+			"msg": err,
+		}).Error("添加用户错误")
 		return 0, err
 	}
 	return int64(user.Id), nil
@@ -114,7 +111,9 @@ func (this *User) GetAvatar(id int, username string, email string, nickname stri
 		addr, _ := global.Config.GetValue("custom", "avatar")
 		return addr + com.Md5(user.Email), err
 	} else {
-		log.Warnln("GetAvatar Failed.", err)
+		log.WithFields(log.Fields{
+			"msg": err,
+		}).Warn("GetAvatar Failed.")
 		return "", err
 	}
 }

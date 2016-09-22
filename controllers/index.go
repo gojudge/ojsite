@@ -1,9 +1,9 @@
 package controllers
 
 import (
-	"fmt"
 	log "github.com/Sirupsen/logrus"
 	"github.com/gojudge/ojsite/global"
+	"github.com/gojudge/ojsite/models"
 	"github.com/gojudge/ojsite/service"
 	"github.com/labstack/echo"
 	"net/http"
@@ -22,7 +22,6 @@ func Index(c echo.Context) error {
 	}
 
 	dburl, _ := global.Config.GetValue("database", "dburl")
-	fmt.Println("dburl is %s\n", dburl)
 	if dburl == "" {
 		log.Info("准备安装")
 		return InstallIndex(c)
@@ -45,7 +44,16 @@ func InstallDoSubmit(c echo.Context) error {
 	dbname := c.FormValue("dbname")
 	adminuser := c.FormValue("adminuser")
 	adminpwd := c.FormValue("adminpwd")
-	err := service.DBInit(dburl, dbport, dbuser, dbpwd, dbname, adminuser, adminpwd)
+	err := service.DBInit(dburl, dbport, dbuser, dbpwd, dbname)
+
+	// register admin user
+	log.WithFields(log.Fields{
+		"username": adminuser,
+	}).Info("添加管理员用户")
+
+	var user models.User
+	user.Register(adminuser, adminpwd, "yzhl314@126.com", "Laily")
+
 	res := make(map[string]interface{})
 	res["success"] = true
 	if err != nil {

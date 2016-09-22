@@ -1,15 +1,12 @@
 package models
 
 import (
-	"github.com/astaxie/beego/orm"
+	//log "github.com/Sirupsen/logrus"
+	"github.com/gojudge/ojsite/service"
 )
 
+var engine = service.Engine
+
 func init() {
-	orm.RegisterModel(new(User))
-	orm.RegisterModel(new(Student))
-	orm.RegisterModel(new(Problem))
-	orm.RegisterModel(new(ProblemBank))
-	orm.RegisterModel(new(OAuth))
-	orm.RegisterModel(new(Tags))
-	orm.RegisterModel(new(Submissions))
+	//log.SetFormatter(&log.TextFormatter{})
 }
