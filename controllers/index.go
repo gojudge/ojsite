@@ -2,6 +2,7 @@ package controllers
 
 import (
 	log "github.com/Sirupsen/logrus"
+	"github.com/Unknwon/goconfig"
 	"github.com/gojudge/ojsite/global"
 	"github.com/gojudge/ojsite/models"
 	"github.com/gojudge/ojsite/service"
@@ -11,15 +12,6 @@ import (
 
 // Index index page
 func Index(c echo.Context) error {
-	//return c.String(http.StatusOK, "welcome")
-	if global.Config == nil {
-		log.Info("没有配置文件")
-		var err error
-		global.Config, err = service.ConfigLoad()
-		if err != nil {
-			log.Error("读取配置文件错误")
-		}
-	}
 
 	dburl, _ := global.Config.GetValue("database", "dburl")
 	if dburl == "" {
@@ -63,5 +55,8 @@ func InstallDoSubmit(c echo.Context) error {
 		res["msg"] = err
 		return c.JSON(http.StatusOK, res)
 	}
+
+	// after initalize action, generate config file via Config object
+	goconfig.SaveConfigFile(global.Config, "conf/conf.ini")
 	return c.JSON(http.StatusOK, res)
 }

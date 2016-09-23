@@ -3,7 +3,6 @@ package service
 import (
 	"fmt"
 	log "github.com/Sirupsen/logrus"
-	"github.com/Unknwon/goconfig"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/go-xorm/xorm"
 	"github.com/gojudge/ojsite/global"
@@ -26,7 +25,6 @@ func DBInit(url, port, user, pwd, name string) error {
 	global.Config.SetValue("database", "dbpwd", pwd)
 	global.Config.SetValue("database", "dbname", name)
 	log.Info("连接数据库成功")
-	goconfig.SaveConfigFile(global.Config, "conf/conf.ini")
 
 	// check if there is any data in database, depend on if Table user is exsit
 	// 数据库中是否有数据，通过判断是否有user表确定
