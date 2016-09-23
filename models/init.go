@@ -14,3 +14,7 @@ func init() {
 func SetEngine(e *xorm.Engine) {
 	engine = e
 }
+
+func EngineInit() bool {
+	return engine != nil
+}

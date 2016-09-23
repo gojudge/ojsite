@@ -1,16 +1,14 @@
 package user
 
 import (
-	"github.com/gojudge/ojsite/controllers"
+	//log "github.com/Sirupsen/logrus"
+	"github.com/labstack/echo"
 )
 
-type LogoutController struct {
-	controllers.BaseController
-}
+func Logout(c echo.Context) {
 
-func (this *LogoutController) Get() {
-	this.DelSession("username")
-	this.DelSession("level")
+	//this.DelSession("username")
+	//this.DelSession("level")
 
-	this.Redirect("/", 302)
+	//this.Redirect("/", 302)
 }

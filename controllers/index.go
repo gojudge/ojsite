@@ -2,7 +2,6 @@ package controllers
 
 import (
 	log "github.com/Sirupsen/logrus"
-	"github.com/gojudge/ojsite/global"
 	"github.com/gojudge/ojsite/models"
 	"github.com/gojudge/ojsite/service"
 	"github.com/labstack/echo"
@@ -11,17 +10,7 @@ import (
 
 // Index index page
 func Index(c echo.Context) error {
-	if global.Config == nil {
-		log.Info("没有配置文件")
-		var err error
-		global.Config, err = service.ConfigLoad()
-		if err != nil {
-			log.Error("读取配置文件错误")
-		}
-	}
-
-	dburl, _ := global.Config.GetValue("database", "dburl")
-	if dburl == "" {
+	if !service.ConfigIsInit() {
 		log.Info("准备安装")
 		return InstallIndex(c)
 	}

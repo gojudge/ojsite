@@ -3,6 +3,7 @@ package service
 import (
 	"fmt"
 	"github.com/Unknwon/goconfig"
+	"github.com/gojudge/ojsite/global"
 	"os"
 )
 
@@ -22,4 +23,9 @@ func ConfigLoad() (*goconfig.ConfigFile, error) {
 		return nil, err
 	}
 	return configFile, nil
+}
+
+func ConfigIsInit() bool {
+	dburl, _ := global.Config.GetValue("database", "dburl")
+	return dburl != ""
 }

@@ -6,6 +6,7 @@ import (
 	"github.com/gojudge/ojsite/controllers/user"
 	"github.com/gojudge/ojsite/middleware"
 	"github.com/labstack/echo"
+	mm "github.com/labstack/echo/middleware"
 )
 
 func Init() *echo.Echo {
@@ -23,6 +24,8 @@ func Init() *echo.Echo {
 	e.Get("/", controllers.Index)
 
 	e.Use(middleware.UserCheck)
+
+	e.Use(mm.CSRF())
 
 	rInstall := e.Group("/install")
 	{
