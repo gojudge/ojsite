@@ -2,6 +2,7 @@ package user
 
 import (
 	"fmt"
+	log "github.com/Sirupsen/logrus"
 	"github.com/gojudge/ojsite/models"
 	"github.com/labstack/echo"
 	"net/http"
@@ -12,6 +13,7 @@ func Register(c echo.Context) error {
 
 	res := make(map[string]interface{})
 	res["title"] = "title_register"
+	log.Info(res)
 	return c.Render(http.StatusOK, "user/register.html", res)
 }
 

@@ -13,7 +13,9 @@ func Init() *echo.Echo {
 	e := echo.New()
 	e.Debug()
 
-	r := pongor.GetRenderer()
+	r := pongor.GetRenderer(pongor.PongorOption{
+		Reload: true,
+	})
 	e.SetRenderer(r)
 
 	//e.Use(middleware.Prepare)

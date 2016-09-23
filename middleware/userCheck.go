@@ -1,7 +1,6 @@
 package middleware
 
 import (
-	"fmt"
 	log "github.com/Sirupsen/logrus"
 	"github.com/gogather/com"
 	"github.com/gojudge/ojsite/models"
@@ -23,9 +22,11 @@ func UserCheck(next echo.HandlerFunc) echo.HandlerFunc {
 		}).Info("访问日志")
 
 		userCookie, err := c.Cookie("username")
-		fmt.Println(userCookie)
 		if err != nil && userCookie != nil {
 			user := userCookie.Value()
+			log.WithFields(log.Fields{
+				"cookie": userCookie,
+			}).Info("用户Cookie")
 			if user == "" {
 				lev = "guest" // guest, not login
 			} else {
