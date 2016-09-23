@@ -2,6 +2,8 @@ package controllers
 
 import (
 	log "github.com/Sirupsen/logrus"
+	"github.com/Unknwon/goconfig"
+	"github.com/gojudge/ojsite/global"
 	"github.com/gojudge/ojsite/models"
 	"github.com/gojudge/ojsite/service"
 	"github.com/labstack/echo"
@@ -52,5 +54,8 @@ func InstallDoSubmit(c echo.Context) error {
 		res["msg"] = err
 		return c.JSON(http.StatusOK, res)
 	}
+
+	// after initalize action, generate config file via Config object
+	goconfig.SaveConfigFile(global.Config, "conf/conf.ini")
 	return c.JSON(http.StatusOK, res)
 }

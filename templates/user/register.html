@@ -1,5 +1,6 @@
-{{{template "inc/header.tpl" .}}}
-{{{asset "sass/register.scss"}}}
+{% extends "../common/layout.html"%}
+{% block content %}
+
 	<div class="info">&nbsp</div>
 	<div class="register">
 		<form action="/register" method="post" >
@@ -35,5 +36,5 @@
 			</ul>
 		</form>
 	</div>
-{{{asset "js/user.js"}}}
-{{{template "inc/footer.tpl" .}}}
+<script src="static/js/user/user.js"></script>
+{% endblock %}

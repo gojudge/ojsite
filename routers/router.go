@@ -36,6 +36,8 @@ func Init() *echo.Echo {
 	e.Get("/login", user.Login)
 	e.Post("/do_login", user.DoLogin)
 
+	e.Get("/register", user.Register)
+
 	return e
 
 	//User()
