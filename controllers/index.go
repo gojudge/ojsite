@@ -11,7 +11,6 @@ import (
 
 // Index index page
 func Index(c echo.Context) error {
-	//return c.String(http.StatusOK, "welcome")
 	if global.Config == nil {
 		log.Info("没有配置文件")
 		var err error

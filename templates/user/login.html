@@ -1,0 +1,18 @@
+{% extends "../common/layout.html"%}
+{% block content %}
+<link rel="stylesheet" href="static/css/user/login.css" type="text/css" >
+	<div class="info">&nbsp</div>
+	<div class="login">
+		<form action="/do_login">
+			<ul>
+				<li><label for="">{{username}}</label><input type="text" name="username" id=""></li>
+				<li><label for="">{{password}}</label><input type="password" name="password" id=""></li>
+				<li class="login-btns">
+					<button class="btn">login</button>
+                    <a class="btn oauth-login" href="https://github.com/login/oauth/authorize?client_id={{github_client_id}}&scope=user,public_repo" target="_blank"><span class="octicon octicon-logo-github"></span> login</a>
+				</li>
+			</ul>
+		</form>
+	</div>
+    <script src="static/js/user/user.js"></script>    
+{% endblock %}

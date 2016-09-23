@@ -2,6 +2,7 @@ var gulp = require("gulp")
 var sass = require("gulp-sass")
 var gulpUtil = require('gulp-util');
 var uglify = require('gulp-uglify')
+var inlinejs = require("gulp-inline-js")
 
 gulp.task("sass", function(){
     gulp.src("scss/**/*.scss")
@@ -11,6 +12,7 @@ gulp.task("sass", function(){
 
 gulp.task("js", function(){
     gulp.src("js/**/*.js")
+        .pipe(inlinejs())
         .pipe(uglify().on("error",gulpUtil.log))
         .pipe(gulp.dest("dist/js/"))
 })

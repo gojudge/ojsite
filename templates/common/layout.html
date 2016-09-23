@@ -20,8 +20,8 @@
             </form>
             </li>
             {% if userIs == "guest" %}
-                  <li class="right"><a href="/register">{{ register}}</a></li>
-                  <li class="right"><a href="/login"><span title="sign in" class="octicon octicon-sign-in">login</span></a></li>
+                  <li class="right"><a href="/register">注册</a></li>
+                  <li class="right"><a href="/login"><span title="sign in" class="octicon octicon-sign-in">登录</span></a></li>
             {% else %}
                   <li class="right"><a href="/logout"><span title="sign out" class="octicon octicon-sign-out"></span></a></li>
             {% if eq .userIs == "admin" %}

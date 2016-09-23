@@ -3,6 +3,7 @@ package routers
 import (
 	"github.com/echo-contrib/pongor"
 	"github.com/gojudge/ojsite/controllers"
+	"github.com/gojudge/ojsite/controllers/user"
 	"github.com/gojudge/ojsite/middleware"
 	"github.com/labstack/echo"
 )
@@ -28,6 +29,9 @@ func Init() *echo.Echo {
 		rInstall.Post("/do_submit", controllers.InstallDoSubmit)
 		rInstall.Get("/", controllers.InstallIndex)
 	}
+
+	e.Get("/login", user.Login)
+	e.Post("/do_login", user.DoLogin)
 
 	return e
 
