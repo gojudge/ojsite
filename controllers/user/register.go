@@ -17,7 +17,7 @@ func Register(c echo.Context) error {
 	return c.Render(http.StatusOK, "user/register.html", res)
 }
 
-func Post(c echo.Context) error {
+func DoRegister(c echo.Context) error {
 	//this.Forbbiden("not", "guest")
 
 	user := models.User{}

@@ -17,19 +17,16 @@ func UserCheck(next echo.HandlerFunc) echo.HandlerFunc {
 		st := stn.UnixNano()
 		res["start"] = st
 
-		log.WithFields(log.Fields{
-			"ua": c.Request().UserAgent(),
-		}).Info("访问日志")
-
-		userCookie, err := c.Cookie("username")
-		if err != nil && userCookie != nil {
+		userCookie, _ := c.Cookie("username")
+		if userCookie != nil {
 			user := userCookie.Value()
-			log.WithFields(log.Fields{
-				"cookie": userCookie,
-			}).Info("用户Cookie")
 			if user == "" {
 				lev = "guest" // guest, not login
 			} else {
+				log.WithFields(log.Fields{
+					"ua":       c.Request().UserAgent(),
+					"username": user,
+				}).Info("用户访问")
 				levelCookie, err := c.Cookie("level")
 				if err != nil && levelCookie != nil {
 					level := levelCookie.Value()
@@ -55,6 +52,9 @@ func UserCheck(next echo.HandlerFunc) echo.HandlerFunc {
 				}
 			}
 		} else {
+			log.WithFields(log.Fields{
+				"ua": c.Request().UserAgent(),
+			}).Info("用户访问")
 			lev = "guest"
 		}
 		res["userIs"] = lev

@@ -1,11 +1,12 @@
-{{{template "inc/header.tpl" .}}}
-{{{asset "sass/login.scss"}}}
+{% extends "../../common/layout.html" %}
+{% block content %}
+<link rel="stylesheet" href="static/css/user/login.css">
 	<div class="pannel">
-		{{{template "user/setting/inc_menu.tpl" .}}}
+		{% include "./inc_menu.html" %}
 
 		<div class="main-pannel" ng-app="tpApp" >
 			<ul>
-				<li>Change Password</li>
+                <li>{{i18n ("Change Password")}}</li>
 				<li>
 					<form action="">
 						<input type="password" name="" id="">
@@ -18,5 +19,5 @@
 		</div>
 
 	</div>
-{{{asset "js/user.js"}}}
-{{{template "inc/footer.tpl" .}}}
+    <script src="static/js/user/user.js"></script>
+{% endblock %}

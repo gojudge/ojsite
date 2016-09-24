@@ -10,7 +10,7 @@ import (
 func Login(c echo.Context) error {
 	//this.Forbbiden("not", "guest")
 
-	res := make(map[string]interface{})
+	res := c.Get("res").(map[string]interface{})
 	res["title"] = "登录"
 	//res["github_client_id"] = global.Config.GetValue("env", "github_client_id")
 	return c.Render(http.StatusOK, "user/login.html", res)

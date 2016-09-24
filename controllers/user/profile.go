@@ -1,18 +1,15 @@
 package user
 
+/*
 import (
 	// "github.com/astaxie/beego"
 	"github.com/gogather/com/log"
-	"github.com/gojudge/ojsite/controllers"
 	"github.com/gojudge/ojsite/models"
+	"github.com/labstack/echo"
 )
 
-type ProfileController struct {
-	controllers.BaseController
-}
-
-func (this *ProfileController) Get() {
-	username := this.Ctx.Input.Param(":username")
+func UserProfile(c echo.Context) error {
+	username := c.Param("username")
 
 	ip := this.Ctx.Input.IP()
 	log.Blueln(ip)
@@ -39,3 +36,4 @@ func (this *ProfileController) Post() {
 
 	this.ServeJSON()
 }
+*/

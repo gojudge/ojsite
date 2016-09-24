@@ -1,14 +1,15 @@
-{{{template "inc/header.tpl" .}}}
-{{{asset "sass/user.scss"}}}
+{% extends "../../common/layout.html" %}
+{% block content %}
+<link rel="stylesheet" href="static/css/user/user.css">
 	<div class="pannel">
-		{{{template "user/setting/inc_menu.tpl" .}}}
+		{% include "./inc_menu.html" %}
 
 		<div class="main-pannel" ng-app="tpApp" >
 			<ul class="profile">
 				<li>Public profile</li>
 				<li>
 					<div class="fileinput-button">
-						<img src="http://gravatar.duoshuo.com/avatar/{{{.email_md5}}}" alt="">
+						<img src="http://gravatar.duoshuo.com/avatar/email_md5" alt="">
 						<input type="file" name="avatar" id="">
 					</div>
 					<div>
@@ -31,5 +32,5 @@
 		</div>
 
 	</div>
-{{{asset "js/user.js"}}}
-{{{template "inc/footer.tpl" .}}}
+<script src="static/js/user/user.js"></script>
+{% endblock %}

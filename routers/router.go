@@ -13,9 +13,7 @@ func Init() *echo.Echo {
 	e := echo.New()
 	e.Debug()
 
-	r := pongor.GetRenderer(pongor.PongorOption{
-		Reload: true,
-	})
+	r := pongor.GetRenderer()
 	e.SetRenderer(r)
 
 	//e.Use(middleware.Prepare)
@@ -28,16 +26,23 @@ func Init() *echo.Echo {
 
 	e.Get("/", controllers.Index)
 
+	e.Get("/login", user.Login)
+	e.Post("/do_login", user.DoLogin)
+
+	e.Get("/register", user.Register)
+	e.Post("/do_register", user.DoRegister)
+
 	rInstall := e.Group("/install")
 	{
 		rInstall.Post("/do_submit", controllers.InstallDoSubmit)
 		rInstall.Get("/", controllers.InstallIndex)
 	}
 
-	e.Get("/login", user.Login)
-	e.Post("/do_login", user.DoLogin)
-
-	e.Get("/register", user.Register)
+	rUser := e.Group("/user")
+	{
+		rUser.Get("/setting/profile", user.SettingProfile)
+		rUser.Get("/setting/pwd", user.SettingPwd)
+	}
 
 	return e
 

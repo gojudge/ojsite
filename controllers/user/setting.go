@@ -3,31 +3,31 @@ package user
 import (
 	"github.com/gojudge/ojsite/controllers"
 	// "github.com/gojudge/ojsite/models"
+	"github.com/gojudge/ojsite/middleware"
+	"github.com/labstack/echo"
+	"net/http"
 	// "github.com/gogather/com/log"
 )
 
 // setting profile
-type SettingProfileController struct {
-	controllers.BaseController
-}
 
-func (this *SettingProfileController) Get() {
-	this.Data["title"] = this.Lang("title_user_setting_profile")
-	this.Data["nav"] = "profile"
+func SettingProfile(c echo.Context) error {
+	cc := c.(*middleware.OJContext)
+	res := c.Get("res").(map[string]interface{})
+	res["title"] = cc.Trans("title_user_setting_profile")
+	res["nav"] = "profile"
 
-	this.TplName = "user/setting/profile.tpl"
+	return c.Render(http.StatusOK, "user/setting/profile.html", res)
 }
 
 // setting password
-type SettingPwdController struct {
-	controllers.BaseController
-}
+func SettingPwd(c echo.Context) error {
+	cc := c.(*middleware.OJContext)
+	res := c.Get("res").(map[string]interface{})
+	res["title"] = cc.Trans("title_user_setting_pwd")
+	res["nav"] = "pwd"
 
-func (this *SettingPwdController) Get() {
-	this.Data["title"] = this.Lang("title_user_setting_pwd")
-	this.Data["nav"] = "pwd"
-
-	this.TplName = "user/setting/pwd.tpl"
+	return c.Render(http.StatusOK, "user/setting/pwd.html", res)
 }
 
 // setting binding

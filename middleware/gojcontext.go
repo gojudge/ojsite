@@ -17,7 +17,7 @@ func (c OJContext) Trans(key string) string {
 	if lang == nil {
 		langValue = "zh-CN"
 		lang1 := new(echo.Cookie)
-		lang1.SetName(langValue)
+		lang1.SetName("lang")
 		lang1.SetValue("zh-CN")
 		lang1.SetPath("/")
 		c.SetCookie(lang1)
