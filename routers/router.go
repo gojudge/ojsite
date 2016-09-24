@@ -1,12 +1,12 @@
 package routers
 
 import (
+	_ "github.com/digitalcrab/pongo2trans"
 	"github.com/echo-contrib/pongor"
 	"github.com/gojudge/ojsite/controllers"
 	"github.com/gojudge/ojsite/controllers/user"
 	"github.com/gojudge/ojsite/middleware"
 	"github.com/labstack/echo"
-	mm "github.com/labstack/echo/middleware"
 )
 
 func Init() *echo.Echo {
@@ -23,11 +23,10 @@ func Init() *echo.Echo {
 	e.Static("static", "static/dist")
 	e.Static("staticasset", "static/asset")
 
-	e.Get("/", controllers.Index)
-
+	e.Use(middleware.OJHandle)
 	e.Use(middleware.UserCheck)
 
-	e.Use(mm.CSRF())
+	e.Get("/", controllers.Index)
 
 	rInstall := e.Group("/install")
 	{

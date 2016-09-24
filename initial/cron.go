@@ -1,5 +1,6 @@
 package initial
 
+/*
 import (
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/toolbox"
@@ -21,3 +22,4 @@ func InitCron() {
 	toolbox.AddTask("judger", tk)
 	toolbox.StartTask()
 }
+*/

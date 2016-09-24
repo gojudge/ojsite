@@ -1,5 +1,6 @@
 package initial
 
+/*
 import (
 	"github.com/astaxie/beego"
 	"github.com/beego/i18n"
@@ -57,3 +58,4 @@ func InitTplFunc() {
 	beego.AddFuncMap("cut", cut)
 	beego.AddFuncMap("load_time", loadTime)
 }
+*/

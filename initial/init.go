@@ -1,5 +1,6 @@
 package initial
 
+/*
 import (
 	"github.com/gogather/com"
 	"github.com/gogather/com/log"
@@ -29,3 +30,4 @@ func CheckTplVersion() {
 		return
 	}
 }
+*/

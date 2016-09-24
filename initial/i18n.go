@@ -1,20 +1,24 @@
 package initial
 
 import (
-	"github.com/astaxie/beego"
+	log "github.com/Sirupsen/logrus"
 	"github.com/beego/i18n"
+	"github.com/gojudge/ojsite/global"
 	"strings"
 )
 
 // 初始化多国语言模块
 func InitLang() {
-	languages := beego.AppConfig.String("langs")
+	languages, _ := global.Config.GetValue("config", "langs")
+	if len(languages) <= 0 {
+		languages = "zh-CN"
+	}
 	langs := strings.Split(languages, "|")
 
 	for _, lang := range langs {
-		beego.Trace("Loading language: " + lang)
+		log.Info("Loading language: " + lang)
 		if err := i18n.SetMessage(lang, "conf/locale/"+"locale_"+lang+".ini"); err != nil {
-			beego.Error("Fail to set message file: " + err.Error())
+			log.Error("Fail to set message file: " + err.Error())
 			return
 		}
 	}

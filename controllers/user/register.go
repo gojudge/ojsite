@@ -11,7 +11,7 @@ import (
 func Register(c echo.Context) error {
 	//this.Forbbiden("not", "guest")
 
-	res := make(map[string]interface{})
+	res := c.Get("res").(map[string]interface{})
 	res["title"] = "title_register"
 	log.Info(res)
 	return c.Render(http.StatusOK, "user/register.html", res)
@@ -28,7 +28,7 @@ func Post(c echo.Context) error {
 	nickname := c.FormValue("nickname")
 
 	id, err := user.Register(username, password, email, nickname)
-	res := make(map[string]interface{})
+	res := c.Get("res").(map[string]interface{})
 	if err != nil {
 		res = map[string]interface{}{
 			"result": false,

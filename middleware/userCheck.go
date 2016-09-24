@@ -11,8 +11,8 @@ import (
 func UserCheck(next echo.HandlerFunc) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		var lev string
-		res := make(map[string]interface{})
 
+		res := c.Get("res").(map[string]interface{})
 		stn := time.Now()
 		st := stn.UnixNano()
 		res["start"] = st

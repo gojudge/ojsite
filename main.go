@@ -5,6 +5,7 @@ import (
 	log "github.com/Sirupsen/logrus"
 	clog "github.com/gogather/com/log"
 	"github.com/gojudge/ojsite/global"
+	"github.com/gojudge/ojsite/initial"
 	"github.com/gojudge/ojsite/models"
 	"github.com/gojudge/ojsite/routers"
 	"github.com/gojudge/ojsite/service"
@@ -22,6 +23,7 @@ func main() {
 	e := routers.Init()
 	preLoadConfig()
 	parseArgs()
+	initial.InitLang()
 	clog.Pinkln(global.Config)
 	port, err := global.Config.Int64("", "port")
 	if err != nil {
@@ -39,13 +41,13 @@ func parseArgs() {
 		if len(portArgs) > 1 && portArgs[0] == "--port" {
 			port, err := strconv.ParseInt(portArgs[1], 10, 64)
 			if err == nil {
-				global.Config.SetValue("", "port", s(port))
+				global.Config.SetValue("config", "port", s(port))
 			} else {
-				global.Config.SetValue("", "port", s(PORT))
+				global.Config.SetValue("config", "port", s(PORT))
 			}
 		}
 	} else {
-		global.Config.SetValue("", "port", s(PORT))
+		global.Config.SetValue("config", "port", s(PORT))
 	}
 }
 
