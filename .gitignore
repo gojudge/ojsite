@@ -13,7 +13,9 @@ output
 *.exe
 
 # static
-/static/
+/static/js
+/static/css
+node_modules/
 
 # static map
 /map.json
