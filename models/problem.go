@@ -2,9 +2,7 @@ package models
 
 import (
 	"errors"
-	"github.com/astaxie/beego/orm"
 	"github.com/gogather/com/log"
-	"strconv"
 	"time"
 )
 
@@ -24,16 +22,15 @@ type Problem struct {
 
 // get problen by id or title
 func (this *Problem) GetProblem(id int, title string) (Problem, error) {
-	o := orm.NewOrm()
 	var pro Problem
 	var err error
 
 	if id > 0 {
 		pro.Id = id
-		err = o.Read(&pro, "Id")
+		_, err = engine.Get(&pro)
 	} else if len(title) > 0 {
 		pro.Title = title
-		err = o.Read(&pro, "Title")
+		_, err = engine.Get(&pro)
 	} else {
 		return pro, errors.New("at least one valid param")
 	}
@@ -46,28 +43,19 @@ func (this *Problem) GetProblem(id int, title string) (Problem, error) {
 // page 页码
 // itemsPerPage 每页数量
 // level 题目权限级别
-func (this *Problem) ListProblem(page int, itemsPerPage int, level string) (problems []orm.Params, hasNext bool, tatalPages int, err error) {
-	sql1 := "select * from problem where level=? order by time desc limit ?,?"
-	sql2 := "select count(*) as number from problem where level=?"
-
-	var maps, maps2 []orm.Params
+func (this *Problem) ListProblem(page int, itemsPerPage int, level string) (problems []Problem, hasNext bool, tatalPages int64, err error) {
 	var num int64
-	var number int
-
-	o := orm.NewOrm()
+	var p Problem
 
 	if len(level) <= 0 {
-		sql1 = "select * from problem order by time desc limit ?,?"
-		sql2 = "select count(*) as number from problem"
-
-		num, err = o.Raw(sql1, itemsPerPage*(page-1), itemsPerPage).Values(&maps)
+		err := engine.Desc("time").Limit(itemsPerPage, itemsPerPage*(page-1)).Find(&problems)
 		if err != nil {
 			log.Warnln("execute sql1 error:")
 			log.Warnln(err)
 			return nil, false, 0, err
 		}
 
-		_, err = o.Raw(sql2).Values(&maps2)
+		num, err = engine.Count(&p)
 		if err != nil {
 			log.Warnln("execute sql2 error:")
 			log.Warnln(err)
@@ -76,14 +64,14 @@ func (this *Problem) ListProblem(page int, itemsPerPage int, level string) (prob
 
 	} else {
 
-		num, err = o.Raw(sql1, level, itemsPerPage*(page-1), itemsPerPage).Values(&maps)
+		err = engine.Where("level = ?", level).Limit(itemsPerPage, itemsPerPage*(page-1)).Find(&problems)
 		if err != nil {
 			log.Warnln("execute sql1 error:")
 			log.Warnln(err)
 			return nil, false, 0, err
 		}
 
-		_, err = o.Raw(sql2, level).Values(&maps2)
+		num, err = engine.Where("level = ?", level).Count(&p)
 		if err != nil {
 			log.Warnln("execute sql2 error:")
 			log.Warnln(err)
@@ -92,37 +80,36 @@ func (this *Problem) ListProblem(page int, itemsPerPage int, level string) (prob
 
 	}
 
-	number, err = strconv.Atoi(maps2[0]["number"].(string))
+	log.Warnln("test engine")
 
-	var addFlag int
-	if 0 == (number % itemsPerPage) {
+	var addFlag int64
+	if 0 == (num % int64(itemsPerPage)) {
 		addFlag = 0
 	} else {
 		addFlag = 1
 	}
 
-	tatalPages = number/itemsPerPage + addFlag
+	tatalPages = num/int64(itemsPerPage) + addFlag
 
-	if tatalPages == page {
+	if tatalPages == int64(page) {
 		hasNext = false
 	} else {
 		hasNext = true
 	}
 
 	if err == nil && num > 0 {
-		return maps, hasNext, tatalPages, nil
+		return problems, hasNext, tatalPages, nil
 	} else {
 		return nil, false, tatalPages, err
 	}
 }
 
 // get top 10 problem
-func (this *Problem) GetTop10() ([]orm.Params, error) {
+func (this *Problem) GetTop10() ([]map[string][]byte, error) {
 	sql := `SELECT problem.id as id, problem.title as title, count(*) AS count FROM submissions,problem where submissions.pid=problem.id GROUP BY pid ORDER BY count DESC limit 10`
 
-	var maps []orm.Params
-	o := orm.NewOrm()
-	_, err := o.Raw(sql).Values(&maps)
+	maps, err := engine.Query(sql)
+	log.Warnln(maps)
 	if err != nil {
 		log.Warnln("execute sql error:")
 		log.Warnln(err)
@@ -132,6 +119,7 @@ func (this *Problem) GetTop10() ([]orm.Params, error) {
 	}
 }
 
+/*
 // put problem into trash
 func (this *Problem) TrashProblem(id int) error {
 	o := orm.NewOrm()
@@ -185,3 +173,4 @@ func (this *Problem) AddProblem(title string, ptype string, description string, 
 	id, err = o.Insert(&prob)
 	return id, err
 }
+*/

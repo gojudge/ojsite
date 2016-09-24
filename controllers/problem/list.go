@@ -2,33 +2,34 @@ package problem
 
 import (
 	"github.com/gogather/com/log"
-	"github.com/gojudge/ojsite/controllers"
+	"github.com/gojudge/ojsite/middleware"
 	"github.com/gojudge/ojsite/models"
+	"github.com/labstack/echo"
+	"net/http"
 )
 
-type ProblemListController struct {
-	controllers.BaseController
-}
-
-func (this *ProblemListController) Get() {
+func ListProblems(c echo.Context) error {
 	pro := &models.Problem{}
 	problems, hasNext, _, _ := pro.ListProblem(1, 10, "public")
 
 	top10, _ := pro.GetTop10()
 	log.Blueln("[top 10]", top10)
 
-	tag := &models.Tags{}
-	tagList, _ := tag.TagList()
-	log.Blueln("[tags]", tagList)
+	//tag := &models.Tags{}
+	//tagList, _ := tag.TagList()
+	//log.Blueln("[tags]", tagList)
 
-	this.Data["title"] = this.Lang("title_problem_list")
+	res := c.Get("res").(map[string]interface{})
+	cc := c.(*middleware.OJContext)
 
-	this.Data["problems"] = problems
-	this.Data["title"] = this.Lang("title_problems")
-	this.Data["has_next"] = hasNext
+	res["title"] = cc.Trans("title_problem_list")
 
-	this.Data["top10"] = top10
-	this.Data["tag_list"] = tagList
+	res["problems"] = problems
+	res["title"] = cc.Trans("title_problems")
+	res["has_next"] = hasNext
 
-	this.TplName = "problem/list.tpl"
+	res["top10"] = top10
+	//res["tag_list"] = tagList
+
+	return c.Render(http.StatusOK, "problem/list.html", res)
 }

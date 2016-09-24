@@ -1,5 +1,6 @@
 package routers
 
+/*
 import (
 	"github.com/astaxie/beego"
 	"github.com/gojudge/ojsite/controllers/api"
@@ -19,3 +20,4 @@ func Api() {
 
 	beego.Router("/api/markdown/preview", &api.MarkdownController{})
 }
+*/

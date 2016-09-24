@@ -1,5 +1,6 @@
 package api
 
+/*
 import (
 	// "github.com/astaxie/beego"
 	"github.com/gogather/com/log"
@@ -238,3 +239,4 @@ func (this *ProblemAddController) Post() {
 
 	this.ServeJSON()
 }
+*/

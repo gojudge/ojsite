@@ -4,6 +4,7 @@ import (
 	_ "github.com/digitalcrab/pongo2trans"
 	"github.com/echo-contrib/pongor"
 	"github.com/gojudge/ojsite/controllers"
+	"github.com/gojudge/ojsite/controllers/problem"
 	"github.com/gojudge/ojsite/controllers/user"
 	"github.com/gojudge/ojsite/middleware"
 	"github.com/labstack/echo"
@@ -11,9 +12,11 @@ import (
 
 func Init() *echo.Echo {
 	e := echo.New()
-	e.Debug()
+	e.SetDebug(true)
 
-	r := pongor.GetRenderer()
+	r := pongor.GetRenderer(pongor.PongorOption{
+		Reload: true,
+	})
 	e.SetRenderer(r)
 
 	//e.Use(middleware.Prepare)
@@ -44,6 +47,10 @@ func Init() *echo.Echo {
 		rUser.Get("/setting/pwd", user.SettingPwd)
 	}
 
+	rProblems := e.Group("/problems")
+	{
+		rProblems.Get("/", problem.ListProblems)
+	}
 	return e
 
 	//User()
