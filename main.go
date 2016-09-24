@@ -24,6 +24,7 @@ func main() {
 	preLoadConfig()
 	parseArgs()
 	initial.InitLang()
+	initial.InitializeSession()
 	clog.Pinkln(global.Config)
 	port, err := global.Config.Int64("", "port")
 	if err != nil {
