@@ -1,7 +1,6 @@
-aa
-{% comment %}
-{{{template "inc/header.tpl" .}}}
-{{{asset "sass/problem.scss"}}}
+{% extends "../common/layout.html"%}
+{% block content %}
+<link rel="stylesheet" href="/static/css/problem.css">
 	<div class="announcement" style="display:none;"></div>
 	<div class="problem">
 		<div class="problem-list">
@@ -15,42 +14,43 @@ aa
 						<li class="item-time">添加时间</li>
 					</ul>
 				</li>
-				{{{range $i,$problem := .problems}}}
+                {{problems}}
+				{% for pro in problems %}
+                {{pro}}
 				<li class="list-item">
 					<ul>
-						<li class="item-id">{{{$problem.id}}}</li>
+						<li class="item-id">{{pro.id}}</li>
 						<li class="item-title">
-							<a href="/problem/{{{$problem.title}}}">{{{$problem.title}}}</a>
+							<a href="/problem/{{pro.title}}">{{pro.title}}</a>
 						</li>
-						<li class="item-type">{{{$problem.type}}}</li>
-						<li class="item-rate">{{{cut $problem.pass_rate 3}}}</li>
-						<li class="item-time">{{{date $problem.time}}}</li>
+						<li class="item-type">{{pro.type}}</li>
+						<li class="item-rate">{{pro.pass_rate }}</li>
+						<li class="item-time">{{pro.time}}</li>
 					</ul>
 				</li>
-				{{{end}}}
+				{% endfor %}
 			</ul>
 		</div>
 		<div class="cata">
 			<ul class="hot">
 				<li><i class="icon-fire"></i>Top 10</li>
-				{{{range $i,$pro := .top10}}}
-				<li class="item"><a href="">{{{$pro.title}}}</a></li>
-				{{{end}}}
+				{% for pro in top10 %}
+				<li class="item"><a href="">{{pro.title}}</a></li>
+				{% endfor %}
 			</ul>
 			<ul class="tags">
 				<li><i class="icon-tags"></i>分类</li>
-				{{{range $i,$t := .tag_list}}}
-				<li class="item"><a href="">{{{$t.tag}}}<span class="badge">{{{$t.problem_num}}}</span></a></li>
-				{{{end}}}
+				{% for t in tag_list %}
+                {{t.id}}
+				<li class="item"><a href="">{{ t.tag}}<span class="badge">{{t.problem_num}}</span></a></li>
+				{% endfor %}
 			</ul>
 			<ul class="tags">
 				<li><i class="icon-link"></i>链接</li>
 				
 				<li class="item"><a href="/problem/add" target="_blank">我要添加题目</a></li>
-				
 			</ul>
 		</div>
 	</div>
 	
-{{{template "inc/footer.tpl" .}}}
-{% endcomment %}
+{% endblock %}
