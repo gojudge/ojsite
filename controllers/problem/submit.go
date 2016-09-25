@@ -3,65 +3,62 @@ package problem
 import (
 	"github.com/gojudge/ojsite/controllers"
 	"github.com/gojudge/ojsite/models"
+	"github.com/labstack/echo"
+	"net/http"
 	"strconv"
 )
 
-// submit problem
+// ProblemSubmit to submit problem to database
 // uri:/problem/submit
-type ProblemSubmitController struct {
-	controllers.BaseController
-}
-
-func (this *ProblemSubmitController) Post() {
-	pid, err := this.GetInt("pid")
+func ProblemSubmit(c echo.Context) error {
+	pidStr := c.FormValue("pid")
+	pid, err := strconv.Atoi(pidStr)
 
 	if err != nil {
-		this.Data["json"] = map[string]interface{}{
+		res := map[string]interface{}{
 			"result": false,
 			"msg":    "get pid failed",
 			"refer":  nil,
 		}
-		this.ServeJSON()
-		return
+		return c.JSON(http.StatusOK, res)
 	}
 
-	language := this.GetString("language")
-	ptype := this.GetString("type")
-	code := this.GetString("code")
+	language := c.FormValue("language")
+	ptype := c.FormValue("type")
+	code := c.FormValue("code")
 
-	userid := this.GetSession("userid").(string)
-	useridInt, err := strconv.Atoi(userid)
-	if err != nil {
-		this.Data["json"] = map[string]interface{}{
+	userid := c.Get("userID")
+	if userid == nil {
+		res := map[string]interface{}{
 			"result": false,
 			"msg":    "unknown userid",
 			"debug":  err,
 			"refer":  nil,
 		}
-		this.ServeJSON()
-		return
+		return c.JSON(http.StatusOK, res)
 	}
 
+	useridInt := userid.(int)
 	sub := models.Submissions{}
 	id, err := sub.Add(pid, useridInt, ptype, language, code, "default")
 
+	var res map[string]interface{}
 	if err != nil {
-		this.Data["json"] = map[string]interface{}{
+		res = map[string]interface{}{
 			"result": false,
 			"msg":    "add task failed",
 			"debug":  err,
 			"refer":  nil,
 		}
 	} else {
-		this.Data["json"] = map[string]interface{}{
+		res = map[string]interface{}{
 			"result": true,
 			"msg":    "add task success",
 			"id":     id,
 			"refer":  nil,
 		}
 	}
-	this.ServeJSON()
-
+	return c.JSON(http.StatusOK, res)
 }
 
 // get submission status

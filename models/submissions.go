@@ -29,8 +29,6 @@ type Submissions struct {
 
 // add submission
 func (this *Submissions) Add(pid int, uid int, ptype string, language string, code string, judgerName string) (int64, error) {
-
-	o := orm.NewOrm()
 	var subm Submissions
 	subm.Pid = pid
 	subm.Uid = uid
@@ -46,14 +44,14 @@ func (this *Submissions) Add(pid int, uid int, ptype string, language string, co
 	subm.SubmitTime = time.Now()
 	subm.JudgeTime = time.Now()
 
-	id, err := o.Insert(&subm)
+	id, err := engine.Insert(&subm)
 
 	if err != nil {
 		return id, err
 	}
 
-	jdg := judger.Get("default")
-	jdg.AddTask(id, language, code)
+	//jdg := judger.Get("default")
+	//jdg.AddTask(id, language, code)
 
 	return id, err
 }

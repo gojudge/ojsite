@@ -50,7 +50,8 @@ func Init() *echo.Echo {
 	rProblems := e.Group("/problems")
 	{
 		rProblems.Get("/", problem.ListProblems)
-		rProblems.Get("/:title", problem.ProblemDetail)
+		rProblems.Get("/p/:title", problem.ProblemDetail)
+		rProblems.Post("/submit", problem.ProblemSubmit)
 	}
 	return e
 

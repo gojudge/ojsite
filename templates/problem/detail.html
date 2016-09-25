@@ -2,22 +2,24 @@
 {% block content %}
 
 <link rel="stylesheet" href="/staticasset/fontello/css/animation.css">
-<link rel="stylesheet" href="/static/css/problem/problem.css">
+<link rel="stylesheet" href="/static/css/problem.css">
 <script src="/staticasset/ace/src-min-noconflict/ace.js"></script>
 
 <script>
-	var user_type = {{userIs}}
+	var user_type = "{{userIs}}";
 </script>
 
 	<div class="detail">
 		<div class="problem-title"><h3>{{problem_title}}</h3></div>
 		<div class="problem-description">
+            {% autoescape off %}
 			{{problem_description}}
+            {% endautoescape %}
 		</div>
 		<div class="problem-links">discuss</div>
 	</div>
 
-	<form action="/problem/submit" method="post" class="submition" get-status="/problem/submit/status">
+	<form action="/problems/submit" method="post" class="submition" get-status="/problems/submit/status">
 		<input type="hidden" name="pid" value="{{problem_id}}">
 		<div class="subm-header">
 			<select name="language" id="">
