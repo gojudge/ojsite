@@ -4,6 +4,7 @@ import (
 	_ "github.com/digitalcrab/pongo2trans"
 	"github.com/echo-contrib/pongor"
 	"github.com/gojudge/ojsite/controllers"
+	"github.com/gojudge/ojsite/controllers/api"
 	"github.com/gojudge/ojsite/controllers/problem"
 	"github.com/gojudge/ojsite/controllers/user"
 	"github.com/gojudge/ojsite/middleware"
@@ -52,6 +53,12 @@ func Init() *echo.Echo {
 		rProblems.Get("/", problem.ListProblems)
 		rProblems.Get("/p/:title", problem.ProblemDetail)
 		rProblems.Post("/submit", problem.ProblemSubmit)
+		rProblems.Get("/add", problem.ProblemAdd)
+	}
+
+	rApi := e.Group("/api")
+	{
+		rApi.Post("/markdown/preview", api.Markdown)
 	}
 	return e
 

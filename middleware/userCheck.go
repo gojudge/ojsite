@@ -34,21 +34,11 @@ func UserCheck(next echo.HandlerFunc) echo.HandlerFunc {
 					lev = "user not found"
 				} else {
 					c.Set("userID", u.Id)
+					c.Set("username", u.Username)
 					res["username"] = u.Username
 					res["nickname"] = u.Nickname
 					res["email_md5"] = com.Md5(u.Email)
-
-					levelCookie, _ := c.Cookie("level")
-					if levelCookie != nil {
-						level := levelCookie.Value()
-						if level == "" {
-							lev = "user"
-						} else {
-							lev = level
-						}
-					} else {
-						lev = "user"
-					}
+					lev = u.Level
 				}
 			}
 		} else {
