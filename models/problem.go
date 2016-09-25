@@ -43,9 +43,13 @@ func (this *Problem) GetProblem(id int, title string) (Problem, error) {
 // page 页码
 // itemsPerPage 每页数量
 // level 题目权限级别
-func (this *Problem) ListProblem(page int, itemsPerPage int, level string) (problems []*Problem, hasNext bool, tatalPages int64, err error) {
+func (this *Problem) ListProblem(page int, itemsPerPage int, level string) ([]Problem, bool, int64, error) {
 	var num int64
 	var p Problem
+	var hasNext bool
+	var tatalPages int64
+	var err error
+	problems := make([]Problem, 0)
 
 	if len(level) <= 0 {
 		err := engine.Desc("time").Limit(itemsPerPage, itemsPerPage*(page-1)).Find(&problems)
@@ -105,16 +109,17 @@ func (this *Problem) ListProblem(page int, itemsPerPage int, level string) (prob
 }
 
 // get top 10 problem
-func (this *Problem) GetTop10() ([]map[string][]byte, error) {
+func (this *Problem) GetTop10() ([]Problem, error) {
 	sql := `SELECT problem.id as id, problem.title as title, count(*) AS count FROM submissions,problem where submissions.pid=problem.id GROUP BY pid ORDER BY count DESC limit 10`
 
-	maps, err := engine.Query(sql)
+	var problems []Problem
+	err := engine.SQL(sql).Find(&problems)
 	if err != nil {
 		log.Warnln("execute sql error:")
 		log.Warnln(err)
 		return nil, err
 	} else {
-		return maps, err
+		return problems, err
 	}
 }
 

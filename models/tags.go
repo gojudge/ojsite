@@ -21,10 +21,11 @@ func (this *Tags) AddTag(tag string) (int64, error) {
 }
 
 // List Tags
-func (this *Tags) TagList() ([]map[string][]byte, error) {
+func (this *Tags) TagList() ([]Tags, error) {
 	sql := "select * from tags order by time desc"
 
-	res, err := engine.Query(sql)
+	res := make([]Tags, 0)
+	err := engine.SQL(sql).Find(&res)
 	if err != nil {
 		log.Warnln("execute sql error:")
 		log.Warnln(err)

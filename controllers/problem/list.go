@@ -8,6 +8,11 @@ import (
 	"net/http"
 )
 
+type User struct {
+	Num  int
+	Name string
+}
+
 func ListProblems(c echo.Context) error {
 	pro := &models.Problem{}
 	problems, hasNext, _, _ := pro.ListProblem(1, 10, "public")

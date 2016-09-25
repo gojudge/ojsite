@@ -1,39 +1,43 @@
 package problem
 
 import (
-	"github.com/gojudge/ojsite/controllers"
+	"github.com/gojudge/ojsite/middleware"
 	"github.com/gojudge/ojsite/models"
+	"github.com/labstack/echo"
 	// "github.com/gogather/com/log"
+	"net/http"
+	"strconv"
 )
 
-type ProblemDetailController struct {
-	controllers.BaseController
-}
+func ProblemDetail(c echo.Context) error {
+	var err error
+	idstr := c.FormValue("id")
 
-func (this *ProblemDetailController) Get() {
-	id, err := this.GetInt("id")
+	id, _ := strconv.Atoi(idstr)
 
 	if err != nil {
 		id = 0
 	}
 
-	title := this.Ctx.Input.Param(":title")
+	title := c.Param("title")
 
 	pro := models.Problem{}
 	pro, err = pro.GetProblem(id, title)
 	if err != nil {
-		this.Abort("404")
-		return
+		//this.Abort("404")
+		return err
 	}
 
-	this.Data["title"] = this.Lang("problem") + " - " + pro.Title
+	res := c.Get("res").(map[string]interface{})
+	cc := c.(*middleware.OJContext)
+	res["title"] = cc.Trans("problem") + " - " + pro.Title
 
-	this.Data["problem_id"] = pro.Id
-	this.Data["problem_title"] = pro.Title
-	this.Data["problem_type"] = pro.Type
-	this.Data["problem_description"] = pro.Description
-	this.Data["problem_pre_code"] = pro.PreCode
-	this.Data["problem_tags"] = pro.Tags
+	res["problem_id"] = pro.Id
+	res["problem_title"] = pro.Title
+	res["problem_type"] = pro.Type
+	res["problem_description"] = pro.Description
+	res["problem_pre_code"] = pro.PreCode
+	res["problem_tags"] = pro.Tags
 
-	this.TplName = "problem/detail.tpl"
+	return c.Render(http.StatusOK, "problem/detail.html", res)
 }

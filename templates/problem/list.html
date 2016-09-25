@@ -14,19 +14,16 @@
 						<li class="item-time">添加时间</li>
 					</ul>
 				</li>
-                {{problems}}
 				{% for pro in problems %}
-                {{pro}}
 				<li class="list-item">
 					<ul>
-						<li class="item-id">{{pro.id}}</li>
+						<li class="item-id">{{pro.Id}}</li>
 						<li class="item-title">
-							<a href="/problem/{{pro.title}}">{{pro.title}}</a>
+							<a href="/problems/{{pro.Title}}">{{pro.Title}}</a>
 						</li>
-						<li class="item-type">{{pro.type}}</li>
-						<li class="item-rate">{{pro.pass_rate }}</li>
-						<li class="item-time">{{pro.time}}</li>
-					</ul>
+						<li class="item-type">{{pro.Type}}</li>
+						<li class="item-rate">{{pro.Pass_rate }}</li>
+						<li class="item-time">{{timeformat (pro.Time,"DATE")}}</li>					</ul>
 				</li>
 				{% endfor %}
 			</ul>
@@ -35,21 +32,20 @@
 			<ul class="hot">
 				<li><i class="icon-fire"></i>Top 10</li>
 				{% for pro in top10 %}
-				<li class="item"><a href="">{{pro.title}}</a></li>
+				<li class="item"><a href="">{{pro.Title}}</a></li>
 				{% endfor %}
 			</ul>
 			<ul class="tags">
 				<li><i class="icon-tags"></i>分类</li>
 				{% for t in tag_list %}
-                {{t.id}}
-				<li class="item"><a href="">{{ t.tag}}<span class="badge">{{t.problem_num}}</span></a></li>
+				<li class="item"><a href="">{{ t.Tag}}<span class="badge">{{t.Problem_num}}</span></a></li>
 				{% endfor %}
 			</ul>
 			<ul class="tags">
 				<li><i class="icon-link"></i>链接</li>
 				
 				<li class="item"><a href="/problem/add" target="_blank">我要添加题目</a></li>
-			</ul>
+            </ul>
 		</div>
 	</div>
 	

@@ -7,5 +7,6 @@ import (
 
 func InitializeSession() {
 	path := global.Config.MustValue("session", "path", "tmp")
-	global.Sessions = session.NewSession(path)
+	ss := session.NewSession(path)
+	global.Sessions = &ss
 }
